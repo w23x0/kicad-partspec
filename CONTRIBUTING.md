@@ -19,3 +19,9 @@ Keep tools small, explicit, and safe by default.
 
 See [`docs/development-workflow.md`](docs/development-workflow.md) for the
 staged delivery process.
+
+## Platforms
+
+Windows 10+, macOS 12+, and Linux (Ubuntu/Debian tested) are supported. Keep
+paths portable (forward slashes, no absolute machine paths) and let
+`.gitattributes` normalize text files to LF so scripts run on Linux.

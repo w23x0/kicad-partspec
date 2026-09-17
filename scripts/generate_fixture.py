@@ -23,8 +23,16 @@ The PCB is generated through the bundled pcbnew Python API (50x30 mm
 outline, 2 layers, real footprints from installed libraries, tracks, one
 via, one GND zone).
 
-Run with KiCad's bundled Python (KiCad 10 required):
+Run with KiCad's bundled Python (KiCad 10 required) — the interpreter that
+can import ``pcbnew``:
+    # Linux (distribution KiCad on PATH):
+    python3 scripts/generate_fixture.py
+    # Windows:
     "C:/Program Files/KiCad/10.0/bin/python.exe" scripts/generate_fixture.py
+
+The KiCad symbol and footprint libraries are located automatically from the
+standard install locations; set ``KICAD_SHARE`` to override (for example
+``KICAD_SHARE=/usr/share/kicad``).
 
 The repository ships the generated files, so the pytest suite itself has no
 KiCad dependency.
@@ -32,6 +40,7 @@ KiCad dependency.
 
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
@@ -40,8 +49,33 @@ import pcbnew
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "mcp" / "tests" / "fixtures" / "demo"
 SUB = FIXTURES / "sub"
-SYMBOLS_DIR = Path(r"C:\Program Files\KiCad\10.0\share\kicad\symbols")
-FP_BASE = Path(r"C:\Program Files\KiCad\10.0\share\kicad\footprints")
+
+
+def _kicad_share() -> Path:
+    """Locate KiCad's share directory across supported platforms."""
+    override = os.environ.get("KICAD_SHARE")
+    candidates = (
+        [Path(override)]
+        if override
+        else [
+            Path("/usr/share/kicad"),
+            Path("/usr/local/share/kicad"),
+            Path("/Applications/KiCad/KiCad.app/Contents/SharedSupport/kicad"),
+            Path(r"C:\Program Files\KiCad\10.0\share\kicad"),
+        ]
+    )
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate
+    raise SystemExit(
+        "KiCad share directory not found; set KICAD_SHARE to the directory "
+        "containing symbols/ and footprints/."
+    )
+
+
+SHARE = _kicad_share()
+SYMBOLS_DIR = SHARE / "symbols"
+FP_BASE = SHARE / "footprints"
 
 U = {
     "sch": "a1b2c3d4-0000-4000-8000-000000000001",

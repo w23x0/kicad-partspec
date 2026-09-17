@@ -2,6 +2,7 @@
 
 | Component | Supported baseline |
 | --- | --- |
+| Operating system | Windows 10+, macOS 12+, Linux (Ubuntu/Debian tested) |
 | Python | 3.10-3.13 |
 | KiCad | 8.x-10.x with `kicad-cli` on PATH; patch-level output may differ. The Step 4/5 fixture and JSON diagnostics were verified against KiCad 10.0.6 |
 | Codex | Current MCP-capable releases |

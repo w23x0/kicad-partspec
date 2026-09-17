@@ -24,15 +24,20 @@ KiCad remains the source of truth; the MCP provides assistive reporting.
 ## Quick start
 
 Requirements: Python 3.10+, [`uv`](https://docs.astral.sh/uv/), KiCad 8+ with
-`kicad-cli` on `PATH`, and a Codex build with stdio MCP support.
+`kicad-cli` on `PATH`, and a Codex build with stdio MCP support. Supported
+hosts: Windows 10+, macOS 12+, and Linux (developed and tested on Ubuntu).
 
-```powershell
+```bash
 cd mcp
 uv venv
 uv pip install -e ".[dev]"
-$env:KICAD_WORKSPACE = "C:/path/to/your/eda-workspace"
+export KICAD_WORKSPACE="/path/to/your/eda-workspace"
 uv run codex-kicad-mcp
 ```
+
+On Windows PowerShell set the variable with
+`$env:KICAD_WORKSPACE = "C:/path/to/your/eda-workspace"` instead. Use
+forward-slash paths on every platform; macOS and Linux paths start with `/`.
 
 Register the server in Codex (see
 [`catalog/registration.example.toml`](catalog/registration.example.toml) for
@@ -41,8 +46,8 @@ Codex, Claude Desktop, VS Code, and Cursor blocks):
 ```toml
 [mcp_servers.kicad]
 command = "uv"
-args = ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"]
-env = { KICAD_WORKSPACE = "C:/path/to/eda-workspace" }
+args = ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"]
+env = { KICAD_WORKSPACE = "/path/to/eda-workspace" }
 ```
 
 Restart Codex, run `codex mcp list`, then ask it to list projects and inspect
@@ -80,7 +85,7 @@ boundaries.
 
 ## Development
 
-```powershell
+```bash
 cd mcp
 uv pip install -e ".[dev]"
 uv run pytest -q            # fixture suite; skips real-project scans without KiCad
@@ -91,10 +96,12 @@ uv run mypy src
 
 The real-project scan tests (`mcp/tests/test_real_projects.py`) copy KiCad's
 installed demos into a temporary workspace and exercise the whole tool surface
-with the actual `kicad-cli`; they skip cleanly when KiCad is absent. Run
+with the actual `kicad-cli`; they skip cleanly when KiCad is absent. On Linux
+the demos live under `/usr/share/kicad/demos` (Ubuntu/Debian) or
+`/usr/local/share/kicad/demos`; set `KICAD_DEMO_ROOT` to override. Run
 workspace-level validation from the repository root:
 
-```powershell
+```bash
 python scripts/validate_workspace.py
 python scripts/validate_catalog.py
 python scripts/check_links.py

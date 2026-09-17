@@ -8,10 +8,10 @@ LTspice, or third-party MCP source code.
 
 Run from the repository root in a clean checkout:
 
-```powershell
+```bash
 python scripts/validate_catalog.py
 python scripts/check_links.py
-python -c "import json, pathlib; json.loads(pathlib.Path('catalog.json').read_text(encoding='utf-8')); print('JSON OK')"
+python -c "import json, pathlib; json.loads(pathlib.Path('catalog/catalog.json').read_text(encoding='utf-8')); print('JSON OK')"
 ```
 
 Then confirm:

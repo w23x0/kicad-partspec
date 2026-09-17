@@ -9,13 +9,13 @@ snapshot-backed, audited minimal edits.
 
 ## Install
 
-```powershell
+```bash
 uv pip install codex-kicad-mcp
 ```
 
 Or from a source checkout:
 
-```powershell
+```bash
 cd mcp
 uv pip install -e ".[dev]"
 ```
@@ -25,10 +25,14 @@ uv pip install -e ".[dev]"
 Set `KICAD_WORKSPACE` to the directory that contains your `.kicad_pro`
 projects, then start the stdio server:
 
-```powershell
-$env:KICAD_WORKSPACE = "C:/path/to/eda-workspace"
+```bash
+export KICAD_WORKSPACE="/path/to/eda-workspace"
 codex-kicad-mcp
 ```
+
+On Windows PowerShell use
+`$env:KICAD_WORKSPACE = "C:/path/to/eda-workspace"` instead. Forward-slash
+paths work on every platform.
 
 Every tool resolves paths below `KICAD_WORKSPACE`; attempts to escape fail
 before any file access or command runs. See

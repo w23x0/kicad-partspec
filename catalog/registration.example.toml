@@ -4,23 +4,28 @@
 # This file is an example, not a complete machine configuration. Do not commit
 # the resulting config.toml: it can contain local paths, environment values, or
 # credentials used by other MCP servers.
+#
+# Paths may use forward slashes on every platform: Windows also accepts
+# "C:/path/to/...", while macOS and Linux use "/path/to/...".
 
 # The repository's read-first KiCad MCP (Python + uv).
 [mcp_servers.kicad]
 command = "uv"
-args = ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"]
-env = { KICAD_WORKSPACE = "C:/path/to/eda-workspace" }
+args = ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"]
+env = { KICAD_WORKSPACE = "/path/to/eda-workspace" }
 
 # Optional LTspice MCP. Use the command documented by the selected upstream
 # release and keep simulation output in a versioned project directory.
 [mcp_servers.ltspice]
-command = "C:/path/to/ltspice-mcp.exe"
+command = "/path/to/ltspice-mcp"
 args = []
-env = { LTSPICE_WORKSPACE = "C:/path/to/eda-workspace/simulation" }
+env = { LTSPICE_WORKSPACE = "/path/to/eda-workspace/simulation" }
 
-# On macOS/Linux, use forward-slash paths and the corresponding executable,
-# for example command = "/path/to/ltspice-mcp". Restart Codex after changing
-# config, then confirm both servers with: codex mcp list
+# On Windows, use the .exe entrypoint and drive-letter paths, for example
+# command = "C:/path/to/ltspice-mcp.exe" with
+# env = { LTSPICE_WORKSPACE = "C:/path/to/eda-workspace/simulation" }.
+# Restart Codex after changing config, then confirm both servers with:
+# codex mcp list
 
 # ---------------------------------------------------------------------------
 # Other MCP hosts
@@ -30,14 +35,15 @@ env = { LTSPICE_WORKSPACE = "C:/path/to/eda-workspace/simulation" }
 # different config file; keep one block per host file you actually use.
 
 # --- Claude Desktop --------------------------------------------------------
+# File (Linux): ~/.config/Claude/claude_desktop_config.json
 # File (macOS): ~/Library/Application Support/Claude/claude_desktop_config.json
 # File (Windows): %APPDATA%\Claude\claude_desktop_config.json
 # Place inside the top-level "mcpServers" object:
 #
 # "codex-kicad": {
 #   "command": "uv",
-#   "args": ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
-#   "env": { "KICAD_WORKSPACE": "C:/path/to/eda-workspace" }
+#   "args": ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
+#   "env": { "KICAD_WORKSPACE": "/path/to/eda-workspace" }
 # }
 
 # --- Visual Studio Code (settings.json or .vscode/mcp.json) ----------------
@@ -56,14 +62,16 @@ env = { LTSPICE_WORKSPACE = "C:/path/to/eda-workspace/simulation" }
 # }
 
 # --- Cursor ----------------------------------------------------------------
-# File: ~/.cursor/mcp.json with the same "mcpServers" shape as Claude Desktop:
+# File (Linux/macOS): ~/.cursor/mcp.json
+# File (Windows): %USERPROFILE%\.cursor\mcp.json
+# Same "mcpServers" shape as Claude Desktop:
 #
 # {
 #   "mcpServers": {
 #     "codex-kicad": {
 #       "command": "uv",
-#       "args": ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
-#       "env": { "KICAD_WORKSPACE": "C:/path/to/eda-workspace" }
+#       "args": ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
+#       "env": { "KICAD_WORKSPACE": "/path/to/eda-workspace" }
 #     }
 #   }
 # }

@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+- Documented Windows 10+/macOS 12+/Linux (Ubuntu/Debian) support and switched
+  the README, Quick Start, FAQ, and registration examples to cross-platform
+  shell commands with `/path/to/...` placeholders; noted the Linux Codex
+  config path (`~/.codex/config.toml`).
+- `scripts/generate_fixture.py` now locates KiCad's symbol and footprint
+  libraries from the standard Linux, macOS, and Windows install locations;
+  set `KICAD_SHARE` to override.
+- Added `.gitattributes` (`* text=auto eol=lf`) and normalized repository text
+  files to LF so CRLF-only diffs from Windows checkouts disappear and shebang
+  scripts run on Linux.
+
 ## 0.2.0 - 2026-09-07
 
 - Calibrated review semantics against real KiCad 10.0.6 demo boards:

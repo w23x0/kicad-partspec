@@ -13,13 +13,20 @@ in the upstream distribution you select.
 - A disposable or version-controlled directory containing at least one
   `.kicad_pro` project.
 
-Confirm the host before changing files:
+Windows 10+, macOS 12+, and Linux are supported; the Linux path below is tested
+on Ubuntu/Debian. Confirm the host before changing files:
 
-```powershell
+```bash
 codex mcp list
 python --version
 kicad-cli --version
 ```
+
+On Ubuntu/Debian install KiCad from the
+[KiCad PPA](https://launchpad.net/~kicad/+archive/ubuntu/kicad-10.0) or your
+distribution package; `kicad-cli` then lands on `PATH` at `/usr/bin/kicad-cli`.
+On Windows PowerShell use `python --version` and `kicad-cli --version` the same
+way.
 
 `kicad-cli` is not needed for package installation or read-only parsing, but it
 is required for the KiCad version and ERC/DRC tools.
@@ -28,35 +35,38 @@ is required for the KiCad version and ERC/DRC tools.
 
 From the workspace that contains both directories:
 
-```powershell
-uv run --directory .\Codex-KiCad/mcp pytest -q
-uv run --directory .\Codex-KiCad/mcp Codex-KiCad/mcp
+```bash
+uv run --directory ./Codex-KiCad/mcp pytest -q
+uv run --directory ./Codex-KiCad/mcp codex-kicad-mcp
 ```
 
 The second command stays attached to stdio. Stop it with `Ctrl+C`; Codex normally
 owns the process lifecycle. Set the workspace boundary before registering it:
 
-```powershell
-$env:KICAD_WORKSPACE = "C:/path/to/eda-workspace"
+```bash
+export KICAD_WORKSPACE="/path/to/eda-workspace"
 ```
 
-For macOS/Linux, use `./Codex-KiCad/mcp` and `export KICAD_WORKSPACE=...`.
+On Windows PowerShell, use `.\Codex-KiCad/mcp`, run `codex-kicad-mcp` directly,
+and set the variable with
+`$env:KICAD_WORKSPACE = "C:/path/to/eda-workspace"` instead.
 
 ## Register with Codex
 
 Copy the KiCad block from [`../catalog/registration.example.toml`](../catalog/registration.example.toml)
-into `${CODEX_HOME}/config.toml`, replacing both paths:
+into `${CODEX_HOME}/config.toml` (on Linux this is usually
+`~/.codex/config.toml`), replacing both paths:
 
 ```toml
 [mcp_servers.kicad]
 command = "uv"
-args = ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "Codex-KiCad/mcp"]
-env = { KICAD_WORKSPACE = "C:/path/to/eda-workspace" }
+args = ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"]
+env = { KICAD_WORKSPACE = "/path/to/eda-workspace" }
 ```
 
-Restart Codex and run:
+On Windows use `C:/path/to/...` paths. Restart Codex and run:
 
-```powershell
+```bash
 codex mcp list
 ```
 
@@ -81,7 +91,7 @@ the first run on a disposable copy and review the diff afterward.
 
 From the Toolkit root, run:
 
-```powershell
+```bash
 python scripts/validate_catalog.py
 python scripts/check_links.py
 ```
@@ -94,9 +104,8 @@ not silently treated as available.
 
 | Symptom | Check |
 | --- | --- |
-| `kicad` is absent from `codex mcp list` | Confirm `${CODEX_HOME}/config.toml`, restart Codex, and run the command from a clean shell. |
+| `kicad` is absent from `codex mcp list` | Confirm `${CODEX_HOME}/config.toml` (Linux: `~/.codex/config.toml`), restart Codex, and run the command from a clean shell. |
 | No projects are discovered | `KICAD_WORKSPACE` must be an existing directory containing `.kicad_pro`; use paths relative to it. |
 | `kicad-cli` cannot be found | Install KiCad and add its CLI directory to `PATH`, then restart Codex. |
 | ERC/DRC creates unexpected files | Use a disposable copy, inspect the diff, and document the KiCad version and report path. |
 | A command works manually but not in Codex | Compare the environment inherited by Codex with the shell (`PATH`, `KICAD_WORKSPACE`, and `uv` location). |
-

@@ -7,9 +7,15 @@ variable. Set it to the directory that contains your `.kicad_pro` files (any
 depth below it is fine) in your host's MCP config:
 
 ```json
-{ "command": "uv", "args": ["run", "--directory", "C:/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
-  "env": { "KICAD_WORKSPACE": "C:/path/to/eda-workspace" } }
+{ "command": "uv", "args": ["run", "--directory", "/path/to/Codex-KiCad/mcp", "codex-kicad-mcp"],
+  "env": { "KICAD_WORKSPACE": "/path/to/eda-workspace" } }
 ```
+
+Use forward-slash paths on every platform; on Windows write
+`C:/path/to/eda-workspace`. How you set the variable depends on the host: an
+MCP `env` block in the config (shown above), `export KICAD_WORKSPACE=...` in a
+POSIX shell, or `$env:KICAD_WORKSPACE = "..."` in Windows PowerShell. On Linux
+the Codex config file is typically `~/.codex/config.toml`.
 
 Paths you pass to tools can be relative to the workspace (`boards/sensor/
 sensor.kicad_pro`) or absolute inside it. Anything that resolves outside the
@@ -70,7 +76,7 @@ config block:
 ```json
 "env": {
   "KICAD_ENABLE_WRITES": "1",
-  "KICAD_SNAPSHOT_ROOT": "C:/path/to/eda-snapshots"
+  "KICAD_SNAPSHOT_ROOT": "/path/to/eda-snapshots"
 }
 ```
 
