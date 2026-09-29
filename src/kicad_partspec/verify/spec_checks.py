@@ -9,8 +9,8 @@ from __future__ import annotations
 from collections import Counter
 from collections.abc import Callable
 
-from partspec.findings import FAIL, WARN, Finding
-from partspec.spec.model import ELECTRICAL_TYPES, STATUSES, PartSpec, Source
+from kicad_partspec.findings import FAIL, WARN, Finding
+from kicad_partspec.spec.model import ELECTRICAL_TYPES, STATUSES, PartSpec, Source
 
 
 def _source_problem(source: Source | None) -> str | None:

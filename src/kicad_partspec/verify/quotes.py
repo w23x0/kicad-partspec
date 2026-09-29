@@ -12,7 +12,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from partspec.findings import FAIL, Finding
+from kicad_partspec.findings import FAIL, Finding
 
 _WHITESPACE = re.compile(r"\s+")
 

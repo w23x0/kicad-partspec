@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from partspec.findings import Finding
-from partspec.spec import load_spec
-from partspec.verify.spec_checks import SPEC_CHECKS
+from kicad_partspec.findings import Finding
+from kicad_partspec.spec import load_spec
+from kicad_partspec.verify.spec_checks import SPEC_CHECKS
 
 
 def verify_spec(data: Any) -> list[Finding]:

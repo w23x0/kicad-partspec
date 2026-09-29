@@ -1,8 +1,8 @@
 """Command line entry point.
 
-``partspec validate SPEC.json [--datasheet PDF]``
-``partspec build SPEC.json --out DIR``
-``partspec verify SPEC.json [--symbol FILE] [--footprint FILE]``
+``kicad-partspec validate SPEC.json [--datasheet PDF]``
+``kicad-partspec build SPEC.json --out DIR``
+``kicad-partspec verify SPEC.json [--symbol FILE] [--footprint FILE]``
 """
 
 from __future__ import annotations
@@ -12,8 +12,8 @@ import json
 import sys
 from pathlib import Path
 
-from partspec import api
-from partspec.findings import Finding, failed
+from kicad_partspec import api
+from kicad_partspec.findings import Finding, failed
 
 
 def _read_json(path: Path) -> object | None:
@@ -40,7 +40,7 @@ def _report(findings: list[Finding], files: list[str] | None = None, *, concise:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="partspec")
+    parser = argparse.ArgumentParser(prog="kicad-partspec")
     sub = parser.add_subparsers(dest="command", required=True)
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--concise", action="store_true", help="failures in full, warnings only counted by kind")

@@ -1,6 +1,6 @@
 import pytest
 
-from partspec.sexpr import as_float, as_int, children, first_child, parse_sexpr, scalar_child
+from kicad_partspec.sexpr import as_float, as_int, children, first_child, parse_sexpr, scalar_child
 
 SAMPLE = '(kicad_symbol_lib (version 20241209) (symbol "U1" (property "Value" "a \\"b\\"") (pin passive line)))'
 

@@ -12,10 +12,10 @@ from dataclasses import dataclass
 from itertools import pairwise
 from typing import Any
 
-from partspec.findings import FAIL, WARN, Finding
-from partspec.gen.footprint import DUAL_FAMILIES, dim_value
-from partspec.sexpr import as_float, children, first_child, parse_sexpr
-from partspec.spec.model import PartSpec
+from kicad_partspec.findings import FAIL, WARN, Finding
+from kicad_partspec.gen.footprint import DUAL_FAMILIES, dim_value
+from kicad_partspec.sexpr import as_float, children, first_child, parse_sexpr
+from kicad_partspec.spec.model import PartSpec
 
 _TOL = 0.005  # mm, tolerance when comparing pad geometry with the datasheet
 COURTYARD_MIN = 0.25 - 0.001

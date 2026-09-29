@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from partspec.scoring import case_of, score
+from kicad_partspec.scoring import case_of, score
 
 CASES = Path(__file__).resolve().parent.parent / "evals" / "cases"
 NAMES = sorted(p.parent.name for p in CASES.glob("*/spec.gold.json"))

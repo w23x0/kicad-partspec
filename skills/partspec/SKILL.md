@@ -10,7 +10,7 @@ Your job is only to extract facts accurately. Every value carries the datasheet 
 audit each one. Never fill a value from memory or from other parts of the same family: if the datasheet in front of you does
 not state it, leave it out and say so.
 
-Tools: the `partspec_validate`, `partspec_build` and `partspec_verify` MCP tools, or the CLI (`partspec validate|build|verify`).
+Tools: the `partspec_validate`, `partspec_build` and `partspec_verify` MCP tools, or the CLI (`kicad-partspec validate|build|verify`).
 The field layout, dimension names and pin-type rules are in [reference.md](reference.md); an invented example is in
 [example.json](example.json).
 
@@ -27,9 +27,9 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
    image before you trust a number or a pin-to-number pairing.
 3. **Get the hash.** `sha256sum FILE.pdf` goes in `datasheet.sha256`.
 4. **Write the PartSpec** as JSON, following [reference.md](reference.md).
-5. **Validate against the PDF** until it passes: `partspec_validate` with `datasheet_path` (CLI: `partspec validate SPEC.json --datasheet FILE.pdf`).
+5. **Validate against the PDF** until it passes: `partspec_validate` with `datasheet_path` (CLI: `kicad-partspec validate SPEC.json --datasheet FILE.pdf`).
    Every entry in `failed` says what to change. A `prov.quote_not_found` means your quote is not on that page as printed.
-6. **Build**: `partspec_build` (CLI: `partspec build SPEC.json --out DIR`; add `--concise` to see failures in full and warnings
+6. **Build**: `partspec_build` (CLI: `kicad-partspec build SPEC.json --out DIR`; add `--concise` to see failures in full and warnings
    only counted by kind, which keeps the one important warning from being buried). Fix any failure and rebuild. A `footprint.skipped`
    warning means the datasheet's land pattern is missing or incomplete; report it, do not invent the numbers.
 7. **Hand over for review.** Tell the user which pins and dimensions are `inferred`, anything you left out and why, and any place
@@ -44,7 +44,7 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
   QFN view); use the labels of the package you were asked for.
 - Numbers in a figure are interleaved with other labels in the text layer. Two numbers that belong together may be printed as
   `1.0 C 0.8`, not `1.0 0.8`, and a value and its bracketed millimetres are often on different lines. Two ways out: quote one
-  token (`.189-.197`, even if the value you record is the millimetre one), or use the hint `partspec validate --datasheet`
+  token (`.189-.197`, even if the value you record is the millimetre one), or use the hint `kicad-partspec validate --datasheet`
   gives on a failed quote, which is the page's own token order.
 - In a pinout figure the number and the name may sit apart (rotated labels), so a quote can only carry the name. Check the
   pairing on the rendered image; that is the reason step 2 exists.

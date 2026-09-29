@@ -11,9 +11,9 @@ from pathlib import Path
 
 import pytest
 
-from partspec.cli import main
-from partspec.findings import FAIL, WARN, failed
-from partspec.gen.footprint import (
+from kicad_partspec.cli import main
+from kicad_partspec.findings import FAIL, WARN, failed
+from kicad_partspec.gen.footprint import (
     _clip,
     _silk_segments,
     compute_pads,
@@ -21,12 +21,12 @@ from partspec.gen.footprint import (
     render_footprint,
     skip_reason,
 )
-from partspec.gen.symbol import render_library
-from partspec.sexpr import Atom, children, first_child, parse_sexpr, write_sexpr
-from partspec.spec import load_spec
-from partspec.verify.footprint_checks import check_footprint
-from partspec.verify.kicad_checks import check_footprint_loads
-from partspec.verify.symbol_checks import check_symbol
+from kicad_partspec.gen.symbol import render_library
+from kicad_partspec.sexpr import Atom, children, first_child, parse_sexpr, write_sexpr
+from kicad_partspec.spec import load_spec
+from kicad_partspec.verify.footprint_checks import check_footprint
+from kicad_partspec.verify.kicad_checks import check_footprint_loads
+from kicad_partspec.verify.symbol_checks import check_symbol
 
 CASES = Path(__file__).resolve().parent.parent / "evals" / "cases"
 SUPPORTED = ["lm358_soic8", "tps62130_vqfn16"]

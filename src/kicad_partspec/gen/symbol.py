@@ -13,8 +13,8 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-from partspec.sexpr import Atom, write_sexpr
-from partspec.spec.model import PartSpec, Pin
+from kicad_partspec.sexpr import Atom, write_sexpr
+from kicad_partspec.spec.model import PartSpec, Pin
 
 FORMAT_VERSION = "20241209"
 GRID = 1.27

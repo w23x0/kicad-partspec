@@ -1,6 +1,6 @@
 """KiCad S-expression parsing and writing."""
 
-from partspec.sexpr.parse import (
+from kicad_partspec.sexpr.parse import (
     Atom,
     as_float,
     as_int,
@@ -11,7 +11,7 @@ from partspec.sexpr.parse import (
     sexpr_tokens,
     unquote,
 )
-from partspec.sexpr.write import format_number, write_sexpr
+from kicad_partspec.sexpr.write import format_number, write_sexpr
 
 __all__ = [
     "Atom",

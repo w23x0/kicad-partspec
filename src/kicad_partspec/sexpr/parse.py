@@ -11,7 +11,7 @@ import math
 from collections.abc import Iterator
 from typing import Any
 
-from partspec import config
+from kicad_partspec import config
 
 
 class Atom(str):

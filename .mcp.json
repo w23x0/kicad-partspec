@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "partspec": {
+    "kicad-partspec": {
       "command": "uv",
-      "args": ["run", "--project", "${CLAUDE_PLUGIN_ROOT}", "--extra", "mcp", "partspec-mcp"]
+      "args": ["run", "--project", "${CLAUDE_PLUGIN_ROOT}", "--extra", "mcp", "kicad-partspec-mcp"]
     }
   }
 }

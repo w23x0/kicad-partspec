@@ -10,9 +10,9 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import Any
 
-from partspec.findings import FAIL, Finding
-from partspec.sexpr import as_float, children, first_child, parse_sexpr
-from partspec.spec.model import PartSpec
+from kicad_partspec.findings import FAIL, Finding
+from kicad_partspec.sexpr import as_float, children, first_child, parse_sexpr
+from kicad_partspec.spec.model import PartSpec
 
 GRID = 1.27
 _EPS = 1e-6

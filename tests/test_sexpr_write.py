@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from partspec.sexpr import Atom, format_number, parse_sexpr, write_sexpr
+from kicad_partspec.sexpr import Atom, format_number, parse_sexpr, write_sexpr
 
 OFFICIAL_LIBS = Path("/usr/share/kicad/symbols")
 
@@ -60,7 +60,7 @@ def test_written_tree_is_loadable_by_kicad(tmp_path):
     source = (OFFICIAL_LIBS / "Amplifier_Operational.kicad_sym").read_text(encoding="utf-8")
     target = tmp_path / "rewritten.kicad_sym"
     target.write_text(write_sexpr(parse_sexpr(source)[0]), encoding="utf-8")
-    from partspec.kicad import cli
+    from kicad_partspec.kicad import cli
 
     result = cli.run_cli([cli.CLI_COMMAND, "sym", "export", "svg", "-o", str(tmp_path), str(target)], timeout=300)
     assert result.returncode == 0

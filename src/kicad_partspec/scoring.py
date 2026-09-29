@@ -11,11 +11,11 @@ import re
 from dataclasses import dataclass, field
 from typing import Any
 
-from partspec.findings import FAIL
-from partspec.gen.footprint import compute_pads, skip_reason
-from partspec.spec import PartSpec, load_spec
-from partspec.verify import verify_spec
-from partspec.verify.quotes import check_quotes
+from kicad_partspec.findings import FAIL
+from kicad_partspec.gen.footprint import compute_pads, skip_reason
+from kicad_partspec.spec import PartSpec, load_spec
+from kicad_partspec.verify import verify_spec
+from kicad_partspec.verify.quotes import check_quotes
 
 DIM_TOL = 0.006  # gold values are written to two decimals
 # EN DASH, EM DASH, MINUS SIGN, HYPHEN, NON-BREAKING HYPHEN: datasheets print these where ASCII "-" is meant.

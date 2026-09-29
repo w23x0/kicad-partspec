@@ -1,5 +1,5 @@
 {
-  "name": "partspec",
+  "name": "kicad-partspec",
   "version": "0.0.1",
   "description": "Datasheet to verified KiCad symbols and footprints: a skill for extracting a PartSpec and an MCP server that builds and checks the KiCad files.",
   "license": "MIT",

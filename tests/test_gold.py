@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from partspec.findings import failed
-from partspec.verify import verify_spec
-from partspec.verify.quotes import check_quotes, find_datasheet, normalize, page_texts, suggest_quote
+from kicad_partspec.findings import failed
+from kicad_partspec.verify import verify_spec
+from kicad_partspec.verify.quotes import check_quotes, find_datasheet, normalize, page_texts, suggest_quote
 
 CASES = Path(__file__).resolve().parent.parent / "evals" / "cases"
 GOLD = sorted(CASES.glob("*/spec.gold.json"))
@@ -90,13 +90,13 @@ class TestValidateAgainstThePdf:
         return data, find_datasheet(data["datasheet"]["sha256"], Path(DATASHEETS))
 
     def test_gold_passes_with_the_pdf(self):
-        from partspec import api
+        from kicad_partspec import api
 
         data, pdf = self._case()
         assert not failed(api.validate(data, pdf))
 
     def test_wrong_sha_names_the_right_one(self):
-        from partspec import api
+        from kicad_partspec import api
 
         data, pdf = self._case()
         data["datasheet"]["sha256"] = "0" * 64
@@ -104,14 +104,14 @@ class TestValidateAgainstThePdf:
         assert findings and findings[0].expected in findings[0].message
 
     def test_an_invented_quote_is_caught(self):
-        from partspec import api
+        from kicad_partspec import api
 
         data, pdf = self._case()
         data["pins"][0]["source"]["quote"] = "OUT1 wired to the moon"
         assert "prov.quote_not_found" in {item.id for item in api.validate(data, pdf)}
 
     def test_a_missing_pdf_is_reported_not_raised(self):
-        from partspec import api
+        from kicad_partspec import api
 
         data, _ = self._case()
         assert "prov.datasheet_unreadable" in {item.id for item in api.validate(data, Path("/nonexistent.pdf"))}

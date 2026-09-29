@@ -1,4 +1,4 @@
-# partspec
+# kicad-partspec
 
 Work in progress. Datasheet-derived PartSpec in, verified KiCad symbols and footprints out.
 
@@ -21,11 +21,11 @@ The model extracts a PartSpec with a source for every value; deterministic code 
 ## Use
 
 ```
-partspec validate SPEC.json
-partspec build SPEC.json --out DIR      # writes <mpn>.kicad_sym and <lib>.pretty/<name>.kicad_mod, verifies both
+kicad-partspec validate SPEC.json
+kicad-partspec build SPEC.json --out DIR      # writes <mpn>.kicad_sym and <lib>.pretty/<name>.kicad_mod, verifies both
 python evals/check_gold.py --datasheets DIR_WITH_PDFS
 python evals/score.py --extracted DIR --datasheets DIR_WITH_PDFS   # score model extractions against gold
-partspec-mcp                            # MCP server (pip install -e '.[mcp]'); PARTSPEC_WORKSPACE limits paths
+kicad-partspec-mcp                            # MCP server (pip install -e '.[mcp]'); PARTSPEC_WORKSPACE limits paths
 ```
 
 Gold cases and their conventions are in `evals/README.md`. Generated symbols target the KiCad 9 file

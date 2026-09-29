@@ -15,9 +15,9 @@ import os
 import sys
 from pathlib import Path
 
-from partspec.findings import FAIL, Finding, failed
-from partspec.verify import verify_spec
-from partspec.verify.quotes import check_quotes, find_datasheet, page_texts
+from kicad_partspec.findings import FAIL, Finding, failed
+from kicad_partspec.verify import verify_spec
+from kicad_partspec.verify.quotes import check_quotes, find_datasheet, page_texts
 
 CASES = Path(__file__).parent / "cases"
 

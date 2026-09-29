@@ -16,8 +16,8 @@ import math
 from dataclasses import dataclass
 from typing import Any
 
-from partspec.sexpr import Atom, write_sexpr
-from partspec.spec.model import Dimension, PartSpec
+from kicad_partspec.sexpr import Atom, write_sexpr
+from kicad_partspec.spec.model import Dimension, PartSpec
 
 FORMAT_VERSION = "20241229"
 DUAL_FAMILIES = frozenset({"SOIC", "SOP", "SSOP", "TSSOP", "MSOP", "VSSOP"})

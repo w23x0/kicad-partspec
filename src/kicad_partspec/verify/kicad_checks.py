@@ -5,9 +5,9 @@ from __future__ import annotations
 import tempfile
 from pathlib import Path
 
-from partspec import config
-from partspec.findings import FAIL, WARN, Finding
-from partspec.kicad import cli
+from kicad_partspec import config
+from kicad_partspec.findings import FAIL, WARN, Finding
+from kicad_partspec.kicad import cli
 
 _TIMEOUT = 120
 

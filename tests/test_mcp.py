@@ -24,7 +24,7 @@ def _run(workspace: Path, calls):
     async def main():
         params = StdioServerParameters(
             command=sys.executable,
-            args=["-m", "partspec.mcp_server"],
+            args=["-m", "kicad_partspec.mcp_server"],
             env={**os.environ, "PARTSPEC_WORKSPACE": str(workspace)},
         )
         async with stdio_client(params) as (read, write), ClientSession(read, write) as session:

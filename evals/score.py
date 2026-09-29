@@ -13,8 +13,8 @@ import json
 import sys
 from pathlib import Path
 
-from partspec.scoring import Score, case_of, score
-from partspec.verify.quotes import find_datasheet, page_texts
+from kicad_partspec.scoring import Score, case_of, score
+from kicad_partspec.verify.quotes import find_datasheet, page_texts
 
 CASES = Path(__file__).parent / "cases"
 

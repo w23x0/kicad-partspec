@@ -13,15 +13,15 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from partspec.findings import FAIL, WARN, Finding, failed
-from partspec.gen.footprint import footprint_name, render_footprint, skip_reason
-from partspec.gen.symbol import render_library, unit_groups
-from partspec.spec import load_spec
-from partspec.verify import verify_spec
-from partspec.verify.footprint_checks import check_footprint
-from partspec.verify.kicad_checks import check_footprint_loads, check_symbol_loads
-from partspec.verify.quotes import check_quotes, page_texts, sha256_of
-from partspec.verify.symbol_checks import check_symbol
+from kicad_partspec.findings import FAIL, WARN, Finding, failed
+from kicad_partspec.gen.footprint import footprint_name, render_footprint, skip_reason
+from kicad_partspec.gen.symbol import render_library, unit_groups
+from kicad_partspec.spec import load_spec
+from kicad_partspec.verify import verify_spec
+from kicad_partspec.verify.footprint_checks import check_footprint
+from kicad_partspec.verify.kicad_checks import check_footprint_loads, check_symbol_loads
+from kicad_partspec.verify.quotes import check_quotes, page_texts, sha256_of
+from kicad_partspec.verify.symbol_checks import check_symbol
 
 CONCISE = "concise"
 DETAILED = "detailed"

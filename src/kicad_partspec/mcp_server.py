@@ -15,7 +15,7 @@ from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
 
-from partspec import api
+from kicad_partspec import api
 
 ResponseFormat = Literal["concise", "detailed"]
 

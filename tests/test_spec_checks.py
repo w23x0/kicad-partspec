@@ -9,9 +9,9 @@ import json
 
 import pytest
 
-from partspec.cli import main
-from partspec.findings import FAIL, WARN, failed
-from partspec.verify import verify_spec
+from kicad_partspec.cli import main
+from kicad_partspec.findings import FAIL, WARN, failed
+from kicad_partspec.verify import verify_spec
 
 
 def _src(page=1, quote="Table 1"):

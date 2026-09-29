@@ -11,7 +11,7 @@ from __future__ import annotations
 import math
 from typing import Any
 
-from partspec.sexpr.parse import Atom
+from kicad_partspec.sexpr.parse import Atom
 
 
 def format_number(value: int | float) -> str:

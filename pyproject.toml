@@ -1,5 +1,5 @@
 [project]
-name = "partspec"
+name = "kicad-partspec"
 version = "0.0.1"
 description = "Datasheet-derived PartSpec to verified KiCad symbols and footprints."
 readme = "README.md"
@@ -17,15 +17,15 @@ dev = [
 ]
 
 [project.scripts]
-partspec = "partspec.cli:main"
-partspec-mcp = "partspec.mcp_server:main"
+kicad-partspec = "kicad_partspec.cli:main"
+kicad-partspec-mcp = "kicad_partspec.mcp_server:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/partspec"]
+packages = ["src/kicad_partspec"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

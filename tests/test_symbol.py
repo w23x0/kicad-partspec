@@ -11,13 +11,13 @@ from pathlib import Path
 
 import pytest
 
-from partspec.cli import main
-from partspec.findings import FAIL, failed
-from partspec.gen.symbol import build_library, render_library, unit_groups
-from partspec.sexpr import Atom, children, first_child, parse_sexpr, write_sexpr
-from partspec.spec import load_spec
-from partspec.verify.kicad_checks import check_symbol_loads
-from partspec.verify.symbol_checks import check_symbol
+from kicad_partspec.cli import main
+from kicad_partspec.findings import FAIL, failed
+from kicad_partspec.gen.symbol import build_library, render_library, unit_groups
+from kicad_partspec.sexpr import Atom, children, first_child, parse_sexpr, write_sexpr
+from kicad_partspec.spec import load_spec
+from kicad_partspec.verify.kicad_checks import check_symbol_loads
+from kicad_partspec.verify.symbol_checks import check_symbol
 
 CASES = Path(__file__).resolve().parent.parent / "evals" / "cases"
 NAMES = sorted(p.parent.name for p in CASES.glob("*/spec.gold.json"))
@@ -240,7 +240,7 @@ def test_unit_count_mismatch_is_reported(tmp_path):
 
 
 def test_missing_kicad_cli_is_a_warning_not_a_failure(tmp_path, monkeypatch):
-    from partspec.kicad import cli
+    from kicad_partspec.kicad import cli
 
     monkeypatch.setattr(cli, "CLI_COMMAND", "kicad-cli-definitely-not-installed")
     findings = check_symbol_loads(tmp_path / "x.kicad_sym", expected_units=1)

@@ -16,7 +16,7 @@ a first draft of the answer key until someone has compared them with the datashe
 
 ## What is checked automatically
 
-- Spec layer (`partspec validate`, and `tests/test_gold.py`): structure, provenance present, pin count,
+- Spec layer (`kicad-partspec validate`, and `tests/test_gold.py`): structure, provenance present, pin count,
   unique pin numbers, KiCad pin types, dimension ordering.
 - Source layer (`python evals/check_gold.py --datasheets DIR`): every `source.quote` must appear on the
   cited page of the exact PDF (matched by SHA-256). Text comes from `pdftotext -layout`, compared with

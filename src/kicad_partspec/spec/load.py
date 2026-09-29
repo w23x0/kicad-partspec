@@ -8,8 +8,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from partspec.findings import FAIL, Finding
-from partspec.spec.model import Datasheet, Dimension, Package, PartSpec, Pin, Source
+from kicad_partspec.findings import FAIL, Finding
+from kicad_partspec.spec.model import Datasheet, Dimension, Package, PartSpec, Pin, Source
 
 _SCHEMA = "schema.invalid"
 

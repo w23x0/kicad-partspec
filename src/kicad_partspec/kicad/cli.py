@@ -10,7 +10,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from partspec import config
+from kicad_partspec import config
 
 CLI_COMMAND = "kicad-cli"
 DEFAULT_VERSION_TIMEOUT = 15

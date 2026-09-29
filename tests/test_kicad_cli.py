@@ -2,8 +2,8 @@ import shutil
 
 import pytest
 
-from partspec import config
-from partspec.kicad import cli
+from kicad_partspec import config
+from kicad_partspec.kicad import cli
 
 
 def test_missing_cli_raises_runtime_error(monkeypatch):
