@@ -5,7 +5,27 @@ description = "Datasheet-derived PartSpec to verified KiCad symbols and footprin
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
+authors = [{ name = "W23x" }]
+keywords = ["kicad", "eda", "pcb", "datasheet", "symbol", "footprint", "mcp", "claude"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/w23x0/kicad-partspec"
+Repository = "https://github.com/w23x0/kicad-partspec"
+Issues = "https://github.com/w23x0/kicad-partspec/issues"
 
 [project.optional-dependencies]
 mcp = ["mcp>=2.1"]
