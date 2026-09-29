@@ -491,7 +491,7 @@
         "page": 3,
         "quote": "PC6 (RESET/PCINT14)"
       },
-      "status": "extracted",
+      "status": "inferred",
       "alt_names": [
         "RESET",
         "PCINT14"

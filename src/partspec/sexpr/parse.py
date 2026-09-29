@@ -14,6 +14,17 @@ from typing import Any
 from partspec import config
 
 
+class Atom(str):
+    """A bare (unquoted) S-expression token such as ``symbol``, ``yes`` or ``2.54``.
+
+    Plain ``str`` in a tree means a quoted string.  ``Atom`` compares equal to the
+    same ``str`` so lookups like ``node[0] == "pin"`` keep working, while the
+    writer uses the type to decide which values need quotes.
+    """
+
+    __slots__ = ()
+
+
 def sexpr_tokens(text: str, *, max_tokens: int | None = None) -> Iterator[str]:
     """Yield KiCad S-expression tokens, preserving quoted strings.
 
@@ -135,8 +146,10 @@ def parse_sexpr(
                 raise ValueError("unbalanced KiCad S-expression")
             stack.pop()
             depth -= 1
-        else:
+        elif token.startswith('"'):
             stack[-1].append(unquote(token))
+        else:
+            stack[-1].append(Atom(token))
     if len(stack) != 1:
         raise ValueError("unbalanced KiCad S-expression")
     return root
