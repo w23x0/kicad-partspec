@@ -101,7 +101,7 @@ def _on_grid(value: float | None) -> bool:
     return abs(steps - round(steps)) < _EPS
 
 
-def check_symbol(spec: PartSpec, text: str) -> list[Finding]:
+def check_symbol(spec: PartSpec, text: str, *, expected_footprint: str | None = None) -> list[Finding]:
     try:
         tree = parse_sexpr(text)
     except ValueError as exc:
@@ -122,6 +122,22 @@ def check_symbol(spec: PartSpec, text: str) -> list[Finding]:
 
     pins, _ = _pins_of(symbols[0])
     findings: list[Finding] = []
+    if expected_footprint is not None:
+        actual_fp = ""
+        for prop in children(symbols[0], "property"):
+            if len(prop) > 2 and prop[1] == "Footprint":
+                actual_fp = str(prop[2])
+        if actual_fp != expected_footprint:
+            findings.append(
+                Finding(
+                    "symbol.footprint_mismatch",
+                    FAIL,
+                    f"the symbol's Footprint field is {actual_fp!r}; it should be {expected_footprint!r} "
+                    "so KiCad assigns the generated footprint.",
+                    expected=expected_footprint,
+                    actual=actual_fp,
+                )
+            )
     by_number: dict[str, list[_SymbolPin]] = {}
     for pin in pins:
         by_number.setdefault(pin.number, []).append(pin)

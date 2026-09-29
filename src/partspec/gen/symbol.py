@@ -153,7 +153,7 @@ def _pin_node(item: _Placed) -> list[Any]:
     return node
 
 
-def build_symbol(spec: PartSpec) -> list[Any]:
+def build_symbol(spec: PartSpec, footprint: str | None = None) -> list[Any]:
     """Build the ``(symbol ...)`` tree for one part."""
     name = spec.mpn
     layouts = [_layout([pin for pin in spec.pins if pin.group == key]) for key in unit_groups(spec.pins)]
@@ -182,7 +182,7 @@ def build_symbol(spec: PartSpec) -> list[Any]:
         [Atom("on_board"), Atom("yes")],
         _property("Reference", "U", 0, above),
         _property("Value", spec.mpn, 0, -below),
-        _property("Footprint", "", 0, 0, hide=True),
+        _property("Footprint", footprint or "", 0, 0, hide=True),
         _property("Datasheet", spec.datasheet.url or "", 0, 0, hide=True),
         _property("Description", description, 0, 0, hide=True),
         *units,
@@ -190,15 +190,15 @@ def build_symbol(spec: PartSpec) -> list[Any]:
     ]
 
 
-def build_library(spec: PartSpec) -> list[Any]:
+def build_library(spec: PartSpec, footprint: str | None = None) -> list[Any]:
     return [
         Atom("kicad_symbol_lib"),
         [Atom("version"), Atom(FORMAT_VERSION)],
         [Atom("generator"), "partspec"],
         [Atom("generator_version"), "0.0.1"],
-        build_symbol(spec),
+        build_symbol(spec, footprint),
     ]
 
 
-def render_library(spec: PartSpec) -> str:
-    return write_sexpr(build_library(spec))
+def render_library(spec: PartSpec, footprint: str | None = None) -> str:
+    return write_sexpr(build_library(spec, footprint))

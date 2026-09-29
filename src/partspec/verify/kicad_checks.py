@@ -58,3 +58,42 @@ def _cli_available() -> bool:
     except RuntimeError:
         return False
     return True
+
+
+def check_footprint_loads(library: Path, *, name: str) -> list[Finding]:
+    """Export the footprint to SVG with ``kicad-cli``; success proves KiCad loaded the ``.pretty`` folder."""
+    if not _cli_available():
+        return [
+            Finding(
+                "kicad.unavailable",
+                WARN,
+                "kicad-cli was not found on PATH, so KiCad did not load the footprint; install KiCad 9 or later.",
+            )
+        ]
+    with tempfile.TemporaryDirectory(prefix="partspec-svg-") as temporary:
+        result = cli.run_cli(
+            [cli.CLI_COMMAND, "fp", "export", "svg", "-o", temporary, str(library)],
+            timeout=config.cli_timeout("PARTSPEC_CLI_TIMEOUT", _TIMEOUT, maximum=3600),
+        )
+        if result.returncode != 0:
+            detail = cli.bounded_output(result.stderr or result.stdout, "output").strip()
+            return [
+                Finding(
+                    "kicad.load_failed",
+                    FAIL,
+                    f"kicad-cli could not load {library.name} (exit {result.returncode}): {detail or 'no message'}.",
+                    actual=result.returncode,
+                )
+            ]
+        exported = {path.stem for path in Path(temporary).glob("*.svg")}
+    if name not in exported:
+        return [
+            Finding(
+                "kicad.footprint_not_found",
+                FAIL,
+                f"KiCad loaded {library.name} but did not export a footprint named {name!r}.",
+                expected=name,
+                actual=sorted(exported),
+            )
+        ]
+    return []
