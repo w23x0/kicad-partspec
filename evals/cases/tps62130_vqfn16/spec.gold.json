@@ -1,0 +1,295 @@
+{
+  "mpn": "TPS62130RGTR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "f9b1af285622c0cf1a5991f9641a6e64c5e6d899e52cc0b1632808742019579f",
+    "revision": "SLVSAG7F (Rev. F, November 2021); RGT0016C drawing dated 07/2025",
+    "url": "https://www.ti.com/lit/ds/symlink/tps62130.pdf"
+  },
+  "package": {
+    "family": "VQFN",
+    "pin_count": 16,
+    "exposed_pad": true,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 40,
+          "quote": "12X 0.5"
+        },
+        "status": "extracted",
+        "nom": 0.5
+      },
+      "body_length": {
+        "source": {
+          "page": 40,
+          "quote": "3.1 B A 2.9"
+        },
+        "status": "extracted",
+        "min": 2.9,
+        "max": 3.1
+      },
+      "body_width": {
+        "source": {
+          "page": 40,
+          "quote": "3.1 2.9"
+        },
+        "status": "extracted",
+        "min": 2.9,
+        "max": 3.1
+      },
+      "height": {
+        "source": {
+          "page": 40,
+          "quote": "1.0 C 0.8"
+        },
+        "status": "extracted",
+        "min": 0.8,
+        "max": 1.0
+      },
+      "standoff": {
+        "source": {
+          "page": 40,
+          "quote": "0.05 0.08 0.00"
+        },
+        "status": "extracted",
+        "min": 0.0,
+        "max": 0.05
+      },
+      "lead_width": {
+        "source": {
+          "page": 40,
+          "quote": "0.30 16X 0.18"
+        },
+        "status": "extracted",
+        "min": 0.18,
+        "max": 0.3
+      },
+      "lead_length": {
+        "source": {
+          "page": 40,
+          "quote": "0.5 16X 0.3"
+        },
+        "status": "extracted",
+        "min": 0.3,
+        "max": 0.5
+      },
+      "ep_size": {
+        "source": {
+          "page": 40,
+          "quote": "1.68 0.07"
+        },
+        "status": "extracted",
+        "min": 1.61,
+        "nom": 1.68,
+        "max": 1.75
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 41,
+          "quote": "16X (0.6)"
+        },
+        "status": "extracted",
+        "nom": 0.6
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 41,
+          "quote": "16X (0.24)"
+        },
+        "status": "extracted",
+        "nom": 0.24
+      },
+      "land_span": {
+        "source": {
+          "page": 41,
+          "quote": "(2.8)"
+        },
+        "status": "inferred",
+        "nom": 2.8
+      },
+      "land_ep_size": {
+        "source": {
+          "page": 41,
+          "quote": "( 1.68)"
+        },
+        "status": "extracted",
+        "nom": 1.68
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "SW",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "1,2,3 SW O"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "SW",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "1,2,3 SW O"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "SW",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "1,2,3 SW O"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "PG",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 3,
+        "quote": "4 PG O"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "5",
+      "name": "FB",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "5 FB I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "AGND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "6 AGND Analog Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "7",
+      "name": "FSW",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "7 FSW I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "DEF",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "8 DEF I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "SS/TR",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "9 SS/TR I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "AVIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "10 AVIN I"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "11",
+      "name": "PVIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "11,12 PVIN I"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "12",
+      "name": "PVIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "11,12 PVIN I"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "13",
+      "name": "EN",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "13 EN I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "14",
+      "name": "VOS",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "14 VOS I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "15",
+      "name": "PGND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "15,16 PGND Power Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "16",
+      "name": "PGND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "15,16 PGND Power Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "17",
+      "name": "EP",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "Must be connected to AGND (pin 6), PGND (pin 15,16), and common ground plane."
+      },
+      "status": "inferred",
+      "alt_names": [
+        "Exposed Thermal Pad"
+      ]
+    }
+  ]
+}

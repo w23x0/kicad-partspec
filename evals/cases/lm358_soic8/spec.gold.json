@@ -1,0 +1,191 @@
+{
+  "mpn": "LM358",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "618a685fe56ee7318e0a07cd2f98cd87d0d9549ccd1c828d6d4174875554ca97",
+    "revision": "SLOS068AB (Rev. AB, October 2024)",
+    "url": "https://www.ti.com/lit/ds/symlink/lm358.pdf"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 54,
+          "quote": "6X .050 [1.27]"
+        },
+        "status": "extracted",
+        "nom": 1.27
+      },
+      "overall_width": {
+        "source": {
+          "page": 54,
+          "quote": "[5.80-6.19]"
+        },
+        "status": "extracted",
+        "min": 5.8,
+        "max": 6.19
+      },
+      "body_length": {
+        "source": {
+          "page": 54,
+          "quote": "[4.81-5.00]"
+        },
+        "status": "extracted",
+        "min": 4.81,
+        "max": 5.0
+      },
+      "body_width": {
+        "source": {
+          "page": 54,
+          "quote": "[3.81-3.98]"
+        },
+        "status": "extracted",
+        "min": 3.81,
+        "max": 3.98
+      },
+      "height": {
+        "source": {
+          "page": 54,
+          "quote": ".069 MAX"
+        },
+        "status": "extracted",
+        "max": 1.75
+      },
+      "lead_width": {
+        "source": {
+          "page": 54,
+          "quote": "8X .012-.020"
+        },
+        "status": "extracted",
+        "min": 0.31,
+        "max": 0.51
+      },
+      "lead_length": {
+        "source": {
+          "page": 54,
+          "quote": "[0.41-1.27]"
+        },
+        "status": "extracted",
+        "min": 0.41,
+        "max": 1.27
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 55,
+          "quote": "8X (.061 ) [1.55]"
+        },
+        "status": "extracted",
+        "nom": 1.55
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 55,
+          "quote": "8X (.024) [0.6]"
+        },
+        "status": "extracted",
+        "nom": 0.6
+      },
+      "land_span": {
+        "source": {
+          "page": 55,
+          "quote": "(.213) [5.4]"
+        },
+        "status": "inferred",
+        "nom": 5.4
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "OUT1",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT1 2 1 O Output"
+      },
+      "status": "extracted",
+      "group": "A"
+    },
+    {
+      "number": "2",
+      "name": "IN1-",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN1– 5 2 I Negative input"
+      },
+      "status": "extracted",
+      "group": "A"
+    },
+    {
+      "number": "3",
+      "name": "IN1+",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN1+ 7 3 I Positive input"
+      },
+      "status": "extracted",
+      "group": "A"
+    },
+    {
+      "number": "4",
+      "name": "V-",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "V– 10 4 —"
+      },
+      "status": "inferred",
+      "group": "power"
+    },
+    {
+      "number": "5",
+      "name": "IN2+",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN2+ 12 5 I Positive input"
+      },
+      "status": "extracted",
+      "group": "B"
+    },
+    {
+      "number": "6",
+      "name": "IN2-",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN2– 15 6 I Negative input"
+      },
+      "status": "extracted",
+      "group": "B"
+    },
+    {
+      "number": "7",
+      "name": "OUT2",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT2 17 7 O Output"
+      },
+      "status": "extracted",
+      "group": "B"
+    },
+    {
+      "number": "8",
+      "name": "V+",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "V+ 20 8 — Positive (highest) supply"
+      },
+      "status": "inferred",
+      "group": "power"
+    }
+  ]
+}
