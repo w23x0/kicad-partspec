@@ -1,0 +1,20 @@
+{
+  "mpn": "XMPL-4",
+  "manufacturer": "Example Semiconductor (invented part)",
+  "datasheet": {"sha256": "0000000000000000000000000000000000000000000000000000000000000000", "revision": "Rev. A"},
+  "package": {
+    "family": "SOT",
+    "pin_count": 4,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {"nom": 0.95, "source": {"page": 9, "quote": "e 0.95 BSC"}, "status": "extracted"},
+      "height": {"max": 1.1, "source": {"page": 9, "quote": "A 1.10 MAX"}, "status": "extracted"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "VIN", "electrical_type": "power_in", "source": {"page": 3, "quote": "1 VIN Supply input"}, "status": "inferred"},
+    {"number": "2", "name": "GND", "electrical_type": "power_in", "source": {"page": 3, "quote": "2 GND Ground"}, "status": "inferred"},
+    {"number": "3", "name": "EN", "electrical_type": "input", "source": {"page": 3, "quote": "3 EN I Enable input"}, "status": "extracted"},
+    {"number": "4", "name": "VOUT", "electrical_type": "power_out", "source": {"page": 3, "quote": "4 VOUT Regulated output"}, "status": "inferred"}
+  ]
+}

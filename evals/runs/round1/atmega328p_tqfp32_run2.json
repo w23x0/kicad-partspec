@@ -1,0 +1,542 @@
+{
+ "mpn": "ATmega328P-AU",
+ "manufacturer": "Atmel",
+ "datasheet": {
+  "sha256": "fb84858d0b12c695a12b13f0c74b962d81210247d440c7a24c0ed23dfabfdfaf",
+  "revision": "7810D-AVR-01/15"
+ },
+ "package": {
+  "family": "TQFP",
+  "pin_count": 32,
+  "exposed_pad": false,
+  "dimensions": {
+   "pitch": {
+    "nom": 0.8,
+    "source": {
+     "page": 286,
+     "quote": "e 0.80 TYP."
+    },
+    "status": "extracted"
+   },
+   "height": {
+    "max": 1.2,
+    "source": {
+     "page": 286,
+     "quote": "A 1.20"
+    },
+    "status": "extracted"
+   },
+   "standoff": {
+    "min": 0.05,
+    "max": 0.15,
+    "source": {
+     "page": 286,
+     "quote": "A1 0.05 0.15"
+    },
+    "status": "extracted"
+   },
+   "body_thickness": {
+    "min": 0.95,
+    "nom": 1.0,
+    "max": 1.05,
+    "source": {
+     "page": 286,
+     "quote": "A2 0.95 1.00 1.05"
+    },
+    "status": "extracted"
+   },
+   "overall_length": {
+    "min": 8.75,
+    "nom": 9.0,
+    "max": 9.25,
+    "source": {
+     "page": 286,
+     "quote": "D/E 8.75 9.00 9.25"
+    },
+    "status": "extracted"
+   },
+   "overall_width": {
+    "min": 8.75,
+    "nom": 9.0,
+    "max": 9.25,
+    "source": {
+     "page": 286,
+     "quote": "D/E 8.75 9.00 9.25"
+    },
+    "status": "extracted"
+   },
+   "body_length": {
+    "min": 6.9,
+    "nom": 7.0,
+    "max": 7.1,
+    "source": {
+     "page": 286,
+     "quote": "D1/E1 6.90 7.00 7.10"
+    },
+    "status": "extracted"
+   },
+   "body_width": {
+    "min": 6.9,
+    "nom": 7.0,
+    "max": 7.1,
+    "source": {
+     "page": 286,
+     "quote": "D1/E1 6.90 7.00 7.10"
+    },
+    "status": "extracted"
+   },
+   "lead_thickness": {
+    "min": 0.09,
+    "max": 0.2,
+    "source": {
+     "page": 286,
+     "quote": "C 0.09 0.20"
+    },
+    "status": "extracted"
+   },
+   "lead_length": {
+    "min": 0.45,
+    "max": 0.75,
+    "source": {
+     "page": 286,
+     "quote": "L 0.45 0.75"
+    },
+    "status": "extracted"
+   },
+   "lead_width": {
+    "min": 0.3,
+    "max": 0.45,
+    "source": {
+     "page": 286,
+     "quote": "b 0.30 0.45"
+    },
+    "status": "extracted"
+   }
+  }
+ },
+ "pins": [
+  {
+   "number": "1",
+   "name": "PD3",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT19",
+    "OC2B",
+    "INT1"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT19/OC2B/INT1) PD3"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "2",
+   "name": "PD4",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT20",
+    "XCK",
+    "T0"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT20/XCK/T0) PD4"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "3",
+   "name": "GND",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "GND"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "4",
+   "name": "VCC",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "VCC"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "5",
+   "name": "GND",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "GND"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "6",
+   "name": "VCC",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "VCC"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "7",
+   "name": "PB6",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT6",
+    "XTAL1",
+    "TOSC1"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT6/XTAL1/TOSC1) PB6"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "8",
+   "name": "PB7",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT7",
+    "XTAL2",
+    "TOSC2"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT7/XTAL2/TOSC2) PB7"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "9",
+   "name": "PD5",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT21",
+    "OC0B",
+    "T1"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT21/OC0B/T1) PD5"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "10",
+   "name": "PD6",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT22",
+    "OC0A",
+    "AIN0"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT22/OC0A/AIN0) PD6"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "11",
+   "name": "PD7",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT23",
+    "AIN1"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT23/AIN1) PD7"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "12",
+   "name": "PB0",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT0",
+    "CLKO",
+    "ICP1"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT0/CLKO/ICP1) PB0"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "13",
+   "name": "PB1",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT1",
+    "OC1A"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT1/OC1A) PB1"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "14",
+   "name": "PB2",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT2",
+    "SS",
+    "OC1B"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT2/SS/OC1B) PB2"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "15",
+   "name": "PB3",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT3",
+    "OC2A",
+    "MOSI"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT3/OC2A/MOSI) PB3"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "16",
+   "name": "PB4",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "PCINT4",
+    "MISO"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "(PCINT4/MISO) PB4"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "17",
+   "name": "PB5",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "SCK",
+    "PCINT5"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PB5 (SCK/PCINT5)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "18",
+   "name": "AVCC",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "AVCC"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "19",
+   "name": "ADC6",
+   "electrical_type": "passive",
+   "source": {
+    "page": 3,
+    "quote": "ADC6"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "20",
+   "name": "AREF",
+   "electrical_type": "passive",
+   "source": {
+    "page": 3,
+    "quote": "AREF"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "21",
+   "name": "GND",
+   "electrical_type": "power_in",
+   "source": {
+    "page": 3,
+    "quote": "GND"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "22",
+   "name": "ADC7",
+   "electrical_type": "passive",
+   "source": {
+    "page": 3,
+    "quote": "ADC7"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "23",
+   "name": "PC0",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC0",
+    "PCINT8"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC0 (ADC0/PCINT8)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "24",
+   "name": "PC1",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC1",
+    "PCINT9"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC1 (ADC1/PCINT9)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "25",
+   "name": "PC2",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC2",
+    "PCINT10"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC2 (ADC2/PCINT10)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "26",
+   "name": "PC3",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC3",
+    "PCINT11"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC3 (ADC3/PCINT11)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "27",
+   "name": "PC4",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC4",
+    "SDA",
+    "PCINT12"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC4 (ADC4/SDA/PCINT12)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "28",
+   "name": "PC5",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "ADC5",
+    "SCL",
+    "PCINT13"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC5 (ADC5/SCL/PCINT13)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "29",
+   "name": "PC6",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "RESET",
+    "PCINT14"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PC6 (RESET/PCINT14)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "30",
+   "name": "PD0",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "RXD",
+    "PCINT16"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PD0 (RXD/PCINT16)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "31",
+   "name": "PD1",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "TXD",
+    "PCINT17"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PD1 (TXD/PCINT17)"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "32",
+   "name": "PD2",
+   "electrical_type": "bidirectional",
+   "alt_names": [
+    "INT0",
+    "PCINT18"
+   ],
+   "source": {
+    "page": 3,
+    "quote": "PD2 (INT0/PCINT18)"
+   },
+   "status": "inferred"
+  }
+ ]
+}

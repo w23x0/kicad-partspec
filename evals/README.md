@@ -42,3 +42,46 @@ confirm the SHA-256.
   `open_collector`, or the exposed-pad number (the datasheet gives none).
 - Parts whose SOIC/TQFP drawing has ambiguous callouts (the SOIC `.004-.010` and `.005-.010` values) leave
   those dimensions out instead of guessing.
+
+## Extraction round 1
+
+Six independent model runs (each gold case twice) extracted a PartSpec from the datasheet PDF with the skill in
+`skills/partspec/`, using the CLI validator with the PDF in the loop. Outputs are in `runs/round1/`, scores in
+`runs/round1_scores_*.json`; reproduce with `python evals/score.py --extracted evals/runs/round1 --datasheets DIR`.
+
+| Score | Original gold | Corrected gold |
+|---|---|---|
+| Usable without edit (symbol and footprint identical to gold, every quote on its page) | **2/6** | **4/6** |
+| Pin numbers found | 100% | 100% |
+| Pin names right | 100% | 100% |
+
+| Run | types right | dims right | quotes not on page | usable (original / corrected) |
+|---|---|---|---|---|
+| lm358 run1 / run2 | 8/8, 8/8 | 10/10, 10/10 | 0/19, 0/20 | yes/yes, yes/yes |
+| tps62130 run1 | 17/17 | 11/12 | 0/29 | no/yes |
+| tps62130 run2 | 14/17 | 9/12 | 0/29 | no/no |
+| atmega328p run1 | 32/32 | 11/11 | 0/43 | no/yes |
+| atmega328p run2 | 30/32 | 11/11 | 0/43 | no/no |
+
+Types are scored against the corrected gold.
+
+### What the disagreements were
+
+- Two were gold mistakes, found after seeing the results: ATmega328P `PC6` (gold said `input`; KiCad's official symbol and both
+  runs say `bidirectional`) and an `alt_names` entry on the exposed pad that the skill's own definition of `alt_names` excludes.
+- Four were skill gaps, fixed afterwards: supply pins whose I/O column says `I` (`power_in` was not stressed), ADC channels
+  read as `passive`, `X ± t` dimensions, and stacked max/min pairs. Both TPS62130 runs also dropped the `±` tolerance of the
+  exposed pad; that dimension does not affect the generated files.
+- No run invented a pin, a pin number or a name. Every failure was a pin type or the min/max of a dimension.
+
+### Read these numbers with care
+
+- Three parts, two runs each. This shows where extraction breaks, not a reliable accuracy rate.
+- The gold was written by the same author as the skill, and two gold entries were corrected after the results were seen, so
+  the corrected column is not independent. The skill was then edited to close the gaps the runs exposed; the next honest test
+  needs datasheets that were not used to write either.
+- "Quotes not on page" is measured with the validator in the loop: runs saw failures and fixed them (one run failed once
+  before passing). It is not a first-attempt rate.
+- The runs used the default subagent model of the session. Isolation from the gold files was by instruction only, not enforced.
+- Status labels: both ATmega runs over-marked `inferred` (15 and 22 pins beyond gold) and never under-marked; the only
+  under-marked pins were the three TPS62130 supply pins that run 2 got wrong. Over-marking is the safe direction.

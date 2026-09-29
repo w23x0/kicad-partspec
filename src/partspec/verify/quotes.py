@@ -72,6 +72,34 @@ def _sources(data: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
     return found
 
 
+_MAX_HINT_GAP = 8  # other tokens allowed between the quoted ones when suggesting a fix
+
+
+def suggest_quote(quote: str, page: str) -> str | None:
+    """The shortest stretch of the page that holds the quote's tokens in order, or None.
+
+    Layout text often puts other labels between numbers that belong together
+    (``1.0 C 0.8``); quoting that stretch verbatim passes the check.
+    """
+    wanted = normalize(quote).split(" ")
+    tokens = normalize(page).split(" ")
+    best: list[str] | None = None
+    limit = len(wanted) + _MAX_HINT_GAP
+    for start, token in enumerate(tokens):
+        if token != wanted[0]:
+            continue
+        position, matched = start, 1
+        while matched < len(wanted) and position + 1 < min(len(tokens), start + limit):
+            position += 1
+            if tokens[position] == wanted[matched]:
+                matched += 1
+        if matched == len(wanted) and (best is None or position - start + 1 < len(best)):
+            best = tokens[start : position + 1]
+    if best is None or best == wanted:
+        return None
+    return " ".join(best)
+
+
 def check_quotes(data: dict[str, Any], pages: list[str]) -> list[Finding]:
     """Compare every source quote with the text of its cited page."""
     normalized: dict[int, str] = {}
@@ -94,13 +122,19 @@ def check_quotes(data: dict[str, Any], pages: list[str]) -> list[Finding]:
             continue
         text = normalized.setdefault(page, normalize(pages[page - 1]))
         if normalize(quote) not in text:
+            hint = suggest_quote(quote, text)
+            advice = (
+                f" The page prints these tokens as {hint!r}; quote exactly that."
+                if hint
+                else " Copy the text exactly as printed by `pdftotext -layout`, or check the page number."
+            )
             findings.append(
                 Finding(
                     "prov.quote_not_found",
                     FAIL,
-                    f"{path}.quote does not appear on datasheet page {page}; "
-                    "copy the text exactly as printed there, or fix the page number.",
+                    f"{path}.quote does not appear on datasheet page {page}." + advice,
                     path=f"{path}.quote",
+                    expected=hint,
                     actual=quote,
                 )
             )

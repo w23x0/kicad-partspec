@@ -486,7 +486,7 @@
     {
       "number": "29",
       "name": "PC6",
-      "electrical_type": "input",
+      "electrical_type": "bidirectional",
       "source": {
         "page": 3,
         "quote": "PC6 (RESET/PCINT14)"

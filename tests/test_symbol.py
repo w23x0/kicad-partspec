@@ -326,3 +326,12 @@ def test_cli_build_refuses_a_spec_that_fails_validation(tmp_path, capsys):
     assert main(["build", str(bad), "--out", str(tmp_path / "out"), "--no-kicad"]) == 1
     assert not (tmp_path / "out").exists()
     assert "pins.count_mismatch" in capsys.readouterr().out
+
+
+def test_cli_concise_output_names_the_failures_and_counts_the_warnings(tmp_path, capsys):
+    spec_path = CASES / "atmega328p_tqfp32" / "spec.gold.json"
+    assert main(["build", str(spec_path), "--out", str(tmp_path), "--no-kicad", "--concise"]) == 0
+    report = json.loads(capsys.readouterr().out)
+    assert report["passed"] is True and report["failed"] == [] and "findings" not in report
+    assert report["warning_summary"]["footprint.skipped"] == 1  # not buried among the per-pin warnings
+    assert report["warning_summary"]["status.inferred"] > 1

@@ -286,10 +286,7 @@
         "page": 3,
         "quote": "Must be connected to AGND (pin 6), PGND (pin 15,16), and common ground plane."
       },
-      "status": "inferred",
-      "alt_names": [
-        "Exposed Thermal Pad"
-      ]
+      "status": "inferred"
     }
   ]
 }

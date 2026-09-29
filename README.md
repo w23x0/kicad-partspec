@@ -15,7 +15,8 @@ The model extracts a PartSpec with a source for every value; deterministic code 
 | `kicad-cli` load check | done |
 | Footprint generation (dual-row and quad packages, exposed pad) from the datasheet land pattern | done |
 | Footprint checks (pads vs datasheet, pads reach leads, silkscreen, courtyard) + `kicad-cli` load | done |
-| MCP server and skill | not started |
+| MCP server (3 tools), skill, plugin manifests | done (plugin install not verified in Claude Code) |
+| Extraction evaluation (`evals/score.py`, round 1 in `evals/runs/`) | done, 3 parts only |
 
 ## Use
 
@@ -23,6 +24,8 @@ The model extracts a PartSpec with a source for every value; deterministic code 
 partspec validate SPEC.json
 partspec build SPEC.json --out DIR      # writes <mpn>.kicad_sym and <lib>.pretty/<name>.kicad_mod, verifies both
 python evals/check_gold.py --datasheets DIR_WITH_PDFS
+python evals/score.py --extracted DIR --datasheets DIR_WITH_PDFS   # score model extractions against gold
+partspec-mcp                            # MCP server (pip install -e '.[mcp]'); PARTSPEC_WORKSPACE limits paths
 ```
 
 Gold cases and their conventions are in `evals/README.md`. Generated symbols target the KiCad 9 file

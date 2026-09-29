@@ -1,0 +1,199 @@
+{
+ "mpn": "LM358",
+ "manufacturer": "Texas Instruments",
+ "datasheet": {
+  "sha256": "618a685fe56ee7318e0a07cd2f98cd87d0d9549ccd1c828d6d4174875554ca97",
+  "revision": "SLOS068AB, Revised October 2024"
+ },
+ "package": {
+  "family": "SOIC",
+  "pin_count": 8,
+  "exposed_pad": false,
+  "dimensions": {
+   "pitch": {
+    "nom": 1.27,
+    "source": {
+     "page": 54,
+     "quote": "6X .050 [1.27]"
+    },
+    "status": "extracted"
+   },
+   "body_length": {
+    "min": 4.81,
+    "max": 5.0,
+    "source": {
+     "page": 54,
+     "quote": "[4.81-5.00]"
+    },
+    "status": "extracted"
+   },
+   "body_width": {
+    "min": 3.81,
+    "max": 3.98,
+    "source": {
+     "page": 54,
+     "quote": "[3.81-3.98]"
+    },
+    "status": "extracted"
+   },
+   "overall_width": {
+    "min": 5.8,
+    "max": 6.19,
+    "source": {
+     "page": 54,
+     "quote": "[5.80-6.19]"
+    },
+    "status": "extracted"
+   },
+   "height": {
+    "max": 1.75,
+    "source": {
+     "page": 54,
+     "quote": ".069 MAX"
+    },
+    "status": "extracted"
+   },
+   "lead_width": {
+    "min": 0.31,
+    "max": 0.51,
+    "source": {
+     "page": 54,
+     "quote": "[0.31-0.51]"
+    },
+    "status": "extracted"
+   },
+   "lead_length": {
+    "min": 0.41,
+    "max": 1.27,
+    "source": {
+     "page": 54,
+     "quote": "[0.41-1.27]"
+    },
+    "status": "extracted"
+   },
+   "lead_thickness": {
+    "min": 0.13,
+    "max": 0.25,
+    "source": {
+     "page": 54,
+     "quote": "[0.13-0.25]"
+    },
+    "status": "extracted"
+   },
+   "land_pad_length": {
+    "nom": 1.55,
+    "source": {
+     "page": 55,
+     "quote": "8X (.061 ) [1.55]"
+    },
+    "status": "extracted"
+   },
+   "land_pad_width": {
+    "nom": 0.6,
+    "source": {
+     "page": 55,
+     "quote": "8X (.024) [0.6]"
+    },
+    "status": "extracted"
+   },
+   "land_span": {
+    "nom": 5.4,
+    "source": {
+     "page": 55,
+     "quote": "(.213) [5.4]"
+    },
+    "status": "extracted"
+   }
+  }
+ },
+ "pins": [
+  {
+   "number": "1",
+   "name": "OUT1",
+   "electrical_type": "output",
+   "group": "A",
+   "source": {
+    "page": 3,
+    "quote": "OUT1 2 1 O Output"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "2",
+   "name": "IN1-",
+   "electrical_type": "input",
+   "group": "A",
+   "source": {
+    "page": 3,
+    "quote": "IN1– 5 2 I Negative input"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "3",
+   "name": "IN1+",
+   "electrical_type": "input",
+   "group": "A",
+   "source": {
+    "page": 3,
+    "quote": "IN1+ 7 3 I Positive input"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "4",
+   "name": "V-",
+   "electrical_type": "power_in",
+   "group": "power",
+   "source": {
+    "page": 3,
+    "quote": "V– 10 4 —"
+   },
+   "status": "inferred"
+  },
+  {
+   "number": "5",
+   "name": "IN2+",
+   "electrical_type": "input",
+   "group": "B",
+   "source": {
+    "page": 3,
+    "quote": "IN2+ 12 5 I Positive input"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "6",
+   "name": "IN2-",
+   "electrical_type": "input",
+   "group": "B",
+   "source": {
+    "page": 3,
+    "quote": "IN2– 15 6 I Negative input"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "7",
+   "name": "OUT2",
+   "electrical_type": "output",
+   "group": "B",
+   "source": {
+    "page": 3,
+    "quote": "OUT2 17 7 O Output"
+   },
+   "status": "extracted"
+  },
+  {
+   "number": "8",
+   "name": "V+",
+   "electrical_type": "power_in",
+   "group": "power",
+   "source": {
+    "page": 3,
+    "quote": "V+ 20 8 —"
+   },
+   "status": "inferred"
+  }
+ ]
+}
