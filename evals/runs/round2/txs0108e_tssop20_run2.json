@@ -1,0 +1,51 @@
+{
+  "mpn": "TXS0108EPWR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "a6ddbe03088d291d1a1f8012189086b4b9962d1c878a462a8393c59fe225c883",
+    "revision": "Rev. L (SCES642L, revised November 2024)",
+    "url": "https://www.ti.com/lit/ds/symlink/txs0108e.pdf"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 20,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {"nom": 0.65, "source": {"page": 28, "quote": "18X 0.65"}, "status": "extracted"},
+      "overall_length": {"min": 6.2, "max": 6.6, "source": {"page": 28, "quote": "6.6 C TYP PLANE A 6.2"}, "status": "extracted"},
+      "body_length": {"min": 6.4, "max": 6.6, "source": {"page": 28, "quote": "2X 6.6 5.85 6.4 NOTE 3"}, "status": "extracted"},
+      "overall_width": {"nom": 5.85, "source": {"page": 28, "quote": "2X 6.6 5.85"}, "status": "extracted"},
+      "body_width": {"min": 4.3, "max": 4.5, "source": {"page": 28, "quote": "4.5 0.19 1.2 MAX B 4.3 NOTE 4"}, "status": "extracted"},
+      "height": {"max": 1.2, "source": {"page": 28, "quote": "0.19 1.2 MAX"}, "status": "extracted"},
+      "lead_width": {"min": 0.19, "max": 0.30, "source": {"page": 28, "quote": "0.30 20X 4.5 0.19"}, "status": "extracted"},
+      "lead_thickness": {"nom": 0.15, "source": {"page": 28, "quote": "(0.15) TYP"}, "status": "extracted"},
+      "lead_length": {"min": 0.5, "max": 0.75, "source": {"page": 28, "quote": "0.75 0.50"}, "status": "inferred"},
+      "standoff": {"min": 0.05, "max": 0.15, "source": {"page": 28, "quote": "0.15 0.05"}, "status": "inferred"},
+      "land_pad_length": {"nom": 1.5, "source": {"page": 29, "quote": "20X (1.5)"}, "status": "extracted"},
+      "land_pad_width": {"nom": 0.45, "source": {"page": 29, "quote": "20X (0.45)"}, "status": "extracted"},
+      "land_span": {"nom": 5.8, "source": {"page": 29, "quote": "(5.8)"}, "status": "extracted"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "A1", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A1 1 B1 I/O Input/output 1. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "2", "name": "VCCA", "electrical_type": "power_in", "group": "power", "source": {"page": 4, "quote": "VCCA 2 A1 P A-port supply voltage. 1.4V ≤ VCCA ≤ 3.6V, VCCA ≤ VCCB."}, "status": "inferred"},
+    {"number": "3", "name": "A2", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A2 3 A2 I/O Input/output 2. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "4", "name": "A3", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A3 4 B2 I/O Input/output 3. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "5", "name": "A4", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A4 5 A3 I/O Input/output 4. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "6", "name": "A5", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A5 6 B3 I/O Input/output 5. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "7", "name": "A6", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A6 7 A4 I/O Input/output 6. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "8", "name": "A7", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A7 8 B4 I/O Input/output 7. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "9", "name": "A8", "electrical_type": "bidirectional", "group": "A", "source": {"page": 4, "quote": "A8 9 A5 I/O Input/output 8. Referenced to VCCA"}, "status": "extracted"},
+    {"number": "10", "name": "OE", "electrical_type": "input", "source": {"page": 4, "quote": "OE 10 B5 I"}, "status": "extracted"},
+    {"number": "11", "name": "GND", "electrical_type": "power_in", "group": "power", "source": {"page": 4, "quote": "GND 11 C5"}, "status": "inferred"},
+    {"number": "12", "name": "B8", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B8 12 D5 I/O Input/output 8. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "13", "name": "B7", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B7 13 C4 I/O Input/output 7. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "14", "name": "B6", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B6 14 D4 I/O Input/output 6. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "15", "name": "B5", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B5 15 C3 I/O Input/output 5. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "16", "name": "B4", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B4 16 D3 I/O Input/output 4. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "17", "name": "B3", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B3 17 C2 I/O Input/output 3. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "18", "name": "B2", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B2 18 D2 I/O Input/output 2. Referenced to VCCB"}, "status": "extracted"},
+    {"number": "19", "name": "VCCB", "electrical_type": "power_in", "group": "power", "source": {"page": 4, "quote": "VCCB 19 D1 P B-port supply voltage. 1.65V ≤ VCCB ≤ 5.5V."}, "status": "inferred"},
+    {"number": "20", "name": "B1", "electrical_type": "bidirectional", "group": "B", "source": {"page": 4, "quote": "B1 20 C1 I/O Input/output 1. Referenced to VCCB"}, "status": "extracted"}
+  ]
+}

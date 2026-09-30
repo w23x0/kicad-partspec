@@ -1,0 +1,121 @@
+{
+  "mpn": "TPS54202",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "8bace250f495154744777f7d3b392f641ff3b776c7e01085759571aae446373b",
+    "revision": "Rev. C",
+    "url": "https://www.ti.com/lit/ds/symlink/tps54202.pdf"
+  },
+  "package": {
+    "family": "SOT-23",
+    "pin_count": 6,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.95,
+        "source": {"page": 28, "quote": "4X 0.95"},
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 2.75,
+        "max": 3.05,
+        "source": {"page": 28, "quote": "3.05 1.9 2.75 4"},
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 1.45,
+        "max": 1.75,
+        "source": {"page": 28, "quote": "1.75 0.1 C B A 1.45"},
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 2.55,
+        "max": 3.05,
+        "source": {"page": 28, "quote": "3.05 1.1 2.55 0.7"},
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.1,
+        "source": {"page": 28, "quote": "SOT-23 - 1.1 max height"},
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.3,
+        "max": 0.5,
+        "source": {"page": 28, "quote": "0.5 0.1 6X TYP 0.3 0.0"},
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "min": 0.12,
+        "max": 0.2,
+        "source": {"page": 28, "quote": "0.20 TYP GAGE PLANE 0.12"},
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.3,
+        "max": 0.6,
+        "source": {"page": 28, "quote": "0.6 TYP 0.3"},
+        "status": "inferred"
+      },
+      "land_pad_length": {
+        "nom": 1.1,
+        "source": {"page": 29, "quote": "6X (1.1)"},
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.6,
+        "source": {"page": 29, "quote": "6X (0.6)"},
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 2.7,
+        "source": {"page": 29, "quote": "(2.7)"},
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {"page": 3, "quote": "GND 1 –"},
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "SW",
+      "electrical_type": "output",
+      "source": {"page": 3, "quote": "SW 2 O Switch node connection"},
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "VIN",
+      "electrical_type": "power_in",
+      "source": {"page": 3, "quote": "VIN 3 – Input voltage supply pin."},
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "FB",
+      "electrical_type": "input",
+      "source": {"page": 3, "quote": "FB 4 I Converter feedback input."},
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "EN",
+      "electrical_type": "input",
+      "source": {"page": 3, "quote": "EN 5 I This pin is the enable pin."},
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "BOOT",
+      "electrical_type": "output",
+      "source": {"page": 3, "quote": "BOOT 6 O"},
+      "status": "extracted"
+    }
+  ]
+}

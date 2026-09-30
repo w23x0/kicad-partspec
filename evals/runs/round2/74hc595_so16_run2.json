@@ -1,0 +1,121 @@
+{
+  "mpn": "74HC595D",
+  "manufacturer": "Nexperia",
+  "datasheet": {
+    "sha256": "fa24207e780cd8c4cdb9018d67eb83e53ee75578fc126bda6f59f0d84ceb211a",
+    "revision": "Rev. 12 — 20 March 2024"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 16,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 1.27,
+        "source": {"page": 15, "quote": "mm nom 0.25 1.27 1.05 0.2 0.25 0.1"},
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 9.8,
+        "max": 10.0,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 3.8,
+        "max": 4.0,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 5.8,
+        "max": 6.2,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.75,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.10,
+        "max": 0.25,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "body_thickness": {
+        "min": 1.25,
+        "source": {"page": 15, "quote": "min 0.10 1.25 0.31 0.10 9.8 3.8 5.8 0.4 0°"},
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.31,
+        "max": 0.51,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "min": 0.10,
+        "max": 0.25,
+        "source": {"page": 15, "quote": "max 1.75 0.25 0.51 0.25 10.0 4.0 6.2 1.27 8°"},
+        "status": "extracted"
+      },
+      "lead_length": {
+        "nom": 1.05,
+        "source": {"page": 15, "quote": "mm nom 0.25 1.27 1.05 0.2 0.25 0.1"},
+        "status": "inferred"
+      }
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "Q1", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "2", "name": "Q2", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "3", "name": "Q3", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "4", "name": "Q4", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "5", "name": "Q5", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "6", "name": "Q6", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "7", "name": "Q7", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7 parallel data output"},
+     "status": "extracted"},
+    {"number": "8", "name": "GND", "electrical_type": "power_in",
+     "source": {"page": 5, "quote": "GND 8 ground (0 V)"},
+     "status": "inferred"},
+    {"number": "9", "name": "Q7S", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q7S 9 serial data output"},
+     "status": "extracted"},
+    {"number": "10", "name": "MR", "electrical_type": "input",
+     "source": {"page": 5, "quote": "MR 10 master reset (active LOW)"},
+     "status": "inferred"},
+    {"number": "11", "name": "SHCP", "electrical_type": "input",
+     "source": {"page": 5, "quote": "SHCP 11 shift register clock input"},
+     "status": "extracted"},
+    {"number": "12", "name": "STCP", "electrical_type": "input",
+     "source": {"page": 5, "quote": "STCP 12 storage register clock input"},
+     "status": "extracted"},
+    {"number": "13", "name": "OE", "electrical_type": "input",
+     "source": {"page": 5, "quote": "OE 13 output enable input (active LOW)"},
+     "status": "extracted"},
+    {"number": "14", "name": "DS", "electrical_type": "input",
+     "source": {"page": 5, "quote": "DS 14 serial data input"},
+     "status": "extracted"},
+    {"number": "15", "name": "Q0", "electrical_type": "output",
+     "source": {"page": 5, "quote": "Q0 15 parallel data output 0"},
+     "status": "extracted"},
+    {"number": "16", "name": "VCC", "electrical_type": "power_in",
+     "source": {"page": 5, "quote": "VCC 16 supply voltage"},
+     "status": "inferred"}
+  ]
+}

@@ -254,6 +254,14 @@ ORACLE = {
     "lm358_soic8": ("Amplifier_Operational.kicad_sym", "LM358"),
     "tps62130_vqfn16": ("Regulator_Switching.kicad_sym", "TPS62130"),
     "atmega328p_tqfp32": ("MCU_Microchip_ATmega.kicad_sym", "ATmega328P-A"),
+    "ina219_soic8": ("Sensor_Energy.kicad_sym", "INA219AxD"),
+    "txs0108e_tssop20": ("Logic_LevelTranslator.kicad_sym", "TXS0108EPW"),
+    "ads1115_vssop10": ("Analog_ADC.kicad_sym", "ADS1115IDGS"),
+    "tps54202_sot23": ("Regulator_Switching.kicad_sym", "TPS54202DDC"),
+    "rp2040_qfn56": ("MCU_RaspberryPi.kicad_sym", "RP2040"),
+    "74hc595_so16": ("74xx.kicad_sym", "74HC595"),
+    "stm32g030_tssop20": ("MCU_ST_STM32G0.kicad_sym", "STM32G030F6Px"),
+    "cp2102n_qfn24": ("Interface_USB.kicad_sym", "CP2102N-Axx-xQFN24"),
 }
 
 
@@ -284,9 +292,35 @@ def _official_pins(lib, name):
 
 
 def _name_compatible(gold_name, official_name):
-    """KiCad's libraries use conventions such as +/-/~ for op-amps and merged names like XTAL1/PB6."""
+    """KiCad's libraries use conventions such as +/-/~ for op-amps, merged names like XTAL1/PB6 and an overbar where
+    datasheets write an active-low suffix (RSTb, QSPI_SS_N); ST datasheets print PC15-OSC32_OUT and VDD/VDDA where
+    KiCad has PC15 and VDD."""
     tokens = [t for t in official_name.replace("~{", "").replace("}", "").split("/") if t]
-    return gold_name == "EP" or any(t in {"+", "-", "~"} or gold_name.endswith(t) for t in tokens)
+    active_low = gold_name.removesuffix("_N").removesuffix("b") if official_name.startswith("~{") else gold_name
+    first = gold_name.replace("/", "-").split("-")[0]
+    return gold_name == "EP" or any(
+        t in {"+", "-", "~"} or gold_name.endswith(t) or active_low == t or first == t for t in tokens
+    )
+
+
+# Parts whose datasheet and KiCad name pins by different vendors' conventions; see the case's review.md.
+RENAMED = {
+    "74hc595_so16": {  # Nexperia Q0-Q7/DS/SHCP/STCP/MR against TI's QA-QH/SER/SRCLK/RCLK/SRCLR
+        "1": "QB",
+        "2": "QC",
+        "3": "QD",
+        "4": "QE",
+        "5": "QF",
+        "6": "QG",
+        "7": "QH",
+        "9": "QH'",
+        "10": "~{SRCLR}",
+        "11": "SRCLK",
+        "12": "RCLK",
+        "14": "SER",
+        "15": "QA",
+    },
+}
 
 
 @pytest.mark.skipif(not OFFICIAL.is_dir(), reason="KiCad symbol libraries not installed")
@@ -296,7 +330,11 @@ def test_pin_numbers_and_names_agree_with_the_official_kicad_symbol(case):
     official = _official_pins(lib, name)
     spec = _spec(case)
     assert {pin.number for pin in spec.pins} == set(official)
+    renamed = RENAMED.get(case, {})
     for pin in spec.pins:
+        if pin.number in renamed:
+            assert official[pin.number][0] == renamed[pin.number], (pin.number, official[pin.number])
+            continue
         assert _name_compatible(pin.name, official[pin.number][0]), (pin.number, pin.name, official[pin.number])
 
 

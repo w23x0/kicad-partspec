@@ -1,0 +1,221 @@
+{
+  "mpn": "ADS1115IDGST",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "eefff4d412ce2dcd7e659f47238edc9b2fa02e5971f2625af730502033701834",
+    "revision": "SBAS444E (Rev. E), revised December 2024",
+    "url": "https://www.ti.com/lit/ds/symlink/ads1115.pdf"
+  },
+  "package": {
+    "family": "VSSOP",
+    "pin_count": 10,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.5,
+        "source": {
+          "page": 51,
+          "quote": "8X 0.5"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 4.75,
+        "max": 5.05,
+        "source": {
+          "page": 51,
+          "quote": "5.05 TYP SEATING PLANE 4.75"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 2.9,
+        "max": 3.1,
+        "source": {
+          "page": 51,
+          "quote": "3.1 2.9 2X NOTE 3"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 2.9,
+        "max": 3.1,
+        "source": {
+          "page": 51,
+          "quote": "3.1 0.1 C A B 1.1 MAX B 2.9 NOTE 4"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.1,
+        "source": {
+          "page": 51,
+          "quote": "0.1 C A B 1.1 MAX"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.17,
+        "max": 0.27,
+        "source": {
+          "page": 51,
+          "quote": "0.27 10X 0.17"
+        },
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.4,
+        "max": 0.7,
+        "source": {
+          "page": 51,
+          "quote": "0.7 0.15 0 -8 0.05 0.4"
+        },
+        "status": "inferred"
+      },
+      "lead_thickness": {
+        "min": 0.13,
+        "max": 0.23,
+        "source": {
+          "page": 51,
+          "quote": "0.23 TYP SEE DETAIL A 0.13"
+        },
+        "status": "inferred"
+      },
+      "standoff": {
+        "min": 0.05,
+        "max": 0.15,
+        "source": {
+          "page": 51,
+          "quote": "0.15 0 -8 0.05"
+        },
+        "status": "inferred"
+      },
+      "land_pad_length": {
+        "nom": 1.45,
+        "source": {
+          "page": 52,
+          "quote": "10X (1.45)"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.3,
+        "source": {
+          "page": 52,
+          "quote": "10X (0.3)"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 4.4,
+        "source": {
+          "page": 52,
+          "quote": "(4.4)"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "ADDR",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "ADDR 1 1 1 Digital input I2C target address select"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "ALERT/RDY",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 3,
+        "quote": "ALERT/RDY — 2 2 Digital output Open-drain output. Connect to VDD using a pullup resistor."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "3",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "GND 3 3 3 Analog Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "AIN0",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "AIN0 4 4 4 Analog input Analog input 0"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "AIN1",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "AIN1 5 5 5 Analog input Analog input 1"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "AIN2",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "AIN2 — — 6 Analog input Analog input 2 (ADS1115 only)"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "AIN3",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "AIN3 — — 7 Analog input Analog input 3 (ADS1115 only)"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "VDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "VDD 8 8 8 Analog Power supply."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "9",
+      "name": "SDA",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 3,
+        "quote": "SDA 9 9 9 Digital I/O Serial data input and output."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "SCL",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "SCL 10 10 10 Digital input Serial clock input."
+      },
+      "status": "extracted"
+    }
+  ]
+}

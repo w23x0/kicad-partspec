@@ -1,0 +1,182 @@
+{
+  "mpn": "TPS54202",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "8bace250f495154744777f7d3b392f641ff3b776c7e01085759571aae446373b",
+    "revision": "SLVSD26C (Rev. C, February 2026)",
+    "url": "https://www.ti.com/lit/ds/symlink/tps54202.pdf"
+  },
+  "package": {
+    "family": "SOT-23",
+    "pin_count": 6,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 28,
+          "quote": "4X 0.95"
+        },
+        "status": "extracted",
+        "nom": 0.95
+      },
+      "body_length": {
+        "source": {
+          "page": 28,
+          "quote": "3.05 1.9 2.75"
+        },
+        "status": "extracted",
+        "min": 2.75,
+        "max": 3.05
+      },
+      "body_width": {
+        "source": {
+          "page": 28,
+          "quote": "1.75 0.1 C B A 1.45"
+        },
+        "status": "extracted",
+        "min": 1.45,
+        "max": 1.75
+      },
+      "overall_width": {
+        "source": {
+          "page": 28,
+          "quote": "3.05 1.1 2.55 0.7"
+        },
+        "status": "extracted",
+        "min": 2.55,
+        "max": 3.05
+      },
+      "height": {
+        "source": {
+          "page": 28,
+          "quote": "1.1 2.55 0.7"
+        },
+        "status": "extracted",
+        "min": 0.7,
+        "max": 1.1
+      },
+      "lead_width": {
+        "source": {
+          "page": 28,
+          "quote": "0.5 0.1 6X TYP 0.3"
+        },
+        "status": "extracted",
+        "min": 0.3,
+        "max": 0.5
+      },
+      "lead_length": {
+        "source": {
+          "page": 28,
+          "quote": "0.6 TYP 0.3"
+        },
+        "status": "extracted",
+        "min": 0.3,
+        "max": 0.6
+      },
+      "standoff": {
+        "min": 0.0,
+        "max": 0.1,
+        "source": {
+          "page": 28,
+          "quote": "0.1 6X TYP 0.3 0.0"
+        },
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 29,
+          "quote": "6X (1.1)"
+        },
+        "status": "extracted",
+        "nom": 1.1
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 29,
+          "quote": "6X (0.6)"
+        },
+        "status": "extracted",
+        "nom": 0.6
+      },
+      "land_span": {
+        "source": {
+          "page": 29,
+          "quote": "(2.7)"
+        },
+        "status": "inferred",
+        "nom": 2.7
+      },
+      "lead_thickness": {
+        "min": 0.12,
+        "max": 0.2,
+        "source": {
+          "page": 28,
+          "quote": "0.20 TYP GAGE PLANE 0.12"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "GND 1 –"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "SW",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "SW 2 O"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "VIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "VIN 3 –"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "FB",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "FB 4 I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "EN",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "EN 5 I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "BOOT",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "BOOT 6 O"
+      },
+      "status": "extracted"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "mpn": "CP2102N-A02-GQFN24",
+  "manufacturer": "Silicon Labs",
+  "datasheet": {
+    "sha256": "32fbab0ba17f394ab76fbbd8129bddad228c1c486a1693d96ea5905936e437fe",
+    "revision": "Rev. 1.5"
+  },
+  "package": {
+    "family": "QFN",
+    "pin_count": 24,
+    "exposed_pad": true,
+    "dimensions": {
+      "pitch": {"nom": 0.50, "source": {"page": 37, "quote": "e 0.50 BSC"}, "status": "extracted"},
+      "height": {"min": 0.70, "nom": 0.75, "max": 0.80, "source": {"page": 37, "quote": "A 0.70 0.75 0.80"}, "status": "extracted"},
+      "standoff": {"min": 0.00, "max": 0.05, "source": {"page": 37, "quote": "A1 0.00 — 0.05"}, "status": "extracted"},
+      "lead_width": {"min": 0.18, "nom": 0.25, "max": 0.30, "source": {"page": 37, "quote": "b 0.18 0.25 0.30"}, "status": "extracted"},
+      "body_length": {"nom": 4.00, "source": {"page": 37, "quote": "D 4.00 BSC"}, "status": "extracted"},
+      "body_width": {"nom": 4.00, "source": {"page": 37, "quote": "E 4.00 BSC"}, "status": "extracted"},
+      "ep_size": {"min": 2.35, "nom": 2.45, "max": 2.55, "source": {"page": 37, "quote": "D2 2.35 2.45 2.55"}, "status": "extracted"},
+      "lead_length": {"min": 0.30, "nom": 0.40, "max": 0.50, "source": {"page": 37, "quote": "L 0.30 0.40 0.50"}, "status": "extracted"},
+
+      "land_pad_length": {"nom": 0.85, "source": {"page": 39, "quote": "Y1 0.85"}, "status": "inferred"},
+      "land_pad_width": {"nom": 0.30, "source": {"page": 39, "quote": "X1 0.30"}, "status": "inferred"},
+      "land_ep_size": {"nom": 2.55, "source": {"page": 39, "quote": "X2 2.55"}, "status": "inferred"},
+      "land_span": {"nom": 3.90, "source": {"page": 39, "quote": "C1 3.90"}, "status": "inferred"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "RI", "alt_names": ["CLK"], "electrical_type": "input", "source": {"page": 29, "quote": "1 RI / Digital Input. Ring Indicator control input (active low). CLK Digital Output. Clock output."}, "status": "extracted"},
+    {"number": "2", "name": "GND", "electrical_type": "power_in", "source": {"page": 29, "quote": "2 GND Ground"}, "status": "inferred"},
+    {"number": "3", "name": "D+", "electrical_type": "passive", "source": {"page": 29, "quote": "3 D+ USB Data Positive"}, "status": "inferred"},
+    {"number": "4", "name": "D-", "electrical_type": "passive", "source": {"page": 30, "quote": "4 D- USB Data Negative"}, "status": "inferred"},
+    {"number": "5", "name": "VIO", "electrical_type": "power_in", "source": {"page": 30, "quote": "5 VIO I/O Supply Power Input"}, "status": "inferred"},
+    {"number": "6", "name": "VDD", "electrical_type": "power_in", "source": {"page": 30, "quote": "6 VDD Supply Power Input / 5V Regulator Output"}, "status": "inferred"},
+    {"number": "7", "name": "VREGIN", "electrical_type": "power_in", "source": {"page": 30, "quote": "7 VREGIN 5V Regulator Input"}, "status": "inferred"},
+    {"number": "8", "name": "VBUS", "electrical_type": "input", "source": {"page": 30, "quote": "8 VBUS Digital Input. VBUS Sense Input."}, "status": "extracted"},
+    {"number": "9", "name": "RSTb", "electrical_type": "passive", "source": {"page": 30, "quote": "9 RSTb Active-low Reset"}, "status": "inferred"},
+    {"number": "10", "name": "NC", "electrical_type": "no_connect", "source": {"page": 30, "quote": "10 NC No Connect (leave this pin floating)."}, "status": "extracted"},
+    {"number": "11", "name": "GPIO.3", "alt_names": ["WAKEUP"], "electrical_type": "bidirectional", "source": {"page": 30, "quote": "11 GPIO.3 / Digital Input/Output. General Purpose I/O. WAKEUP Digital Input. Remote USB wakeup interrupt input."}, "status": "extracted"},
+    {"number": "12", "name": "GPIO.2", "alt_names": ["RS485"], "electrical_type": "bidirectional", "source": {"page": 30, "quote": "12 GPIO.2 / Digital Input/Output. General Purpose I/O. RS485 Digital Output. RS485 control signal."}, "status": "extracted"},
+    {"number": "13", "name": "GPIO.1", "alt_names": ["RXT"], "electrical_type": "bidirectional", "source": {"page": 30, "quote": "13 GPIO.1 / Digital Input/Output. General Purpose I/O. RXT Digital Output. Receive LED toggle."}, "status": "extracted"},
+    {"number": "14", "name": "GPIO.0", "alt_names": ["TXT"], "electrical_type": "bidirectional", "source": {"page": 30, "quote": "14 GPIO.0 / Digital Input/Output. General Purpose I/O. TXT Digital Output. Transmit LED toggle."}, "status": "extracted"},
+    {"number": "15", "name": "SUSPENDb", "electrical_type": "output", "source": {"page": 30, "quote": "15 SUSPENDb Digital Output. This pin is driven low when the device enters the USB suspend state."}, "status": "extracted"},
+    {"number": "16", "name": "NC", "electrical_type": "no_connect", "source": {"page": 30, "quote": "16 NC No Connect (leave this pin floating)."}, "status": "extracted"},
+    {"number": "17", "name": "SUSPEND", "electrical_type": "output", "source": {"page": 30, "quote": "17 SUSPEND Digital Output. This pin is driven high when the device enters the USB suspend state."}, "status": "extracted"},
+    {"number": "18", "name": "CTS", "electrical_type": "input", "source": {"page": 30, "quote": "18 CTS Digital Input. Clear To Send control input (active low)."}, "status": "extracted"},
+    {"number": "19", "name": "RTS", "electrical_type": "output", "source": {"page": 30, "quote": "19 RTS Digital Output. Ready To Send control output (active low)."}, "status": "extracted"},
+    {"number": "20", "name": "RXD", "electrical_type": "input", "source": {"page": 30, "quote": "20 RXD Digital Input. Asynchronous data input (UART Receive)."}, "status": "extracted"},
+    {"number": "21", "name": "TXD", "electrical_type": "output", "source": {"page": 30, "quote": "21 TXD Digital Output. Asynchronous data output (UART Transmit)."}, "status": "extracted"},
+    {"number": "22", "name": "DSR", "electrical_type": "input", "source": {"page": 30, "quote": "22 DSR Digital Input. Data Set Ready control input (active low)."}, "status": "extracted"},
+    {"number": "23", "name": "DTR", "electrical_type": "output", "source": {"page": 30, "quote": "23 DTR Digital Output. Data Terminal Ready control output (active low)."}, "status": "extracted"},
+    {"number": "24", "name": "DCD", "electrical_type": "input", "source": {"page": 30, "quote": "24 DCD Digital Input. Data Carrier Detect control input (active low)."}, "status": "extracted"},
+    {"number": "25", "name": "EP", "electrical_type": "power_in", "exposed_pad": true, "source": {"page": 30, "quote": "Center GND Ground"}, "status": "inferred"}
+  ]
+}

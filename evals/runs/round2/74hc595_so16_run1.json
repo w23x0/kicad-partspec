@@ -1,0 +1,42 @@
+{
+  "mpn": "74HC595D",
+  "manufacturer": "Nexperia",
+  "datasheet": {
+    "sha256": "fa24207e780cd8c4cdb9018d67eb83e53ee75578fc126bda6f59f0d84ceb211a",
+    "revision": "Rev. 12 — 20 March 2024"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 16,
+    "exposed_pad": false,
+    "dimensions": {
+      "body_length": {"min": 9.8, "max": 10.0, "source": {"page": 15, "quote": "10.0"}, "status": "extracted"},
+      "body_width": {"min": 3.8, "max": 4.0, "source": {"page": 15, "quote": "4.0"}, "status": "extracted"},
+      "overall_width": {"min": 5.8, "max": 6.2, "source": {"page": 15, "quote": "6.2"}, "status": "extracted"},
+      "height": {"max": 1.75, "source": {"page": 15, "quote": "1.75"}, "status": "extracted"},
+      "standoff": {"min": 0.10, "max": 0.25, "source": {"page": 15, "quote": "0.10"}, "status": "extracted"},
+      "lead_length": {"nom": 1.05, "source": {"page": 15, "quote": "1.05"}, "status": "extracted"},
+      "lead_width": {"min": 0.31, "max": 0.51, "source": {"page": 15, "quote": "0.51"}, "status": "extracted"},
+      "lead_thickness": {"min": 0.10, "max": 0.25, "source": {"page": 15, "quote": "0.25"}, "status": "extracted"},
+      "pitch": {"nom": 1.27, "source": {"page": 15, "quote": "1.27"}, "status": "extracted"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "Q1", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "2", "name": "Q2", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "3", "name": "Q3", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "4", "name": "Q4", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "5", "name": "Q5", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "6", "name": "Q6", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "7", "name": "Q7", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7 15, 1, 2, 3, 4, 5, 6, 7"}, "status": "extracted"},
+    {"number": "8", "name": "GND", "electrical_type": "power_in", "source": {"page": 5, "quote": "GND 8 ground (0 V)"}, "status": "inferred"},
+    {"number": "9", "name": "Q7S", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q7S 9 serial data output"}, "status": "inferred"},
+    {"number": "10", "name": "MR", "electrical_type": "input", "source": {"page": 5, "quote": "MR 10 master reset (active LOW)"}, "status": "extracted"},
+    {"number": "11", "name": "SHCP", "electrical_type": "input", "source": {"page": 5, "quote": "SHCP 11 shift register clock input"}, "status": "extracted"},
+    {"number": "12", "name": "STCP", "electrical_type": "input", "source": {"page": 5, "quote": "STCP 12 storage register clock input"}, "status": "extracted"},
+    {"number": "13", "name": "OE", "electrical_type": "input", "source": {"page": 5, "quote": "OE 13 output enable input (active LOW)"}, "status": "extracted"},
+    {"number": "14", "name": "DS", "electrical_type": "input", "source": {"page": 5, "quote": "DS 14 serial data input"}, "status": "extracted"},
+    {"number": "15", "name": "Q0", "electrical_type": "tri_state", "source": {"page": 5, "quote": "Q0 15 parallel data output 0"}, "status": "extracted"},
+    {"number": "16", "name": "VCC", "electrical_type": "power_in", "source": {"page": 5, "quote": "VCC 16 supply voltage"}, "status": "inferred"}
+  ]
+}

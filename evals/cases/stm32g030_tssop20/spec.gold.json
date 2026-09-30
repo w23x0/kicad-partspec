@@ -1,0 +1,295 @@
+{
+  "mpn": "STM32G030F6P6",
+  "manufacturer": "STMicroelectronics",
+  "datasheet": {
+    "sha256": "b86b1fa79171e8ed521745305bff03d43d75f07729c077e0c4e7badc896711d3",
+    "revision": "DS12991 Rev 6 (20-Jun-2025)",
+    "url": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 20,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 86,
+          "quote": "6.5 x 4.4 mm thin small-outline package with 0.65 mm pitch"
+        },
+        "status": "extracted",
+        "nom": 0.65
+      },
+      "body_length": {
+        "source": {
+          "page": 86,
+          "quote": "D(2) 6.400 6.500 6.600"
+        },
+        "status": "inferred",
+        "min": 6.4,
+        "nom": 6.5,
+        "max": 6.6
+      },
+      "overall_width": {
+        "source": {
+          "page": 86,
+          "quote": "E 6.200 6.400 6.600"
+        },
+        "status": "inferred",
+        "min": 6.2,
+        "nom": 6.4,
+        "max": 6.6
+      },
+      "body_width": {
+        "source": {
+          "page": 86,
+          "quote": "E1(3) 4.300 4.400 4.500"
+        },
+        "status": "inferred",
+        "min": 4.3,
+        "nom": 4.4,
+        "max": 4.5
+      },
+      "height": {
+        "source": {
+          "page": 86,
+          "quote": "A - - 1.200"
+        },
+        "status": "inferred",
+        "max": 1.2
+      },
+      "standoff": {
+        "source": {
+          "page": 86,
+          "quote": "A1 0.050 - 0.150"
+        },
+        "status": "inferred",
+        "min": 0.05,
+        "max": 0.15
+      },
+      "body_thickness": {
+        "source": {
+          "page": 86,
+          "quote": "A2 0.800 1.000 1.050"
+        },
+        "status": "inferred",
+        "min": 0.8,
+        "nom": 1.0,
+        "max": 1.05
+      },
+      "lead_width": {
+        "source": {
+          "page": 86,
+          "quote": "b 0.190 - 0.300"
+        },
+        "status": "inferred",
+        "min": 0.19,
+        "max": 0.3
+      },
+      "lead_thickness": {
+        "source": {
+          "page": 86,
+          "quote": "c 0.090 - 0.200"
+        },
+        "status": "inferred",
+        "min": 0.09,
+        "max": 0.2
+      },
+      "lead_length": {
+        "source": {
+          "page": 86,
+          "quote": "L 0.450 0.600 0.750"
+        },
+        "status": "inferred",
+        "min": 0.45,
+        "nom": 0.6,
+        "max": 0.75
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 87,
+          "quote": "1.35"
+        },
+        "status": "inferred",
+        "nom": 1.35
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 87,
+          "quote": "0.40 0.65"
+        },
+        "status": "inferred",
+        "nom": 0.4
+      },
+      "land_span": {
+        "source": {
+          "page": 87,
+          "quote": "7.10 4.40"
+        },
+        "status": "inferred",
+        "nom": 5.75
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "PB7",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PB8"],
+      "source": {"page": 29, "quote": "PB7/PB8 1"},
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "PB9",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PC14-OSC32_IN"],
+      "source": {"page": 29, "quote": "PB9/PC14-OSC32_IN 2"},
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "PC15-OSC32_OUT",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "PC15-OSC32_OUT 3"},
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "VDD/VDDA",
+      "electrical_type": "power_in",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "VDD/VDDA 4"},
+      "status": "inferred"
+    },
+    {
+      "number": "5",
+      "name": "VSS/VSSA",
+      "electrical_type": "power_in",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "VSS/VSSA 5"},
+      "status": "inferred"
+    },
+    {
+      "number": "6",
+      "name": "NRST",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "NRST 6"},
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "PA0",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "PA0 7"},
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "PA1",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "PA1 8"},
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "PA2",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "PA2 9"},
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "PA3",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "PA3 10"},
+      "status": "extracted"
+    },
+    {
+      "number": "11",
+      "name": "PA4",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "11 PA4"},
+      "status": "extracted"
+    },
+    {
+      "number": "12",
+      "name": "PA5",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "12 PA5"},
+      "status": "extracted"
+    },
+    {
+      "number": "13",
+      "name": "PA6",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "13 PA6"},
+      "status": "extracted"
+    },
+    {
+      "number": "14",
+      "name": "PA7",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "14 PA7"},
+      "status": "extracted"
+    },
+    {
+      "number": "15",
+      "name": "PB0",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PB1", "PB2", "PA8"],
+      "source": {"page": 29, "quote": "15 PB0/PB1/PB2/PA8"},
+      "status": "extracted"
+    },
+    {
+      "number": "16",
+      "name": "PA11",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PA9"],
+      "source": {"page": 29, "quote": "16 PA11[PA9]"},
+      "status": "extracted"
+    },
+    {
+      "number": "17",
+      "name": "PA12",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PA10"],
+      "source": {"page": 29, "quote": "17 PA12[PA10]"},
+      "status": "extracted"
+    },
+    {
+      "number": "18",
+      "name": "PA13",
+      "electrical_type": "bidirectional",
+      "alt_names": [],
+      "source": {"page": 29, "quote": "18 PA13"},
+      "status": "extracted"
+    },
+    {
+      "number": "19",
+      "name": "PA15",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PA14-BOOT0"],
+      "source": {"page": 29, "quote": "19 PA15/PA14-BOOT0"},
+      "status": "extracted"
+    },
+    {
+      "number": "20",
+      "name": "PB3",
+      "electrical_type": "bidirectional",
+      "alt_names": ["PB4", "PB5", "PB6"],
+      "source": {"page": 29, "quote": "20 PB3/PB4/PB5/PB6"},
+      "status": "extracted"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "mpn": "STM32G030F6P6",
+  "manufacturer": "STMicroelectronics",
+  "datasheet": {
+    "sha256": "b86b1fa79171e8ed521745305bff03d43d75f07729c077e0c4e7badc896711d3",
+    "revision": "DS12991 Rev 6"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 20,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.65,
+        "source": {"page": 86, "quote": "e - 0.650 - - 0.0256 -"},
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 6.4, "nom": 6.5, "max": 6.6,
+        "source": {"page": 86, "quote": "D(2) 6.400 6.500 6.600 0.2520 0.2559 0.2598"},
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 4.3, "nom": 4.4, "max": 4.5,
+        "source": {"page": 86, "quote": "E1(3) 4.300 4.400 4.500 0.1693 0.1732 0.1772"},
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 6.2, "nom": 6.4, "max": 6.6,
+        "source": {"page": 86, "quote": "E 6.200 6.400 6.600 0.2441 0.2520 0.2598"},
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.2,
+        "source": {"page": 86, "quote": "A - - 1.200 - - 0.0472"},
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.05, "max": 0.15,
+        "source": {"page": 86, "quote": "A1 0.050 - 0.150 0.0020 - 0.0059"},
+        "status": "extracted"
+      },
+      "body_thickness": {
+        "min": 0.8, "nom": 1.0, "max": 1.05,
+        "source": {"page": 86, "quote": "A2 0.800 1.000 1.050 0.0315 0.0394 0.0413"},
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.19, "max": 0.3,
+        "source": {"page": 86, "quote": "b 0.190 - 0.300 0.0075 - 0.0118"},
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "min": 0.09, "max": 0.2,
+        "source": {"page": 86, "quote": "c 0.090 - 0.200 0.0035 - 0.0079"},
+        "status": "extracted"
+      },
+      "lead_length": {
+        "nom": 1.0,
+        "source": {"page": 86, "quote": "L1 - 1.000 - - 0.0394 -"},
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 1.35,
+        "source": {"page": 87, "quote": "1.35"},
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.25,
+        "source": {"page": 87, "quote": "0.25"},
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 5.75,
+        "source": {"page": 87, "quote": "7.10 4.40"},
+        "status": "inferred"
+      }
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "PB7", "alt_names": ["PB8"], "electrical_type": "bidirectional",
+     "source": {"page": 34, "quote": "1 1 31 - PB7 I/O FT_fa"}, "status": "extracted"},
+    {"number": "2", "name": "PB9", "alt_names": ["PC14-OSC32_IN"], "electrical_type": "bidirectional",
+     "source": {"page": 34, "quote": "1 2 1 48 PB9 I/O FT_f"}, "status": "extracted"},
+    {"number": "3", "name": "PC15-OSC32_OUT", "electrical_type": "bidirectional",
+     "source": {"page": 29, "quote": "PC15-OSC32_OUT 3"}, "status": "inferred"},
+    {"number": "4", "name": "VDD", "alt_names": ["VDDA"], "electrical_type": "power_in",
+     "source": {"page": 31, "quote": "2 4 4 6 VDD/VDDA S - - - -"}, "status": "inferred"},
+    {"number": "5", "name": "VSS", "alt_names": ["VSSA"], "electrical_type": "power_in",
+     "source": {"page": 31, "quote": "3 5 5 7 VSS/VSSA S - - - -"}, "status": "inferred"},
+    {"number": "6", "name": "NRST", "electrical_type": "input",
+     "source": {"page": 31, "quote": "4 6 6 10 NRST I/O RST - NRST"}, "status": "inferred"},
+    {"number": "7", "name": "PA0", "electrical_type": "bidirectional",
+     "source": {"page": 31, "quote": "- 7 7 11 PA0 I/O FT_a"}, "status": "extracted"},
+    {"number": "8", "name": "PA1", "electrical_type": "bidirectional",
+     "source": {"page": 31, "quote": "- 8 8 12 PA1 I/O FT_ea"}, "status": "extracted"},
+    {"number": "9", "name": "PA2", "electrical_type": "bidirectional",
+     "source": {"page": 31, "quote": "- 9 9 13 PA2 I/O FT_a"}, "status": "extracted"},
+    {"number": "10", "name": "PA3", "electrical_type": "bidirectional",
+     "source": {"page": 31, "quote": "- 10 10 14 PA3 I/O FT_ea"}, "status": "extracted"},
+    {"number": "11", "name": "PA4", "electrical_type": "bidirectional",
+     "source": {"page": 32, "quote": "- 11 11 - PA4 I/O FT_a"}, "status": "extracted"},
+    {"number": "12", "name": "PA5", "electrical_type": "bidirectional",
+     "source": {"page": 32, "quote": "- 12 12 16 PA5 I/O FT_ea"}, "status": "extracted"},
+    {"number": "13", "name": "PA6", "electrical_type": "bidirectional",
+     "source": {"page": 32, "quote": "- 13 13 17 PA6 I/O FT_ea"}, "status": "extracted"},
+    {"number": "14", "name": "PA7", "electrical_type": "bidirectional",
+     "source": {"page": 32, "quote": "- 14 14 18 PA7 I/O FT_a"}, "status": "extracted"},
+    {"number": "15", "name": "PB0", "alt_names": ["PB1", "PB2", "PA8"], "electrical_type": "bidirectional",
+     "source": {"page": 32, "quote": "5 15 15 19 PB0 I/O FT_ea"}, "status": "extracted"},
+    {"number": "16", "name": "PA11", "alt_names": ["PA9"], "electrical_type": "bidirectional",
+     "source": {"page": 33, "quote": "5 16 22 - PA11 [PA9] I/O FT_fa"}, "status": "extracted"},
+    {"number": "17", "name": "PA12", "alt_names": ["PA10"], "electrical_type": "bidirectional",
+     "source": {"page": 33, "quote": "6 17 23 - PA12 [PA10] I/O FT_fa"}, "status": "extracted"},
+    {"number": "18", "name": "PA13", "electrical_type": "bidirectional",
+     "source": {"page": 33, "quote": "7 18 24 35 PA13 I/O FT_ea"}, "status": "extracted"},
+    {"number": "19", "name": "PA15", "alt_names": ["PA14-BOOT0"], "electrical_type": "bidirectional",
+     "source": {"page": 33, "quote": "8 19 26 37 PA15 I/O FT - -"}, "status": "extracted"},
+    {"number": "20", "name": "PB3", "alt_names": ["PB4", "PB5", "PB6"], "electrical_type": "bidirectional",
+     "source": {"page": 33, "quote": "- 20 27 42 PB3 I/O FT - -"}, "status": "extracted"}
+  ]
+}

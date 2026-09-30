@@ -1,0 +1,655 @@
+{
+  "mpn": "RP2040",
+  "manufacturer": "Raspberry Pi",
+  "datasheet": {
+    "sha256": "be56fbb75ba0ae9e26558a73c93ac3e75c2ad4e6878d3b6703de2a76d886ea8c",
+    "revision": "2025-02-20"
+  },
+  "package": {
+    "family": "QFN",
+    "pin_count": 56,
+    "exposed_pad": true,
+    "dimensions": {
+      "body_length": {
+        "nom": 7.0,
+        "source": {
+          "page": 609,
+          "quote": "The RP2040 7×7 mm QFN-56 package"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "nom": 7.0,
+        "source": {
+          "page": 609,
+          "quote": "The RP2040 7×7 mm QFN-56 package"
+        },
+        "status": "extracted"
+      },
+      "pitch": {
+        "nom": 0.4,
+        "source": {
+          "page": 609,
+          "quote": "0.40"
+        },
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 0.875,
+        "source": {
+          "page": 609,
+          "quote": "0.875"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.2,
+        "source": {
+          "page": 609,
+          "quote": "0.20"
+        },
+        "status": "inferred"
+      },
+      "land_span": {
+        "nom": 6.875,
+        "source": {
+          "page": 609,
+          "quote": "6.00"
+        },
+        "status": "inferred"
+      },
+      "land_ep_size": {
+        "nom": 3.2,
+        "source": {
+          "page": 609,
+          "quote": "3.20"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "GPIO0",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO0 2 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "GPIO1",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO1 3 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "GPIO2",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO2 4 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "GPIO3",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO3 5 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "GPIO4",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO4 6 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "GPIO5",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO5 7 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "GPIO6",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO6 8 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "GPIO7",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO7 9 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "11",
+      "name": "GPIO8",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO8 11 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "12",
+      "name": "GPIO9",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO9 12 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "13",
+      "name": "GPIO10",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO10 13 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "14",
+      "name": "GPIO11",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO11 14 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "15",
+      "name": "GPIO12",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO12 15 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "16",
+      "name": "GPIO13",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO13 16 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "17",
+      "name": "GPIO14",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO14 17 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "18",
+      "name": "GPIO15",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 613,
+        "quote": "GPIO15 18 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "19",
+      "name": "TESTEN",
+      "electrical_type": "input",
+      "source": {
+        "page": 615,
+        "quote": "TESTEN 19 Digital In IOVDD Pull-Down Test enable"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "20",
+      "name": "XIN",
+      "electrical_type": "passive",
+      "source": {
+        "page": 614,
+        "quote": "XIN 20 Analogue (XOSC) IOVDD Crystal oscillator."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "21",
+      "name": "XOUT",
+      "electrical_type": "passive",
+      "source": {
+        "page": 614,
+        "quote": "XOUT 21 Analogue (XOSC) IOVDD Crystal oscillator."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "22",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "23",
+      "name": "DVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "DVDD 23, 50 Core supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "24",
+      "name": "SWCLK",
+      "electrical_type": "input",
+      "source": {
+        "page": 614,
+        "quote": "SWCLK 24 Digital In (FT) IOVDD Pull-Up Debug clock"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "25",
+      "name": "SWD",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "SWD 25 Digital IO (FT) IOVDD Pull-Up Debug data"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "26",
+      "name": "RUN",
+      "electrical_type": "input",
+      "source": {
+        "page": 614,
+        "quote": "RUN 26 Digital In (FT) IOVDD Pull-Up Chip enable /"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "27",
+      "name": "GPIO16",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO16 27 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "28",
+      "name": "GPIO17",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO17 28 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "29",
+      "name": "GPIO18",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO18 29 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "30",
+      "name": "GPIO19",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO19 30 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "31",
+      "name": "GPIO20",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO20 31 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "32",
+      "name": "GPIO21",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO21 32 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "33",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "34",
+      "name": "GPIO22",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO22 34 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "35",
+      "name": "GPIO23",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO23 35 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "36",
+      "name": "GPIO24",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO24 36 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "37",
+      "name": "GPIO25",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO25 37 Digital IO (FT) IOVDD Pull-Down User IO"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "38",
+      "name": "GPIO26",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO26 / ADC0 38 Digital IO / IOVDD / Pull-Down User IO or ADC"
+      },
+      "status": "extracted",
+      "alt_names": [
+        "ADC0"
+      ]
+    },
+    {
+      "number": "39",
+      "name": "GPIO27",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO27 / ADC1 39 Digital IO / IOVDD / Pull-Down User IO or ADC"
+      },
+      "status": "extracted",
+      "alt_names": [
+        "ADC1"
+      ]
+    },
+    {
+      "number": "40",
+      "name": "GPIO28",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO28 / ADC2 40 Digital IO / IOVDD / Pull-Down User IO or ADC"
+      },
+      "status": "extracted",
+      "alt_names": [
+        "ADC2"
+      ]
+    },
+    {
+      "number": "41",
+      "name": "GPIO29",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "GPIO29 / ADC3 41 Digital IO / IOVDD / Pull-Down User IO or ADC"
+      },
+      "status": "extracted",
+      "alt_names": [
+        "ADC3"
+      ]
+    },
+    {
+      "number": "42",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "43",
+      "name": "ADC_AVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "ADC_AVDD 43 ADC supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "44",
+      "name": "VREG_VIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "VREG_VIN 44 Voltage regulator input supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "45",
+      "name": "VREG_VOUT",
+      "electrical_type": "power_out",
+      "source": {
+        "page": 615,
+        "quote": "VREG_VOUT 45 Voltage regulator output"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "46",
+      "name": "USB_DM",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 615,
+        "quote": "USB_DM 46 USB IO USB_VDD USB Data -ve. 27Ω"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "47",
+      "name": "USB_DP",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 615,
+        "quote": "USB_DP 47 USB IO USB_VDD USB Data +ve. 27Ω"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "48",
+      "name": "USB_VDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "USB_VDD 48 USB supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "49",
+      "name": "IOVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "IOVDD 1, 10, 22, 33, 42, 49 IO supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "50",
+      "name": "DVDD",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "DVDD 23, 50 Core supply"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "51",
+      "name": "QSPI_SD3",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_SD3 51 Digital IO IOVDD QSPI data"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "52",
+      "name": "QSPI_SCLK",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_SCLK 52 Digital IO IOVDD Pull-Down QSPI clock"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "53",
+      "name": "QSPI_SD0",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_SD0 53 Digital IO IOVDD QSPI data"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "54",
+      "name": "QSPI_SD2",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_SD2 54 Digital IO IOVDD QSPI data"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "55",
+      "name": "QSPI_SD1",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_SD1 55 Digital IO IOVDD QSPI data"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "56",
+      "name": "QSPI_CSn",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 614,
+        "quote": "QSPI_CSn 56 Digital IO IOVDD Pull-Up QSPI chip select"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "57",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 615,
+        "quote": "GND 57 Common ground connection via"
+      },
+      "status": "inferred"
+    }
+  ]
+}
