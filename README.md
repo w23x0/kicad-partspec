@@ -26,12 +26,14 @@ the same author as the skill and has not been reviewed by a human. See
 
 ## Install
 
-Python 3.10 to 3.13. Not on PyPI yet; from GitHub:
+Python 3.10 to 3.13.
 
 ```
-pip install "git+https://github.com/w23x0/kicad-partspec"                          # CLI
-pip install "kicad-partspec[mcp] @ git+https://github.com/w23x0/kicad-partspec"    # CLI + MCP server
+pip install kicad-partspec            # CLI
+pip install "kicad-partspec[mcp]"     # CLI + MCP server
 ```
+
+To try the development version instead: `pip install "git+https://github.com/w23x0/kicad-partspec"`.
 
 Optional tools the checks use when present: KiCad 9 or later (`kicad-cli`, for the load checks; without it you get a
 warning instead) and poppler (`pdftotext`, for the datasheet quote check).
