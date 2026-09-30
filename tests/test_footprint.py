@@ -457,6 +457,110 @@ def test_layout_agrees_with_the_official_kicad_footprint(case):
         assert abs(ours["17"][2] - theirs["17"][2]) <= 0.05
 
 
+# --------------------------------------------------------------------------- SOT-23
+
+
+# A TI op amp in the DDC package: SOT-23-6, pitch 0.95, land span 2.7, lands 1.1 x 0.6.
+# SOT-23-8 (DBV) is the same package with a fourth pin per row at 0.65 mm pitch and
+# narrower lands, so its lands are given separately.
+SOT23 = {
+    "family": "SOT-23",
+    "dimensions": {
+        "pitch": {"nom": 0.95},
+        "overall_width": {"nom": 2.7},
+        "body_length": {"min": 2.9, "max": 3.0},
+        "body_width": {"min": 1.6, "max": 1.7},
+        "lead_width": {"min": 0.3, "max": 0.45},
+        "lead_length": {"min": 0.4, "max": 0.6},
+        "land_pad_length": {"nom": 1.1},
+        "land_pad_width": {"nom": 0.6},
+        "land_span": {"nom": 2.7},
+    },
+}
+SOT23_8 = copy.deepcopy(SOT23)
+SOT23_8["dimensions"]["pitch"] = {"nom": 0.65}
+SOT23_8["dimensions"]["land_pad_width"] = {"nom": 0.4}
+
+
+def _sot23(package, family=None):
+    """A SOT-23 PartSpec in the DDC land pattern, with the family spelled as given."""
+
+    def mutate(data):
+        data["package"] = copy.deepcopy(package)
+        if family is not None:
+            data["package"]["family"] = family
+        count = data["package"]["pin_count"]
+        data["pins"] = [
+            {"number": str(n), "name": f"P{n}", "electrical_type": "bidirectional"} for n in range(1, count + 1)
+        ]
+
+    return _spec("lm358_soic8", mutate)
+
+
+@pytest.mark.parametrize(("package", "count"), [(SOT23, 6), (SOT23_8, 8)], ids=["6 pins", "8 pins"])
+def test_an_even_pin_sot23_builds_with_no_findings(package, count):
+    spec = _sot23(dict(package, pin_count=count))
+    assert skip_reason(spec) is None
+    assert footprint_name(spec) == f"SOT-23-{count}"
+    assert check_footprint(spec, render_footprint(spec)) == []
+
+
+@pytest.mark.parametrize("family", ["SOT-23", "SOT23", "sot-23", "TSOT-23", "tsot23"])
+def test_every_datasheet_spelling_of_the_family_is_the_same_package(family):
+    spec = _sot23(dict(SOT23, pin_count=6), family=family)
+    assert skip_reason(spec) is None
+    expected = "TSOT-23-6" if family.upper().startswith("TSOT") else "SOT-23-6"
+    assert footprint_name(spec) == expected
+    assert check_footprint(spec, render_footprint(spec)) == []
+
+
+@pytest.mark.parametrize("family", ["SOT", "SOT-223", "SOT-89"])
+def test_a_sot_family_that_is_not_sot23_is_not_laid_out_as_two_rows(family):
+    # SOT-223 has three leads and a tab: four pins, but not two rows of two.
+    reason = skip_reason(_sot23(dict(SOT23, pin_count=4), family=family))
+    assert reason and "not supported" in reason
+
+
+@pytest.mark.parametrize("count", [3, 5])
+def test_an_odd_pin_sot23_is_skipped_for_its_unequal_rows(count):
+    reason = skip_reason(_sot23(dict(SOT23, pin_count=count)))
+    assert reason and "unequal rows" in reason and f"pin_count={count}" in reason
+
+
+def test_sot23_pads_are_numbered_counter_clockwise_from_the_top_left():
+    pads = {pad.number: pad for pad in compute_pads(_sot23(dict(SOT23, pin_count=6)))}
+    assert (pads["1"].x, pads["1"].y) == (-1.35, -0.95)  # land span 2.7, pitch 0.95
+    assert (pads["3"].x, pads["3"].y) == (-1.35, 0.95)
+    assert (pads["4"].x, pads["4"].y) == (1.35, 0.95)
+    assert (pads["6"].x, pads["6"].y) == (1.35, -0.95)
+    assert (pads["1"].width, pads["1"].height) == (1.1, 0.6)  # the datasheet land pattern
+
+
+def test_sot23_pad_numbering_agrees_with_the_official_kicad_footprint():
+    """The land itself differs (the datasheet's 2.7 mm span vs KiCad's 2.275 mm), so
+    compare what must agree: the pad numbers, their order, and the pitch."""
+    official = OFFICIAL / "Package_TO_SOT_SMD.pretty" / "SOT-23-6.kicad_mod"
+    if not official.is_file():
+        pytest.skip("KiCad footprint libraries not installed")
+    ours = _pads_of(render_footprint(_sot23(dict(SOT23, pin_count=6))))
+    theirs = _pads_of(official.read_text(encoding="utf-8"))
+    assert list(ours) == list(theirs) == ["1", "2", "3", "4", "5", "6"]  # same numbers, same order
+
+    def side(value):
+        return (value > 0.01) - (value < -0.01)
+
+    for number, pad in ours.items():
+        assert (side(pad[0]), side(pad[1])) == (side(theirs[number][0]), side(theirs[number][1])), number
+    # Down the left row the pads run top to bottom, and back up the right one.
+    assert [n for n in ours if ours[n][0] < 0] == ["1", "2", "3"]
+    assert [n for n in ours if ours[n][0] > 0] == ["4", "5", "6"]
+    left = [ours[n][1] for n in ("1", "2", "3")]
+    assert left == sorted(left)  # pin 1 at the top
+    assert [ours[n][1] for n in ("4", "5", "6")] == sorted((ours[n][1] for n in ("4", "5", "6")), reverse=True)
+    for pair in (("1", "2"), ("2", "3"), ("4", "5"), ("5", "6")):
+        assert abs((ours[pair[0]][1] - ours[pair[1]][1]) - (theirs[pair[0]][1] - theirs[pair[1]][1])) < 1e-6
+
+
 # --------------------------------------------------------------------------- CLI
 
 

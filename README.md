@@ -59,7 +59,9 @@ Gold cases and their conventions are in `evals/README.md`. Generated symbols tar
 
 Footprints are generated from the datasheet's example land pattern (`land_*` dimensions), not computed from a standard,
 so a part whose datasheet has no land pattern gets a symbol and a `footprint.skipped` warning that names the missing
-dimensions.
+dimensions. Dual-row packages (SOIC, SOP, SSOP, TSSOP, MSOP, VSSOP, SOT-23 and TSOT-23) need an even pin count, and
+quad packages (QFN, VQFN, WQFN, UQFN, QFP, TQFP, LQFP) a pin count divisible by 4; an odd-pin SOT-23 such as SOT-23-5
+has unequal rows and is skipped with that reason.
 
 ## History
 

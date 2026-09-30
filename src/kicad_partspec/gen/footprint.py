@@ -2,9 +2,9 @@
 
 Pad geometry comes straight from the datasheet's example land pattern (the
 ``land_*`` dimensions), so every number is traceable to a quoted datasheet
-page.  Two package layouts are supported: dual-row (SOIC, TSSOP, ...) and
-square quad (QFN, QFP, ...), each with an optional exposed pad.  Specs without
-a land pattern are skipped with a reason rather than guessed at.
+page.  Two package layouts are supported: dual-row (SOIC, TSSOP, SOT-23, ...)
+and square quad (QFN, QFP, ...), each with an optional exposed pad.  Specs
+without a land pattern are skipped with a reason rather than guessed at.
 
 Coordinates follow KiCad: X to the right, Y downward; pin 1 is the top-left
 pad of the left column; numbering runs counter-clockwise.
@@ -20,9 +20,21 @@ from kicad_partspec.sexpr import Atom, write_sexpr
 from kicad_partspec.spec.model import Dimension, PartSpec
 
 FORMAT_VERSION = "20241229"
-DUAL_FAMILIES = frozenset({"SOIC", "SOP", "SSOP", "TSSOP", "MSOP", "VSSOP"})
+DUAL_FAMILIES = frozenset({"SOIC", "SOP", "SSOP", "TSSOP", "MSOP", "VSSOP", "SOT-23", "TSOT-23"})
 QUAD_FAMILIES = frozenset({"QFN", "VQFN", "WQFN", "UQFN", "QFP", "TQFP", "LQFP"})
 _NAME_FAMILY = {"VQFN": "QFN", "WQFN": "QFN", "UQFN": "QFN"}
+# Dual-row families KiCad names by pin count alone, e.g. "SOT-23-6".
+_COUNT_ONLY_FAMILIES = frozenset({"SOT-23", "TSOT-23"})
+# A datasheet spells a package several ways; the footprint is always named for the
+# canonical one, so the aliases have to resolve to it before anything else looks.
+# A bare "SOT" is deliberately not an alias: it also covers SOT-223 and SOT-89, whose
+# pins are not two equal rows, and laying those out as dual-row would be wrong.
+FAMILY_ALIASES = {
+    "SOT23": "SOT-23",
+    "SOT-23": "SOT-23",
+    "TSOT23": "TSOT-23",
+    "TSOT-23": "TSOT-23",
+}
 
 SILK_WIDTH = 0.12
 FAB_WIDTH = 0.1
@@ -49,18 +61,28 @@ def _dim(spec: PartSpec, name: str) -> float | None:
     return dim_value(spec.package.dimensions.get(name))
 
 
+def canonical_family(family: str) -> str:
+    """The family as we name and lay it out: upper case, spellings resolved."""
+    upper = family.upper()
+    return FAMILY_ALIASES.get(upper, upper)
+
+
 def skip_reason(spec: PartSpec) -> str | None:
     """Why no footprint can be generated for this spec, or None when one can."""
-    family = spec.package.family.upper()
+    family = canonical_family(spec.package.family)
     count = spec.package.pin_count
     if family in DUAL_FAMILIES:
         if count % 2:
+            if family in _COUNT_ONLY_FAMILIES:
+                return f"{family} with an odd pin count has unequal rows; not supported (pin_count={count})"
             return f"a dual-row {family} package needs an even pin_count, got {count}"
     elif family in QUAD_FAMILIES:
         if count % 4:
             return f"a quad {family} package needs a pin_count divisible by 4, got {count}"
     else:
-        return f"package family {spec.package.family!r} is not supported (supported: dual-row and quad packages)"
+        dual = ", ".join(sorted(DUAL_FAMILIES))
+        quad = ", ".join(sorted(QUAD_FAMILIES))
+        return f"package family {spec.package.family!r} is not supported (supported dual-row: {dual}; quad: {quad})"
     missing = [name for name in REQUIRED if _dim(spec, name) is None]
     if spec.package.exposed_pad and _dim(spec, "land_ep_size") is None:
         missing.append("land_ep_size")
@@ -101,7 +123,7 @@ def compute_pads(spec: PartSpec) -> list[PadSpec]:
     assert pitch is not None and length is not None and width is not None and span is not None
     half = span / 2
     pads: list[PadSpec] = []
-    if spec.package.family.upper() in DUAL_FAMILIES:
+    if canonical_family(spec.package.family) in DUAL_FAMILIES:
         per_side = count // 2
         offsets = [(index - (per_side - 1) / 2) * pitch for index in range(per_side)]
         for index, y in enumerate(offsets):
@@ -131,13 +153,15 @@ def _fmt(value: float) -> str:
 
 
 def footprint_name(spec: PartSpec) -> str:
-    family = spec.package.family.upper()
-    family = _NAME_FAMILY.get(family, family)
+    canonical = canonical_family(spec.package.family)
+    family = _NAME_FAMILY.get(canonical, canonical)
     count = spec.package.pin_count
     pitch = _dim(spec, "pitch")
     length, width = _dim(spec, "body_length"), _dim(spec, "body_width")
     assert pitch is not None and length is not None and width is not None
-    if spec.package.family.upper() in DUAL_FAMILIES:
+    if family in DUAL_FAMILIES:
+        if family in _COUNT_ONLY_FAMILIES:  # KiCad names these SOT-23-6, not SOT-6_1.6x2.9mm_P0.95mm
+            return f"{family}-{count}"
         return f"{family}-{count}_{width:.1f}x{length:.1f}mm_P{_fmt(pitch)}mm"
     if spec.package.exposed_pad:
         ep = _dim(spec, "land_ep_size")
@@ -194,7 +218,7 @@ def _silk_segments(spec: PartSpec, pads: list[PadSpec]) -> list[Segment]:
     hw, hl = body_w / 2 + SILK_WIDTH, body_l / 2 + SILK_WIDTH
     margin = SILK_CLEARANCE + SILK_WIDTH / 2
     signal = [pad for pad in pads if pad.shape != "rect" or pad.x or pad.y]
-    if spec.package.family.upper() in DUAL_FAMILIES:
+    if canonical_family(spec.package.family) in DUAL_FAMILIES:
         raw: list[Segment] = [(-hw, -hl, hw, -hl), (-hw, hl, hw, hl)]
     else:  # corner brackets
         n = BRACKET_LENGTH

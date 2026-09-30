@@ -55,7 +55,7 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
 ## Rules that prevent the usual mistakes
 
 - One pin entry per **physical pin**. A row such as `1,2,3  SW` is three pins with the same name.
-- `package.family` is the family the datasheet names: TI's `DDC (SOT-23, 6)` is `SOT`, not `SOP`. Never rename it to get a
+- `package.family` is the family the datasheet names: TI's `DDC (SOT-23, 6)` is `SOT-23`, not `SOP`. Never rename it to get a
   footprint out of the build — an unsupported family gives a `footprint.skipped` warning, which is the honest outcome, and
   you report it in the hand-over.
 - A **no-connect** pin still gets an entry (type `no_connect`).

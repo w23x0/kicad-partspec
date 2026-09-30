@@ -6,7 +6,7 @@
   "manufacturer": "…",
   "datasheet": {"sha256": "…", "revision": "…", "url": "…" (optional)},
   "package": {
-    "family": "SOIC | TSSOP | QFN | VQFN | QFP | TQFP | …",
+    "family": "SOIC | TSSOP | SOT-23 | QFN | VQFN | QFP | TQFP | …",
     "pin_count": 8,                 leads/pads, not counting an exposed pad
     "exposed_pad": false,
     "dimensions": { "<name>": {"min": …, "nom": …, "max": …, "source": {"page": 1, "quote": "…"}, "status": "extracted"} }

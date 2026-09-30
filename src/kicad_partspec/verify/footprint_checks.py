@@ -13,7 +13,7 @@ from itertools import pairwise
 from typing import Any
 
 from kicad_partspec.findings import FAIL, WARN, Finding
-from kicad_partspec.gen.footprint import DUAL_FAMILIES, dim_value
+from kicad_partspec.gen.footprint import DUAL_FAMILIES, canonical_family, dim_value
 from kicad_partspec.sexpr import as_float, children, first_child, parse_sexpr
 from kicad_partspec.spec.model import PartSpec
 
@@ -289,7 +289,7 @@ def _lead_coverage(spec: PartSpec, ring: list[_Pad]) -> list[Finding]:
     if not ring:
         return []
     lead_length, lead_width = _dim(spec, "lead_length"), _dim(spec, "lead_width")
-    if spec.package.family.upper() in DUAL_FAMILIES:
+    if canonical_family(spec.package.family) in DUAL_FAMILIES:
         reach = _dim(spec, "overall_width") or _dim(spec, "body_width")
     else:
         reach = _dim(spec, "overall_length") or _dim(spec, "body_length")
