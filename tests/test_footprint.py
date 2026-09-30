@@ -50,11 +50,15 @@ def _ids(findings, status=FAIL):
     return {item.id for item in findings if item.status == status}
 
 
-def _edit(case, mutate):
-    spec = _spec(case)
+def _edit_spec(spec, mutate):
     tree = parse_sexpr(render_footprint(spec))
     mutate(tree[0])
-    return spec, write_sexpr(tree[0])
+    return write_sexpr(tree[0])
+
+
+def _edit(case, mutate):
+    spec = _spec(case)
+    return spec, _edit_spec(spec, mutate)
 
 
 def _pad(fp, number):
@@ -286,6 +290,99 @@ def test_a_tight_pad_gap_is_a_warning_not_a_failure():
     findings = check_footprint(spec, text)
     assert "footprint.pad_gap" in _ids(findings, WARN)
     assert "footprint.pad_overlap" not in _ids(findings)
+
+
+# --------------------------------------------------------------------------- long dual rows
+
+
+# A TI TXS0108E in the PW package: TSSOP-20, pitch 0.65, land span 5.8.  Its rows
+# (2 x 10 pads at 0.65) are longer than half the 5.8 mm span, so the pads at the far
+# ends of a row sit further out than the row spacing itself.
+TSSOP20 = {
+    "family": "TSSOP",
+    "pin_count": 20,
+    "dimensions": {
+        "pitch": {"nom": 0.65},
+        "overall_width": {"min": 6.0, "max": 6.2},
+        "body_length": {"min": 6.4, "max": 6.5},
+        "body_width": {"min": 4.3, "max": 4.4},
+        "lead_width": {"min": 0.22, "max": 0.3},
+        "lead_length": {"min": 0.5, "max": 0.7},
+        "land_pad_length": {"nom": 1.5},
+        "land_pad_width": {"nom": 0.4},
+        "land_span": {"nom": 5.8},
+    },
+}
+
+
+def _tssop20(pitch=None):
+    """A TSSOP-20 PartSpec in the PW land pattern, optionally with a wrong pitch."""
+
+    def mutate(data):
+        data["package"] = copy.deepcopy(TSSOP20)
+        data["package"]["dimensions"]["pitch"]["nom"] = pitch or 0.65
+        data["pins"] = [{"number": str(n), "name": f"P{n}", "electrical_type": "bidirectional"} for n in range(1, 21)]
+
+    return _spec("lm358_soic8", mutate)
+
+
+def _turn_round(fp):
+    """Swap the footprint's axes: the same package laid out the other way round."""
+    for pad in children(fp, "pad"):
+        at = first_child(pad, "at")
+        at[1], at[2] = float(at[2]), float(at[1])
+        size = first_child(pad, "size")
+        size[1], size[2] = size[2], size[1]
+
+
+def _rotate_pads(degrees):
+    """Rotate every pad, the way a third-party library may have written it."""
+
+    def mutate(fp):
+        for pad in children(fp, "pad"):
+            size = first_child(pad, "size")
+            if (degrees // 90) % 2:  # a quarter turn swaps the pad's own width and height
+                size[1], size[2] = size[2], size[1]
+            first_child(pad, "at").append(degrees)
+
+    return mutate
+
+
+def test_a_dual_row_package_with_long_rows_passes_every_artifact_check():
+    spec = _tssop20()
+    assert skip_reason(spec) is None
+    assert check_footprint(spec, render_footprint(spec)) == []
+
+
+def test_the_pitch_check_survives_the_package_being_turned_round():
+    spec = _tssop20()
+    findings = check_footprint(spec, _edit_spec(spec, _turn_round))
+    assert "footprint.pitch" not in _ids(findings)
+
+
+@pytest.mark.parametrize("degrees", [90, 180, 270, -90])
+def test_the_pitch_check_reads_the_leads_through_a_pad_rotation(degrees):
+    spec = _tssop20()
+    assert check_footprint(spec, _edit_spec(spec, _rotate_pads(degrees))) == []
+
+
+def test_a_long_dual_row_still_catches_a_misplaced_pad():
+    spec = _tssop20()
+    findings = check_footprint(spec, _edit_spec(spec, _move("2", dy=0.2)))
+    assert "footprint.pitch" in _ids(findings)
+
+
+def test_a_long_dual_row_still_catches_a_wrong_datasheet_pitch():
+    footprint = render_footprint(_tssop20())  # laid out at the real 0.65 mm pitch
+    findings = check_footprint(_tssop20(pitch=0.5), footprint)  # but the datasheet says 0.5
+    assert "footprint.pitch" in _ids(findings)
+
+
+def test_a_quad_package_passes_and_still_catches_a_misplaced_pad():
+    spec = _spec("tps62130_vqfn16")
+    assert check_footprint(spec, render_footprint(spec)) == []
+    findings = check_footprint(spec, _edit_spec(spec, _move("5", dx=0.2)))  # a pad along the bottom row
+    assert "footprint.pitch" in _ids(findings)
 
 
 def test_unparseable_and_wrong_root_are_reported():
