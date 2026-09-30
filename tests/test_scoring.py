@@ -116,6 +116,21 @@ def test_case_of_strips_run_suffix_and_extension():
     assert case_of("atmega328p_tqfp32.json") == "atmega328p_tqfp32"
 
 
+def test_the_scorer_agrees_with_the_generator_about_family_spellings():
+    """canonical_family decides what "the same package" means; the scorer must use it too."""
+
+    def spelling(family):
+        return lambda d: d["package"].update(family=family)
+
+    for family in ("SOT-23", "SOT23", "sot23"):
+        s = _degrade("tps54202_sot23", spelling(family))
+        assert s.symbol_identical and s.footprint_identical, family
+        assert s.package_ok and s.usable_without_edit, family
+    # a family that is a different package stays a different package
+    assert not _degrade("tps54202_sot23", spelling("TSOT-23")).package_ok
+    assert not _degrade("tps54202_sot23", spelling("SOIC")).package_ok
+
+
 def test_status_disagreement_is_split_into_risky_and_conservative():
     def mutate(d):
         d["pins"][0]["status"] = "inferred"  # gold: extracted -> over-marked, conservative

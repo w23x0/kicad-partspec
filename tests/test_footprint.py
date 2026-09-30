@@ -7,6 +7,7 @@ the matching finding, so a check that never fires would fail here.
 import copy
 import json
 import shutil
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -366,6 +367,13 @@ def test_the_pitch_check_reads_the_leads_through_a_pad_rotation(degrees):
     assert check_footprint(spec, _edit_spec(spec, _rotate_pads(degrees))) == []
 
 
+def test_the_pitch_check_reads_the_leads_through_a_pad_turned_by_an_odd_angle():
+    # a 45 degree turn changes a pad's outline, not the way its lead runs
+    spec = _tssop20()
+    findings = check_footprint(spec, _edit_spec(spec, _rotate_pads(45)))
+    assert "footprint.pitch" not in _ids(findings)
+
+
 def test_a_long_dual_row_still_catches_a_misplaced_pad():
     spec = _tssop20()
     findings = check_footprint(spec, _edit_spec(spec, _move("2", dy=0.2)))
@@ -455,6 +463,113 @@ def test_layout_agrees_with_the_official_kicad_footprint(case):
     assert abs((ours["2"][1] - ours["1"][1]) - (theirs["2"][1] - theirs["1"][1])) < 1e-6  # same pitch
     if "17" in ours:  # the datasheet says 1.68 mm, the official variant is 1.675 mm
         assert abs(ours["17"][2] - theirs["17"][2]) <= 0.05
+
+
+# --------------------------------------------------------------------------- square lands
+
+
+# A square land has no long side to say which way its lead runs, so the edge it
+# belongs to has to come from the footprint: the pads of one edge share a coordinate.
+# Deciding it per pad, from where the pad sits, splits one row across two lines and
+# compares pads from opposite edges with each other.
+def _square_lands(case="stm32g030_tssop20"):
+    """A spec whose land pattern is square -- a datasheet may well print "0.40 0.40"."""
+
+    def mutate(data):
+        dims = data["package"]["dimensions"]
+        for key in ("land_pad_length", "land_pad_width"):
+            dims[key] = {"nom": 0.4, "status": "inferred", "source": {"page": 86, "quote": "0.40 0.40"}}
+
+    return _spec(case, mutate)
+
+
+def test_a_dual_row_package_with_square_lands_passes_its_own_generated_footprint():
+    # the rows run further out than the land span, so |y| beats |x| at the row ends
+    spec = _square_lands()
+    assert skip_reason(spec) is None
+    findings = check_footprint(spec, render_footprint(spec))
+    assert "footprint.pitch" not in _ids(findings), [f.message for f in findings if f.id == "footprint.pitch"]
+
+
+def test_a_dual_row_with_square_lands_still_catches_a_misplaced_pad():
+    findings = check_footprint(_square_lands(), _edit_spec(_square_lands(), _move("2", dy=0.2)))
+    assert "footprint.pitch" in _ids(findings)
+
+
+def _spec_for(family, numbers, **dims):
+    """A minimal PartSpec: the pins the footprint has, and only the dimensions given."""
+
+    def mutate(data):
+        data["package"] = {
+            "family": family,
+            "pin_count": len(numbers),
+            "dimensions": {name: {"nom": value} for name, value in dims.items()},
+        }
+        data["pins"] = [{"number": number, "name": number, "electrical_type": "passive"} for number in numbers]
+
+    return _spec("lm358_soic8", mutate)
+
+
+def test_a_square_land_grid_is_not_read_as_a_pitch_error():
+    """A WLCSP: 12 square 0.2 mm lands on a 4 x 4 grid, 0.5 mm pitch (in the file's own name)."""
+    official = OFFICIAL / "Package_CSP.pretty" / "Macronix_WLCSP-12_2.02x2.09mm_Layout4x4_P0.5mm.kicad_mod"
+    if not official.is_file():
+        pytest.skip("KiCad footprint libraries not installed")
+    text = official.read_text(encoding="utf-8")
+    numbers = [str(node[1]) for node in children(parse_sexpr(text)[0], "pad") if node[1]]
+    assert sorted({round(float(first_child(node, "at")[1]), 3) for node in children(parse_sexpr(text)[0], "pad")}) == [
+        -0.75,
+        -0.25,
+        0.25,
+        0.75,
+    ]  # the whole grid is on a 0.5 mm pitch, as the file's name says
+    findings = check_footprint(_spec_for("QFN", numbers, pitch=0.5), text)
+    assert "footprint.pitch" not in _ids(findings), [f.message for f in findings if f.id == "footprint.pitch"]
+
+
+def test_unnumbered_paste_windows_are_not_part_of_the_signal_ring():
+    """The pull-back thermal vias of a TQFN are unnumbered pads, not pins."""
+    official = (
+        OFFICIAL / "Package_DFN_QFN.pretty" / "TQFN-24-1EP_4x4mm_P0.5mm_EP2.8x2.8mm_PullBack_ThermalVias.kicad_mod"
+    )
+    if not official.is_file():
+        pytest.skip("KiCad footprint libraries not installed")
+    text = official.read_text(encoding="utf-8")
+    assert [n for n in _pads_of(text) if n == ""] == []  # _pads_of drops them, the ring must too
+    spec = _spec_for(
+        "QFN",
+        [str(n) for n in range(1, 25)],
+        pitch=0.5,
+        land_pad_length=0.4,
+        land_pad_width=0.4,
+        land_span=3.6,
+        land_ep_size=2.2,
+    )
+    spec = replace(spec, package=replace(spec.package, exposed_pad=True))
+    findings = check_footprint(spec, text)
+    assert "footprint.pitch" not in _ids(findings), [f.message for f in findings if f.id == "footprint.pitch"]
+
+
+def _one_pad(rotation, half):
+    """One 1 x 1 mm pad, turned by `rotation`, inside a courtyard `half` mm from the origin."""
+    corners = [(-half, -half), (half, -half), (half, half), (-half, half)]
+    return (
+        '(footprint "OnePad"\n  (layer "F.Cu")\n'
+        f'  (pad "1" thru_hole rect (at 0 0 {rotation}) (size 1 1) (layers "*.Cu" "*.Mask"))\n'
+        + "".join(
+            f'  (fp_line (start {a[0]} {a[1]}) (end {b[0]} {b[1]}) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))\n'
+            for a, b in zip(corners, corners[1:] + corners[:1], strict=True)
+        )
+        + ")\n"
+    )
+
+
+def test_a_pad_turned_45_degrees_is_measured_on_its_turned_outline():
+    # a 1 x 1 mm pad at 45 degrees reaches 0.707 mm out, not 0.5 mm, so this courtyard is
+    # 0.093 mm from the pad and has to be reported; unrotated it is 0.3 mm away and is not.
+    spec = _spec_for("SOIC", ["1"])
+    assert "footprint.courtyard_small" in _ids(check_footprint(spec, _one_pad(45, 0.8)))
+    assert "footprint.courtyard_small" not in _ids(check_footprint(spec, _one_pad(0, 0.8)))
 
 
 # --------------------------------------------------------------------------- SOT-23

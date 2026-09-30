@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from kicad_partspec.findings import FAIL
-from kicad_partspec.gen.footprint import compute_pads, skip_reason
+from kicad_partspec.gen.footprint import canonical_family, compute_pads, skip_reason
 from kicad_partspec.spec import PartSpec, load_spec
 from kicad_partspec.verify import verify_spec
 from kicad_partspec.verify.quotes import check_quotes
@@ -127,7 +127,9 @@ def score(case: str, gold_data: Any, extracted_data: Any, pages: list[str] | Non
     result.spec_failures = sorted({item.id for item in verify_spec(extracted_data) if item.status == FAIL})
 
     result.package_ok = (
-        spec.package.family.upper() == gold.package.family.upper()
+        # canonical_family, so a spelling the generator resolves to the same package
+        # (SOT23 == SOT-23) is not scored as a different one.
+        canonical_family(spec.package.family) == canonical_family(gold.package.family)
         and spec.package.pin_count == gold.package.pin_count
         and spec.package.exposed_pad == gold.package.exposed_pad
     )
