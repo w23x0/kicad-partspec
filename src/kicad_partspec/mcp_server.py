@@ -15,12 +15,13 @@ from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
 
-from kicad_partspec import api
+from kicad_partspec import __version__, api
 
 ResponseFormat = Literal["concise", "detailed"]
 
 mcp = MCPServer(
     "PartSpec",
+    version=__version__,
     instructions=(
         "Turn a datasheet-derived PartSpec into verified KiCad symbols and footprints. "
         "Workflow: fill a PartSpec (see the partspec skill), call partspec_validate with the datasheet PDF until it "

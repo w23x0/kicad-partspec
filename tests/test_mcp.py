@@ -14,6 +14,8 @@ pytest.importorskip("mcp")
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+from kicad_partspec import __version__
+
 CASES = Path(__file__).resolve().parent.parent / "evals" / "cases"
 HAS_KICAD = shutil.which("kicad-cli") is not None
 
@@ -42,6 +44,15 @@ def _payload(result):
 def workspace(tmp_path):
     shutil.copy(CASES / "lm358_soic8" / "spec.gold.json", tmp_path / "lm358.json")
     return tmp_path
+
+
+def test_server_info_reports_the_package_version(workspace):
+    async def calls(session):
+        return session.initialize_result.server_info
+
+    info = _run(workspace, calls)
+    assert info.name == "PartSpec"
+    assert info.version == __version__
 
 
 def test_three_tools_with_honest_annotations(workspace):
