@@ -48,10 +48,16 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
   gives on a failed quote, which is the page's own token order.
 - In a pinout figure the number and the name may sit apart (rotated labels), so a quote can only carry the name. Check the
   pairing on the rendered image; that is the reason step 2 exists.
+- When the pinout figure and a pin table disagree on a name (RP2040: the figure says `SWDIO`, the table says `SWD`), use the
+  figure's name — that is what board designers read — put nothing in `alt_names` for it, and list the disagreement in the
+  hand-over.
 
 ## Rules that prevent the usual mistakes
 
 - One pin entry per **physical pin**. A row such as `1,2,3  SW` is three pins with the same name.
+- `package.family` is the family the datasheet names: TI's `DDC (SOT-23, 6)` is `SOT`, not `SOP`. Never rename it to get a
+  footprint out of the build — an unsupported family gives a `footprint.skipped` warning, which is the honest outcome, and
+  you report it in the hand-over.
 - A **no-connect** pin still gets an entry (type `no_connect`).
 - An exposed/thermal pad gets `exposed_pad: true` and one pin entry numbered `pin_count + 1`, marked `inferred` if the datasheet gives it no number.
 - Dimensions are millimetres. If the drawing prints inches with millimetres in brackets, use the bracketed millimetres.

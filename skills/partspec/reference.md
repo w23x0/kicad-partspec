@@ -31,8 +31,10 @@ Pin `number` is a string (`"1"`, `"A1"`).
 - `name`: the primary function as printed. Use the ASCII hyphen (`IN1-`, `V-`). Extra *functions* of a multi-function pin go
   in `alt_names` (`PB0 (PCINT0/CLKO/ICP1)` is name `PB0`, alt_names `PCINT0`, `CLKO`, `ICP1`). A description is not an
   alternate function: an exposed pad is named `EP` and gets no `alt_names`.
-- `group`: only when the part has separate units, e.g. two identical amplifiers: `"A"`, `"B"`, and the supply pins `"power"`.
-  Omit it otherwise.
+- `group`: only when the datasheet shows repeated, identical functional blocks — two identical amplifiers, a quad gate:
+  `"A"`, `"B"`, and the supply pins `"power"`. The two sides of one function are not units, so the A port and B port of a
+  level translator, the two banks of a memory, or an input port and its matching output port stay ungrouped. Omit it
+  otherwise.
 - `electrical_type` is one of KiCad's:
 
 | Datasheet says | Use |
@@ -51,6 +53,10 @@ Pin `number` is a string (`"1"`, `"A1"`).
 
   Other KiCad types exist (`open_emitter`, `free`, `unspecified`); use them only if the datasheet says so.
 
+The pin table's direction column is not the last word. Check the function table and the feature list for a high-impedance
+state: a pin the part can put in Z is `tri_state` even when its row says "output" (74HC595: Q0–Q7 are high-impedance while
+OE is HIGH), and a pin that can never do that stays `output` on the same part (Q7S, which OE does not gate).
+
 ## Status
 
 `extracted`: the pin's number and name were read from the datasheet (a pairing you verified on the rendered image counts),
@@ -68,7 +74,7 @@ Take each of these that the datasheet gives; skip the ones it does not.
 |---|---|
 | `pitch` | distance between neighbouring leads |
 | `body_length`, `body_width` | plastic body size. Dual-row: length is along the pin rows, width is across between the rows. Quad: the two sides |
-| `overall_length`, `overall_width` | lead tip to lead tip, for leaded packages (dual-row: across the rows is `overall_width`) |
+| `overall_length`, `overall_width` | lead tip to lead tip, for leaded packages (dual-row: across the rows is `overall_width`, the largest across-rows dimension on the outline; a lead centre-to-centre span is not recorded) |
 | `height` | overall height above the board (usually a max) |
 | `body_thickness` | body height without leads, when given separately |
 | `standoff` | gap between the seating plane and the body underside |
@@ -83,3 +89,21 @@ Take each of these that the datasheet gives; skip the ones it does not.
 
 Values in parentheses on a drawing are reference values; they are fine to use for `land_*`. If you have to interpret what a
 number is (for example which side of the drawing it measures), mark that dimension `inferred`.
+
+Nexperia, NXP and ST print outline tables in letters where TI drawings print the names. The same letter can mean
+different things per vendor, so read each one off the drawing:
+
+| Letter | Name |
+|---|---|
+| `A` | `height` |
+| `A1` | `standoff` |
+| `A2` | `body_thickness` |
+| `b`, `bp` | `lead_width` |
+| `c` | `lead_thickness` |
+| `D` | `body_length` |
+| `e` | `pitch` |
+| the body `E` (Nexperia `E`, ST `E1`) | `body_width` |
+| the tip-to-tip `E` (Nexperia `HE`, ST `E`) | `overall_width` |
+| the foot: the flat part resting on the board (Nexperia `Lp`, ST `L`) | `lead_length` |
+
+The lead length from body to tip (Nexperia `L`, ST `L1`) is not our `lead_length`; leave it out.
