@@ -1,0 +1,370 @@
+{
+  "mpn": "TCA9548APWR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "2137822fd7128945ea44e83f4e100a932b30964d763715eeffe217ee6080a2dc",
+    "revision": "SCPS207H (Rev. H, May 2012 - revised September 2024)",
+    "url": "https://www.ti.com/lit/ds/symlink/tca9548a.pdf"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 24,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 36,
+          "quote": "22X 0.65"
+        },
+        "status": "extracted",
+        "nom": 0.65
+      },
+      "body_length": {
+        "source": {
+          "page": 36,
+          "quote": "7.9 7.15 7.7 NOTE 3"
+        },
+        "status": "extracted",
+        "min": 7.7,
+        "max": 7.9
+      },
+      "body_width": {
+        "source": {
+          "page": 36,
+          "quote": "4.5 0.19 1.2 MAX B 4.3 0.1 C A B NOTE 4"
+        },
+        "status": "extracted",
+        "min": 4.3,
+        "max": 4.5
+      },
+      "overall_width": {
+        "source": {
+          "page": 36,
+          "quote": "6.6 C TYP A 6.2"
+        },
+        "status": "extracted",
+        "min": 6.2,
+        "max": 6.6
+      },
+      "height": {
+        "source": {
+          "page": 36,
+          "quote": "1.2 MAX"
+        },
+        "status": "extracted",
+        "max": 1.2
+      },
+      "lead_width": {
+        "source": {
+          "page": 36,
+          "quote": "24X 4.5 0.19"
+        },
+        "status": "extracted",
+        "min": 0.19,
+        "max": 0.3
+      },
+      "lead_length": {
+        "source": {
+          "page": 36,
+          "quote": "0.75 0 -8 0.50"
+        },
+        "status": "extracted",
+        "min": 0.5,
+        "max": 0.75
+      },
+      "standoff": {
+        "source": {
+          "page": 36,
+          "quote": "0.15 0.05"
+        },
+        "status": "extracted",
+        "min": 0.05,
+        "max": 0.15
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 37,
+          "quote": "24X (1.5)"
+        },
+        "status": "extracted",
+        "nom": 1.5
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 37,
+          "quote": "24X (0.45)"
+        },
+        "status": "extracted",
+        "nom": 0.45
+      },
+      "land_span": {
+        "source": {
+          "page": 37,
+          "quote": "(5.8)"
+        },
+        "status": "inferred",
+        "nom": 5.8
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "A0",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "A0 1 22 I Address input 0. Connect directly to VCC or ground"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "A1",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "A1 2 23 I Address input 1. Connect directly to VCC or ground"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "RESET",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "RESET 3 24 I Active-low reset input. Connect to VCC or VDPUM (1) through a pull-up resistor, if not used"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "SD0",
+      "electrical_type": "bidirectional",
+      "group": "CH0",
+      "source": {
+        "page": 3,
+        "quote": "SD0 4 1 I/O Serial data 0. Connect to VDPU0 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "SC0",
+      "electrical_type": "bidirectional",
+      "group": "CH0",
+      "source": {
+        "page": 3,
+        "quote": "SC0 5 2 I/O Serial clock 0. Connect to VDPU0 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "SD1",
+      "electrical_type": "bidirectional",
+      "group": "CH1",
+      "source": {
+        "page": 3,
+        "quote": "SD1 6 3 I/O Serial data 1. Connect to VDPU1 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "SC1",
+      "electrical_type": "bidirectional",
+      "group": "CH1",
+      "source": {
+        "page": 3,
+        "quote": "SC1 7 4 I/O Serial clock 1. Connect to VDPU1 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "SD2",
+      "electrical_type": "bidirectional",
+      "group": "CH2",
+      "source": {
+        "page": 3,
+        "quote": "SD2 8 5 I/O Serial data 2. Connect to VDPU2 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "SC2",
+      "electrical_type": "bidirectional",
+      "group": "CH2",
+      "source": {
+        "page": 3,
+        "quote": "SC2 9 6 I/O Serial clock 2. Connect to VDPU2 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "SD3",
+      "electrical_type": "bidirectional",
+      "group": "CH3",
+      "source": {
+        "page": 3,
+        "quote": "SD3 10 7 I/O Serial data 3. Connect to VDPU3 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "11",
+      "name": "SC3",
+      "electrical_type": "bidirectional",
+      "group": "CH3",
+      "source": {
+        "page": 3,
+        "quote": "SC3 11 8 I/O Serial clock 3. Connect to VDPU3 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "12",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "GND 12 9 \u2014 Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "13",
+      "name": "SD4",
+      "electrical_type": "bidirectional",
+      "group": "CH4",
+      "source": {
+        "page": 3,
+        "quote": "SD4 13 10 I/O Serial data 4. Connect to VDPU4 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "14",
+      "name": "SC4",
+      "electrical_type": "bidirectional",
+      "group": "CH4",
+      "source": {
+        "page": 3,
+        "quote": "SC4 14 11 I/O Serial clock 4. Connect to VDPU4 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "15",
+      "name": "SD5",
+      "electrical_type": "bidirectional",
+      "group": "CH5",
+      "source": {
+        "page": 3,
+        "quote": "SD5 15 12 I/O Serial data 5. Connect to VDPU5 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "16",
+      "name": "SC5",
+      "electrical_type": "bidirectional",
+      "group": "CH5",
+      "source": {
+        "page": 3,
+        "quote": "SC5 16 13 I/O Serial clock 5. Connect to VDPU5 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "17",
+      "name": "SD6",
+      "electrical_type": "bidirectional",
+      "group": "CH6",
+      "source": {
+        "page": 3,
+        "quote": "SD6 17 14 I/O Serial data 6. Connect to VDPU6 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "18",
+      "name": "SC6",
+      "electrical_type": "bidirectional",
+      "group": "CH6",
+      "source": {
+        "page": 3,
+        "quote": "SC6 18 15 I/O Serial clock 6. Connect to VDPU6 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "19",
+      "name": "SD7",
+      "electrical_type": "bidirectional",
+      "group": "CH7",
+      "source": {
+        "page": 3,
+        "quote": "SD7 19 16 I/O Serial data 7. Connect to VDPU7 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "20",
+      "name": "SC7",
+      "electrical_type": "bidirectional",
+      "group": "CH7",
+      "source": {
+        "page": 3,
+        "quote": "SC7 20 17 I/O Serial clock 7. Connect to VDPU7 (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "21",
+      "name": "A2",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "A2 21 18 I Address input 2. Connect directly to VCC or ground"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "22",
+      "name": "SCL",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 3,
+        "quote": "SCL 22 19 I/O Serial clock bus. Connect to VDPUM (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "23",
+      "name": "SDA",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 3,
+        "quote": "SDA 23 20 I/O Serial data bus. Connect to VDPUM (1) through a pull-up resistor"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "24",
+      "name": "VCC",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "VCC 24 21 Power Supply voltage"
+      },
+      "status": "inferred"
+    }
+  ]
+}

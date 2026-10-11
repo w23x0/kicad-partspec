@@ -262,6 +262,7 @@ ORACLE = {
     "74hc595_so16": ("74xx.kicad_sym", "74HC595"),
     "stm32g030_tssop20": ("MCU_ST_STM32G0.kicad_sym", "STM32G030F6Px"),
     "cp2102n_qfn24": ("Interface_USB.kicad_sym", "CP2102N-Axx-xQFN24"),
+    "tca9548a_tssop24": ("Interface_Expansion.kicad_sym", "TCA9548APWR"),
 }
 
 
