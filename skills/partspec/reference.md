@@ -93,8 +93,27 @@ Take each of these that the datasheet gives; skip the ones it does not.
 | `land_span` | centre-to-centre distance between opposite pad rows in the land pattern |
 | `land_ep_size` | exposed pad size in the land pattern |
 
-Values in parentheses on a drawing are reference values; they are fine to use for `land_*`. If you have to interpret what a
-number is (for example which side of the drawing it measures), mark that dimension `inferred`.
+Three lead callouts are near-identical on the page and are the easiest to misread. Name each one by the two features its
+extension lines run between, not by its size, its place on the sheet or the label the drawing gives it:
+
+| The dimension spans | Name |
+|---|---|
+| the body underside and the seating (gage) plane | `standoff` |
+| the two edges of one lead's cross-section, in the front or side view | `lead_thickness` |
+| the lead tip and where the lead leaves the body — the start of the bend, the foot that rests on the board | `lead_length` |
+
+This holds for any vendor's outline sheet, named or lettered, and inside the DETAIL A style detail view as much as on the
+outline: the foot row is the same span the letter table below gives as Nexperia `Lp` / ST `L`.
+
+When two readings of the same callout disagree about which of these three it is, the drawing is being misread, not the name:
+re-render the page and say which two planes the dimension spans before naming it.
+
+Values in parentheses on a drawing are reference dimensions — the drawing's own notes say so. They may be used for a `land_*`
+value and must not become a package dimension: a parenthesised `(0.15) TYP` across a lead in a package outline is not a
+`lead_thickness`, and if that is the only thickness callout on the sheet, leave `lead_thickness` out rather than record it. A
+boxed `BASIC` value, such as a boxed gage-plane offset, is likewise not a package dimension: it is a basic dimension for the
+land pattern. If you have to interpret what a number is (for example which side of the drawing it measures), mark that
+dimension `inferred`.
 
 Nexperia, NXP and ST print outline tables in letters where TI drawings print the names. The same letter can mean
 different things per vendor, so read each one off the drawing:
