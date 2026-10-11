@@ -1,0 +1,228 @@
+{
+  "mpn": "TPS5430DDA",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "88c98e6e51851285fbbfc17837d002b29af7cd3fe30442fa7e4612c5179985da",
+    "revision": "SLVS632L (Rev. L, April 2026)",
+    "url": "https://www.ti.com/lit/ds/symlink/tps5430.pdf"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": true,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 38,
+          "quote": "6X 1.27"
+        },
+        "status": "extracted",
+        "nom": 1.27
+      },
+      "overall_width": {
+        "source": {
+          "page": 38,
+          "quote": "6.2 TYP SEATING PLANE 5.8"
+        },
+        "status": "extracted",
+        "min": 5.8,
+        "max": 6.2
+      },
+      "body_length": {
+        "source": {
+          "page": 38,
+          "quote": "5.0 2X 4.8 3.81 NOTE 3"
+        },
+        "status": "extracted",
+        "min": 4.8,
+        "max": 5.0
+      },
+      "body_width": {
+        "source": {
+          "page": 38,
+          "quote": "4.0 0.31 B 1.7 MAX 3.8"
+        },
+        "status": "extracted",
+        "min": 3.8,
+        "max": 4.0
+      },
+      "height": {
+        "source": {
+          "page": 38,
+          "quote": "1.7 MAX"
+        },
+        "status": "extracted",
+        "max": 1.7
+      },
+      "lead_width": {
+        "source": {
+          "page": 38,
+          "quote": "0.51 8X 4.0 0.31"
+        },
+        "status": "extracted",
+        "min": 0.31,
+        "max": 0.51
+      },
+      "lead_thickness": {
+        "source": {
+          "page": 38,
+          "quote": "0.25 TYP 0.10"
+        },
+        "status": "extracted",
+        "min": 0.1,
+        "max": 0.25
+      },
+      "lead_length": {
+        "source": {
+          "page": 38,
+          "quote": "1.27 0.00 1 8 0.40"
+        },
+        "status": "extracted",
+        "min": 0.4,
+        "max": 1.27
+      },
+      "standoff": {
+        "source": {
+          "page": 38,
+          "quote": "0.15 0 -8 1.27 0.00"
+        },
+        "status": "extracted",
+        "min": 0.0,
+        "max": 0.15
+      },
+      "ep_size": {
+        "source": {
+          "page": 38,
+          "quote": "2.71 TYPICAL 2.11"
+        },
+        "status": "inferred",
+        "min": 2.11,
+        "max": 2.71
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 39,
+          "quote": "8X (1.55)"
+        },
+        "status": "extracted",
+        "nom": 1.55
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 39,
+          "quote": "8X (0.6)"
+        },
+        "status": "extracted",
+        "nom": 0.6
+      },
+      "land_span": {
+        "source": {
+          "page": 39,
+          "quote": "(5.4)"
+        },
+        "status": "inferred",
+        "nom": 5.4
+      },
+      "land_ep_size": {
+        "source": {
+          "page": 39,
+          "quote": "(2.71) SOLDER MASK DEFINED PAD"
+        },
+        "status": "inferred",
+        "nom": 2.71
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "BOOT",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "BOOT 1 O"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "NC",
+      "electrical_type": "no_connect",
+      "source": {
+        "page": 3,
+        "quote": "NC 2, 3 — Not connected internally."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "NC",
+      "electrical_type": "no_connect",
+      "source": {
+        "page": 3,
+        "quote": "NC 2, 3 — Not connected internally."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "VSENSE",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "VSENSE 4 I Feedback voltage for the regulator."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "ENA",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "ENA 5 I"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "GND 6 — Ground. Connect to DAP."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "7",
+      "name": "VIN",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "VIN 7 —"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "PH",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "PH 8 I Source of the high side power MOSFET."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "DAP",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "DAP — GND pin must be connected to the exposed pad for proper operation."
+      },
+      "status": "inferred"
+    }
+  ]
+}
