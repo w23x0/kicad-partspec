@@ -15,6 +15,13 @@ Each `cases/<name>/spec.gold.json` is a hand-checked PartSpec for one real part.
 | `74hc595_so16` | Nexperia 74HC595 | SO16 (SOT109-1) | round 2; no land pattern in the datasheet, so no footprint; 3-state outputs |
 | `stm32g030_tssop20` | ST STM32G030F6 | TSSOP-20 | round 2; letter-coded outline table |
 | `cp2102n_qfn24` | Silicon Labs CP2102N | QFN-24, exposed pad | round 2; one datasheet for three packages |
+| `ne555_soic8` | TI NE555 | SOIC-8 (D0008A) | round 4; two lead dimensions adjudicated |
+| `uln2003a_tssop16` | TI ULN2003A | TSSOP-16 (PW0016A) | round 4; seven Darlington channels grouped |
+| `tca9548a_tssop24` | TI TCA9548A | TSSOP-24 (PW0024A) | round 4; eight I2C channels grouped |
+| `tps5430_soic8` | TI TPS5430 | SOIC-8 PowerPAD (DDA0008B) | round 4; exposed pad `DAP` |
+
+Round 4 ran seven parts. The three above that are not listed — `ina226_vssop10`, `pca9306_vssop8` and
+`24lc256_soic8` — needed no correction to their gold, so they are not imported here.
 
 ## Status of these cases
 
@@ -52,8 +59,11 @@ confirm the SHA-256.
 - `status`: `extracted` means read directly from the datasheet. `inferred` means the model or the author
   derived it, for example supply and ground pins mapped to KiCad `power_in`, an open-drain output mapped to
   `open_collector`, or the exposed-pad number (the datasheet gives none).
-- Parts whose SOIC/TQFP drawing has ambiguous callouts (the SOIC `.004-.010` and `.005-.010` values) leave
-  those dimensions out instead of guessing.
+- A SOIC/TQFP callout that does not resolve is left out rather than guessed. The SOIC `.004-.010` and
+  `.005-.010` values were such a case until round 4: at 600 dpi on the NE555 D0008A sheet they do resolve —
+  `.004-.010` (DETAIL A, body underside to seating plane) is the `standoff` and `.005-.010` (front view, across
+  the lead toe) is the `lead_thickness` — and that gold records both. Below the dpi where the extension lines are
+  legible, leave them out as before.
 
 ## Extraction round 1
 
@@ -174,3 +184,88 @@ The skill was tightened for units, 3-state outputs, family names, letter-coded t
 - The skill now uses several of these parts as examples, so the next honest test again needs datasheets that were used to
   write neither.
 - "Quotes not on page" is measured with the validator in the loop, as in round 1.
+
+## Extraction round 4
+
+Seven parts that were used to write neither the skill nor an earlier gold, two runs each — 14 runs. Every run got the
+plugin as a user gets it, headless, with nothing but the datasheet PDF in its directory. Golds were written with every
+pin and dimension checked on a rendered page and then cross-checked against the official KiCad symbol and footprint
+(`cases/<case>/review.md`); every run-versus-gold disagreement was then re-decided against the PDF by the
+orchestrating session, page by page.
+
+| Case | runs | contested rows | gold | run | neither |
+|---|---|---|---|---|---|
+| ne555_soic8 | 2 | 5 | 3 | 1 | 1 |
+| 24lc256_soic8 | 2 | 3 | 3 | 0 | 0 |
+| ina226_vssop10 | 2 | 3 | 3 | 0 | 0 |
+| pca9306_vssop8 | 2 | 5 | 5 | 0 | 0 |
+| tca9548a_tssop24 | 2 | 23 | 3 | 18 | 2 |
+| uln2003a_tssop16 | 2 | 20 | 3 | 17 | 0 |
+| tps5430_soic8 | 2 | 5 | 4 | 1 | 0 |
+| **total** | **14** | **64** | **24** | **37** | **3** |
+
+Scored as the rounds before it, 4 of the 14 runs came out usable without edit: both NE555 runs, PCA9306 run 2 and
+TCA9548A run 1. No run invented a pin or a pin number, every run found every pin, and every quote in every run was on
+the page it was cited to.
+
+### What the round found in the golds
+
+The interesting result is the other column. In 27 of the 64 contested rows (the 24 `GOLD` verdicts plus the 3 `NEITHER`
+ones, where neither the gold nor either run was right) the gold was the thing that had to change. Three classes of
+error account for most of it:
+
+- Two golds — ULN2003A and TCA9548A — recorded a part built from repeated identical blocks (seven Darlington pairs,
+  eight I²C channels) as having no units at all, because the datasheet numbers the channels inside the pin names
+  (`1B`…`7B`, `SD0`…`SD7`) instead of printing unit letters. Nothing in `SKILL.md` or `reference.md` requires letters;
+  `A`/`B` appear there only as examples of keys. Both golds gained the datasheet's own channel numbers.
+- Two more golds — ULN2003A and TPS5430 — read a stacked `max / min TYP` pair as `nom / max`. A nominal equal to the
+  lower limit of its own range is not a reading any convention supports; the TCA9548A gold already used `min`/`max`
+  for the identical `6.6 / 6.2 TYP` callout, so the three golds disagreed with each other.
+- The TCA9548A gold recorded a standoff as a `lead_thickness` — the DETAIL A `0.15 / 0.05` callout, which is the same
+  standoff on PW0016A and DCU0008A.
+
+The golds that held up held up against runs that all made the same mistake: on 24LC256 and INA226 both runs invented a
+`power` group for a lone supply pin, which `reference.md` says to omit. That is four gold-right rows in the table above,
+and they are the one kind of disagreement this round scored cleanly — the runs were all wrong the same way.
+
+This is the third round in a row whose golds needed correcting, after two gold errors in round 1 and two in round 2.
+That is the argument for treating these files as a first draft: a gold corrected after the runs are seen is not
+independent evidence about the runs, and `## Status of these cases` already says a human review is still needed.
+
+### What the round found in the tool
+
+Two rules in `skills/partspec/reference.md` were wrong or missing, and both were fixed:
+
+- `group`. The ULN2003A and TCA9548A runs keyed their channels and the rule was ambiguous enough that the golds
+  avoided it. The rule now says that repeated identical blocks are keyed by whatever the datasheet calls them —
+  numbers included — and that the two sides of one unit share a key; it also names the supply pins as the `power`
+  key explicitly, which both runs used correctly and neither gold allowed.
+- Telling `standoff`, `lead_length` and `lead_thickness` apart. DETAIL A's `0.15 / 0.05` callout is the standoff and
+  the front view's `(0.15) TYP` is the lead thickness on three TI package sheets, and the golds split between them.
+  The rule is now the distinction the drawings actually make — seating plane to body underside, lead tip to start of
+  bend, and the cross-section across the lead — together with the rule that a parenthesised value is a reference value:
+  usable for `land_*`, not for a package limit.
+
+### The recurring failure mode
+
+Two readings recur across the dimension rows, and the golds got them wrong too.
+
+The first is **which page is in use**. One TPS5430 run took the exposed-pad size from the superseded `DDA0008J`
+package drawing elsewhere in the same datasheet; the page actually in use prints `2.71` over `2.11`, and the two
+differ enough to move the generated footprint. The same datasheet has two dimensions that look like the exposed pad —
+`(2.71)`/`(3.4)` on the solid green "solder mask defined pad" and `(2.95)`/`(4.9)` on the dashed "metal covered by
+solder mask" outline — and only the first is the pad.
+
+The second is **stacked pairs**. On a TI sheet, `7.9 / 7.7`, `4.5 / 4.3` and `0.30 / 0.19` printed under one callout
+are max over min, read top-down — not a nominal and a maximum. Most of the dimension rows in the table above are of this
+kind, and two golds read `overall_width` the wrong way round the same way (`6.6` over `6.2 TYP`, `6.2` over `5.8`).
+
+### Read these numbers with care
+
+- Seven parts, two runs each. It shows where extraction breaks, not an accuracy rate.
+- The gold was written by the same model that was graded, cross-checked against KiCad but not reviewed by a human,
+  and four of its seven cases were corrected after the runs were scored. The corrected gold is not independent of
+  the runs, and the 4-of-14 figure above is a property of that combination.
+- The rounds are not comparable to each other: round 1 ran before the skill was tightened by round 1's own results,
+  round 2 ran with a different model, and this round's results have since been folded into the skill as well.
+- "Quotes not on page" is measured with the validator in the loop, as in rounds 1 and 2.
