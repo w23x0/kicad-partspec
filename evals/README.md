@@ -60,10 +60,11 @@ confirm the SHA-256.
   derived it, for example supply and ground pins mapped to KiCad `power_in`, an open-drain output mapped to
   `open_collector`, or the exposed-pad number (the datasheet gives none).
 - A SOIC/TQFP callout that does not resolve is left out rather than guessed. The SOIC `.004-.010` and
-  `.005-.010` values were such a case until round 4: at 600 dpi on the NE555 D0008A sheet they do resolve —
-  `.004-.010` (DETAIL A, body underside to seating plane) is the `standoff` and `.005-.010` (front view, across
-  the lead toe) is the `lead_thickness` — and that gold records both. Below the dpi where the extension lines are
-  legible, leave them out as before.
+  `.005-.010` values were such a case. In round 4 the NE555 D0008A gold records both: `.005-.010` (front view,
+  across the lead toe) as `lead_thickness`, unambiguous at 150 dpi, and `.004-.010` (DETAIL A, body underside to
+  seating plane) as `standoff`, which only resolves at 600 dpi. The adjudication flagged the `standoff` as its
+  lower-confidence item and said a human should decide whether to override this convention; **that decision is
+  still open**. Below the dpi where the extension lines are legible, leave them out as before.
 
 ## Extraction round 1
 
@@ -210,9 +211,9 @@ the page it was cited to.
 
 ### What the round found in the golds
 
-The interesting result is the other column. In 27 of the 64 contested rows (the 24 `GOLD` verdicts plus the 3 `NEITHER`
-ones, where neither the gold nor either run was right) the gold was the thing that had to change. Three classes of
-error account for most of it:
+The interesting result is the other column. In 40 of the 64 contested rows — the 37 `RUN` verdicts and the 3
+`NEITHER` ones, where the run was right or both sides were wrong — the gold was the thing that had to change; the
+24 `GOLD` rows are where the gold held and the run misread the page. Three classes of error account for most of it:
 
 - Two golds — ULN2003A and TCA9548A — recorded a part built from repeated identical blocks (seven Darlington pairs,
   eight I²C channels) as having no units at all, because the datasheet numbers the channels inside the pin names
@@ -228,7 +229,7 @@ The golds that held up held up against runs that all made the same mistake: on 2
 `power` group for a lone supply pin, which `reference.md` says to omit. That is four gold-right rows in the table above,
 and they are the one kind of disagreement this round scored cleanly — the runs were all wrong the same way.
 
-This is the third round in a row whose golds needed correcting, after two gold errors in round 1 and two in round 2.
+This round's golds needed correcting too, after two gold errors in round 1 and two in round 2.
 That is the argument for treating these files as a first draft: a gold corrected after the runs are seen is not
 independent evidence about the runs, and `## Status of these cases` already says a human review is still needed.
 
