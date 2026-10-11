@@ -31,10 +31,16 @@ Pin `number` is a string (`"1"`, `"A1"`).
 - `name`: the primary function as printed. Use the ASCII hyphen (`IN1-`, `V-`). Extra *functions* of a multi-function pin go
   in `alt_names` (`PB0 (PCINT0/CLKO/ICP1)` is name `PB0`, alt_names `PCINT0`, `CLKO`, `ICP1`). A description is not an
   alternate function: an exposed pad is named `EP` and gets no `alt_names`.
-- `group`: only when the datasheet shows repeated, identical functional blocks — two identical amplifiers, a quad gate:
-  `"A"`, `"B"`, and the supply pins `"power"`. The two sides of one function are not units, so the A port and B port of a
-  level translator, the two banks of a memory, or an input port and its matching output port stay ungrouped. Omit it
-  otherwise.
+- `group`: required whenever the datasheet shows repeated, identical functional blocks — two identical amplifiers, a quad
+  gate, N numbered channels. Every pin of every unit is grouped; leaving them ungrouped is a defect, not a safe default.
+  The key is whatever the datasheet calls the unit — its letters `"A"`, `"B"`, its channel numbers `"1"`–`"7"`, its
+  channel names `"CH0"`–`"CH7"` — never a key the datasheet does not use, and a numbered or named channel is a channel
+  even without a letter. Both pins of one unit share that one key: a unit's control pin and its output pin, the base and
+  the collector of one channel. Supply, ground and return pins the datasheet calls common to all units — a common
+  emitter, a common cathode, a shared rail — take `"power"` in addition to the unit groups, never instead of them. Pins
+  with no unit of their own — an address pin, a reset, a chip select — stay ungrouped. The two sides of one part's
+  function are different blocks, not units, so the A port and B port of a level translator, the two banks of a memory,
+  or an input port and its matching output port stay ungrouped; that clause does not split the two pins of one unit.
 - `electrical_type` is one of KiCad's:
 
 | Datasheet says | Use |
