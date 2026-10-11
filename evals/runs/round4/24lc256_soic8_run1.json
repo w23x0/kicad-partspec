@@ -1,0 +1,80 @@
+{
+  "mpn": "24LC256",
+  "manufacturer": "Microchip Technology",
+  "datasheet": {
+    "sha256": "baed9ce6a87b803346305d5369c53968f32c466f28a540c9fd130dba2e144f1c",
+    "revision": "Rev. U (11/2013), document DS20001203U"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "body_width": {
+        "nom": 3.9,
+        "source": {"page": 39, "quote": "SN  = Plastic SOIC (3.90 mm body), 8-lead"},
+        "status": "inferred"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "A0",
+      "electrical_type": "input",
+      "source": {"page": 5, "quote": "A0            1         1        1         1            —       1           1        3    User Configurable Chip Select"},
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "A1",
+      "electrical_type": "input",
+      "source": {"page": 5, "quote": "A1            2         2        2         2            —       2           2        2    User Configurable Chip Select"},
+      "status": "inferred"
+    },
+    {
+      "number": "3",
+      "name": "A2",
+      "electrical_type": "input",
+      "source": {"page": 5, "quote": "A2            3         3        3         3             3      3           3        5    User Configurable Chip Select"},
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "VSS",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {"page": 5, "quote": "VSS           4         4        4         4             4      4           4        8    Ground"},
+      "status": "inferred"
+    },
+    {
+      "number": "5",
+      "name": "SDA",
+      "electrical_type": "open_collector",
+      "source": {"page": 5, "quote": "SDA           5         5        5         5             5      5           5        6    Serial Data"},
+      "status": "inferred"
+    },
+    {
+      "number": "6",
+      "name": "SCL",
+      "electrical_type": "input",
+      "source": {"page": 5, "quote": "SCL           6         6        6         6             6      6           6        7    Serial Clock"},
+      "status": "inferred"
+    },
+    {
+      "number": "7",
+      "name": "WP",
+      "electrical_type": "input",
+      "source": {"page": 5, "quote": "WP            7         7        7         7             7      7           7        4    Write-Protect Input"},
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "VCC",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {"page": 5, "quote": "VCC           8         8        8         8             8      8           8        1    +1.7V to 5.5V (24AA256)                                                                                           +2.5V to 5.5V (24LC256)"},
+      "status": "inferred"
+    }
+  ]
+}

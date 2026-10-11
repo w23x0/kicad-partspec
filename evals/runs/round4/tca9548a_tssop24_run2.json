@@ -1,0 +1,52 @@
+{
+  "mpn": "TCA9548APWR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "2137822fd7128945ea44e83f4e100a932b30964d763715eeffe217ee6080a2dc",
+    "revision": "SCPS207H – MAY 2012 – REVISED SEPTEMBER 2024"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 24,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {"nom": 0.65, "source": {"page": 36, "quote": "22X 0.65"}, "status": "extracted"},
+      "body_length": {"min": 7.7, "max": 7.9, "source": {"page": 36, "quote": "7.9 7.15 7.7 NOTE 3"}, "status": "inferred"},
+      "body_width": {"min": 4.3, "max": 4.5, "source": {"page": 36, "quote": "4.5 0.19 1.2 MAX B 4.3"}, "status": "inferred"},
+      "overall_width": {"min": 6.2, "nom": 6.6, "source": {"page": 36, "quote": "6.6 C TYP A 6.2"}, "status": "inferred"},
+      "height": {"max": 1.2, "source": {"page": 36, "quote": "1.2 MAX"}, "status": "extracted"},
+      "standoff": {"min": 0.05, "max": 0.15, "source": {"page": 36, "quote": "0.25 GAGE PLANE 0.15 0.05"}, "status": "inferred"},
+      "lead_width": {"min": 0.19, "max": 0.30, "source": {"page": 36, "quote": "0.30 24X 4.5 0.19"}, "status": "inferred"},
+      "lead_length": {"min": 0.50, "max": 0.75, "source": {"page": 36, "quote": "0.75 0 -8 0.50"}, "status": "inferred"},
+      "land_pad_length": {"nom": 1.5, "source": {"page": 37, "quote": "24X (1.5) SYMM"}, "status": "extracted"},
+      "land_pad_width": {"nom": 0.45, "source": {"page": 37, "quote": "24X (0.45)"}, "status": "extracted"},
+      "land_span": {"nom": 5.8, "source": {"page": 37, "quote": "(5.8)"}, "status": "extracted"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "A0", "electrical_type": "input", "source": {"page": 3, "quote": "A0 1 22 I Address input 0. Connect directly to VCC or ground"}, "status": "extracted"},
+    {"number": "2", "name": "A1", "electrical_type": "input", "source": {"page": 3, "quote": "A1 2 23 I Address input 1. Connect directly to VCC or ground"}, "status": "extracted"},
+    {"number": "3", "name": "RESET", "electrical_type": "input", "source": {"page": 3, "quote": "RESET 3 24 I Active-low reset input."}, "status": "extracted"},
+    {"number": "4", "name": "SD0", "electrical_type": "bidirectional", "group": "CH0", "source": {"page": 3, "quote": "SD0 4 1 I/O Serial data 0."}, "status": "extracted"},
+    {"number": "5", "name": "SC0", "electrical_type": "bidirectional", "group": "CH0", "source": {"page": 3, "quote": "SC0 5 2 I/O Serial clock 0."}, "status": "extracted"},
+    {"number": "6", "name": "SD1", "electrical_type": "bidirectional", "group": "CH1", "source": {"page": 3, "quote": "SD1 6 3 I/O Serial data 1."}, "status": "extracted"},
+    {"number": "7", "name": "SC1", "electrical_type": "bidirectional", "group": "CH1", "source": {"page": 3, "quote": "SC1 7 4 I/O Serial clock 1."}, "status": "extracted"},
+    {"number": "8", "name": "SD2", "electrical_type": "bidirectional", "group": "CH2", "source": {"page": 3, "quote": "SD2 8 5 I/O Serial data 2."}, "status": "extracted"},
+    {"number": "9", "name": "SC2", "electrical_type": "bidirectional", "group": "CH2", "source": {"page": 3, "quote": "SC2 9 6 I/O Serial clock 2."}, "status": "extracted"},
+    {"number": "10", "name": "SD3", "electrical_type": "bidirectional", "group": "CH3", "source": {"page": 3, "quote": "SD3 10 7 I/O Serial data 3."}, "status": "extracted"},
+    {"number": "11", "name": "SC3", "electrical_type": "bidirectional", "group": "CH3", "source": {"page": 3, "quote": "SC3 11 8 I/O Serial clock 3."}, "status": "extracted"},
+    {"number": "12", "name": "GND", "electrical_type": "power_in", "group": "power", "source": {"page": 3, "quote": "GND 12 9 — Ground"}, "status": "inferred"},
+    {"number": "13", "name": "SD4", "electrical_type": "bidirectional", "group": "CH4", "source": {"page": 3, "quote": "SD4 13 10 I/O Serial data 4."}, "status": "extracted"},
+    {"number": "14", "name": "SC4", "electrical_type": "bidirectional", "group": "CH4", "source": {"page": 3, "quote": "SC4 14 11 I/O Serial clock 4."}, "status": "extracted"},
+    {"number": "15", "name": "SD5", "electrical_type": "bidirectional", "group": "CH5", "source": {"page": 3, "quote": "SD5 15 12 I/O Serial data 5."}, "status": "extracted"},
+    {"number": "16", "name": "SC5", "electrical_type": "bidirectional", "group": "CH5", "source": {"page": 3, "quote": "SC5 16 13 I/O Serial clock 5."}, "status": "extracted"},
+    {"number": "17", "name": "SD6", "electrical_type": "bidirectional", "group": "CH6", "source": {"page": 3, "quote": "SD6 17 14 I/O Serial data 6."}, "status": "extracted"},
+    {"number": "18", "name": "SC6", "electrical_type": "bidirectional", "group": "CH6", "source": {"page": 3, "quote": "SC6 18 15 I/O Serial clock 6."}, "status": "extracted"},
+    {"number": "19", "name": "SD7", "electrical_type": "bidirectional", "group": "CH7", "source": {"page": 3, "quote": "SD7 19 16 I/O Serial data 7."}, "status": "extracted"},
+    {"number": "20", "name": "SC7", "electrical_type": "bidirectional", "group": "CH7", "source": {"page": 3, "quote": "SC7 20 17 I/O Serial clock 7."}, "status": "extracted"},
+    {"number": "21", "name": "A2", "electrical_type": "input", "source": {"page": 3, "quote": "A2 21 18 I Address input 2. Connect directly to VCC or ground"}, "status": "extracted"},
+    {"number": "22", "name": "SCL", "electrical_type": "bidirectional", "source": {"page": 3, "quote": "SCL 22 19 I/O Serial clock bus."}, "status": "extracted"},
+    {"number": "23", "name": "SDA", "electrical_type": "bidirectional", "source": {"page": 3, "quote": "SDA 23 20 I/O Serial data bus."}, "status": "extracted"},
+    {"number": "24", "name": "VCC", "electrical_type": "power_in", "group": "power", "source": {"page": 3, "quote": "VCC 24 21 Power Supply voltage"}, "status": "inferred"}
+  ]
+}

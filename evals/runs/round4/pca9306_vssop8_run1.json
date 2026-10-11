@@ -1,0 +1,192 @@
+{
+  "mpn": "PCA9306",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "1cd97c734729f2bfca26ccaa93521c04c373568e4ebe6d892267dba2571e21e6",
+    "revision": "Rev. O (SCPS113O)"
+  },
+  "package": {
+    "family": "VSSOP",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.5,
+        "source": {
+          "page": 31,
+          "quote": "6X 0.5"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 1.9,
+        "max": 2.1,
+        "source": {
+          "page": 31,
+          "quote": "2.1 1.5 1.9"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "min": 0.6,
+        "max": 0.9,
+        "source": {
+          "page": 31,
+          "quote": "0.9 GAGE PLANE 0.6"
+        },
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.0,
+        "max": 0.1,
+        "source": {
+          "page": 31,
+          "quote": "0.1 0 -6 0.35 0.0"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.17,
+        "max": 0.25,
+        "source": {
+          "page": 31,
+          "quote": "0.25 8X 0.17"
+        },
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.2,
+        "max": 0.35,
+        "source": {
+          "page": 31,
+          "quote": "0 -6 0.35 0.0 (0.13) TYP 0.20"
+        },
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 0.85,
+        "source": {
+          "page": 32,
+          "quote": "8X (0.85)"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.3,
+        "source": {
+          "page": 32,
+          "quote": "8X (0.3)"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 3.1,
+        "source": {
+          "page": 32,
+          "quote": "(3.1)"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 2.2,
+        "max": 2.4,
+        "source": {
+          "page": 31,
+          "quote": "2.4 B 0.08 C A B 2.2"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 3.0,
+        "max": 3.2,
+        "source": {
+          "page": 31,
+          "quote": "3.2 TYP C 3.0"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 4,
+        "quote": "GND 1 A1 — Ground, 0 V"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "VREF1",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 4,
+        "quote": "VREF1 2 B1 I Low-voltage-side reference supply voltage for SCL1 and SDA1"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "3",
+      "name": "SCL1",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 4,
+        "quote": "SCL1 3 C1 I/O Serial clock, low-voltage side"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "SDA1",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 4,
+        "quote": "SDA1 4 D1 I/O Serial data, low-voltage side"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "5",
+      "name": "SDA2",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 4,
+        "quote": "SDA2 5 D2 I/O Serial data, high-voltage side"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "6",
+      "name": "SCL2",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 4,
+        "quote": "SCL2 6 C2 I/O Serial clock, high-voltage side"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "7",
+      "name": "VREF2",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 4,
+        "quote": "VREF2 7 B2 I High-voltage-side reference supply voltage for SCL2 and SDA2"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "EN",
+      "electrical_type": "input",
+      "source": {
+        "page": 4,
+        "quote": "EN 8 A2 I Switch enable input"
+      },
+      "status": "extracted"
+    }
+  ]
+}

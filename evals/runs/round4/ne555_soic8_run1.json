@@ -1,0 +1,190 @@
+{
+  "mpn": "NE555DR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "a3756e59fd06d0ba736edf9ffe71d99d2aae33fb7e49fedc86165a241179f4a6",
+    "revision": "SLFS022K",
+    "url": "https://www.ti.com/lit/ds/symlink/ne555.pdf"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 1.27,
+        "source": {
+          "page": 30,
+          "quote": "6X .050 [1.27]"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 4.81,
+        "max": 5.0,
+        "source": {
+          "page": 30,
+          "quote": ".189-.197 2X [4.81-5.00]"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 3.81,
+        "max": 3.98,
+        "source": {
+          "page": 30,
+          "quote": ".150-.157 [0.31-0.51] .069 MAX [3.81-3.98]"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "nom": 3.81,
+        "source": {
+          "page": 30,
+          "quote": "2X [4.81-5.00] .150 NOTE 3 [3.81]"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.75,
+        "source": {
+          "page": 30,
+          "quote": ".069 MAX [3.81-3.98] .010 [0.25] C A B [1.75]"
+        },
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.13,
+        "max": 0.25,
+        "source": {
+          "page": 30,
+          "quote": ".005-.010 TYP [0.13-0.25]"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.31,
+        "max": 0.51,
+        "source": {
+          "page": 30,
+          "quote": "8X .012-.020 B .150-.157 [0.31-0.51]"
+        },
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "nom": 0.25,
+        "source": {
+          "page": 30,
+          "quote": ".010 [0.25]"
+        },
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 1.55,
+        "source": {
+          "page": 31,
+          "quote": "8X (.061 ) [1.55]"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.6,
+        "source": {
+          "page": 31,
+          "quote": "8X (.024) [0.6]"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 5.4,
+        "source": {
+          "page": 31,
+          "quote": "(.213) [5.4]"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "GND 1 2 — Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "TRIG",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "TRIG 2 5 Input Start of timing input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "OUT",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT 3 7 Output High current timer output signal"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "RESET",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "RESET 4 10 Input Active low reset input forces output and discharge low."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "CONT",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 3,
+        "quote": "CONT 5 12 Input/output"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "THRES",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "THRES 6 15 Input End of timing input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "DISCH",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 3,
+        "quote": "DISCH 7 17 Output Open collector output to discharge timing capacitor"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "VCC",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 3,
+        "quote": "VCC 8 20 — Input supply voltage, 4.5V to 16V."
+      },
+      "status": "inferred"
+    }
+  ]
+}

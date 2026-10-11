@@ -29,9 +29,10 @@ They were assembled by Claude from the datasheet text, with the mechanical drawi
 checked against rendered page images. **They have not been reviewed by a human yet.** Treat them as
 a first draft of the answer key until someone has compared them with the datasheets.
 
-The round-2 cases were also cross-checked against the official KiCad library symbol and footprint; each case's
+The round-2 and round-4 cases were also cross-checked against the official KiCad library symbol and footprint; each case's
 `review.md` lists every disagreement with KiCad and how it was decided. Reading the disagreements with the extraction
-runs afterwards still found two gold errors (see round 2), which is why a human review is still needed.
+runs afterwards still found two gold errors in round 2 and four in round 4 (see those sections), which is why a human
+review is still needed.
 
 ## What is checked automatically
 
@@ -188,11 +189,57 @@ The skill was tightened for units, 3-state outputs, family names, letter-coded t
 
 ## Extraction round 4
 
-Seven parts that were used to write neither the skill nor an earlier gold, two runs each — 14 runs. Every run got the
-plugin as a user gets it, headless, with nothing but the datasheet PDF in its directory. Golds were written with every
-pin and dimension checked on a rendered page and then cross-checked against the official KiCad symbol and footprint
-(`cases/<case>/review.md`); every run-versus-gold disagreement was then re-decided against the PDF by the
-orchestrating session, page by page.
+Seven parts that were used to write neither the skill nor an earlier gold, two runs each — 14 runs. The round's own
+verdicts, row by row, are in `runs/round4_adjudication.md`.
+
+How it was run:
+
+- Each run started in an empty directory holding only the datasheet PDF, with the plugin loaded from this repository
+  (`claude --plugin-dir`, so the skill and the MCP server as a user gets them), headless, told to finish without asking,
+  and with the CLI validator in the loop.
+- Skill version: the skill as round 2 left it (commit `21e827b`, "Tighten the extraction skill after evaluation round 2").
+  Nothing in `skills/` changed between round 2's runs and these: both skill changes this round produced came afterwards,
+  from its own results.
+- Model: the same non-Claude model as round 2, through the same OpenCode Go launcher; the run logs name it
+  `space-bunny`, where round 2 recorded `space-bunny-free`. Round 1 used a Claude model, so round 1 is not comparable
+  with the other two, and rounds 2 and 4 share a model family but not a named model.
+- Isolation by ordering, not by instruction: a case's gold was written only after both of its runs had finished, and the
+  gold author was told not to read the runs directory.
+- Gold: written by a separate run with every pin and dimension confirmed on a rendered page, then cross-checked against
+  the official KiCad symbol and footprint (`cases/<case>/review.md` records every disagreement with KiCad).
+- Adjudication: a separate model session re-decided every scorer disagreement against the PDF, page by page
+  (`runs/round4_adjudication.md`; it refers to `score_output.txt`, the round's scorer output, whose content is the `types`,
+  `dims` and `usable` columns of the first table below). Its gold corrections were then applied and independently
+  spot-checked by eight verification workers, each confirming that the fix fails on the previous commit and passes here.
+- The three cases whose gold needed no correction (`24lc256_soic8`, `ina226_vssop10`, `pca9306_vssop8`) are not
+  imported into `cases/`, so re-scoring `runs/round4/` with this repository's golds scores 8 of the 14 runs; the other six
+  are scored `skipping … no gold case`. `runs/round4_scores.json` is that re-scoring, against the corrected gold.
+
+| Run | types | dims | quotes not on page | usable as scored | usable after adjudication |
+|---|---|---|---|---|---|
+| 24lc256 run1 / run2 | 7/8, 7/8 | 1/1, 1/1 | 0/9, 0/9 | no, no | no, no |
+| ina226 run1 / run2 | 10/10, 10/10 | 11/12, 11/12 | 0/22, 0/22 | no, no | no, no |
+| ne555 run1 / run2 | 8/8, 8/8 | 8/10, 9/10 | 0/19, 0/20 | yes, yes | yes, yes |
+| pca9306 run1 / run2 | 4/8, 8/8 | 11/12, 12/12 | 0/19, 0/20 | no, yes | no, yes |
+| tca9548a run1 / run2 | 24/24, 24/24 | 8/11, 9/11 | 0/35, 0/35 | yes, no | no, yes |
+| tps5430 run1 / run2 | 9/9, 9/9 | 11/14, 10/14 | 0/22, 0/23 | no, no | no, no |
+| uln2003a run1 / run2 | 16/16, 16/16 | 8/11, 10/11 | 0/28, 0/28 | no, no | yes, yes |
+| **total** | | | | **4/14** | **6/14** |
+
+The `types`, `dims` and quotes columns are the round's own scoring, against the gold as it stood before this round's
+corrections; the NE555 denominator is lower there than in `runs/round4_scores.json`, which scores the same runs against a
+gold that has since gained two dimensions (`lead_thickness` and `standoff`). The last column is the same runs after each
+disagreement was re-decided against the datasheet: it moves where the adjudicator found the gold at fault rather than the
+run, and it moves in both directions. TCA9548A run 1 was usable as scored and is not after adjudication, because the
+gold that lacked the eight channel groups was the thing that had to change; ULN2003A's two runs and TCA9548A run 2 go the
+other way. 6 of 14 is not an accuracy rate either — see "Read these numbers with care".
+
+One datasheet ends with no footprint: the **Microchip 24LC256**. It does print a recommended land pattern (page 19,
+drawing C04-2057A), but that drawing has no text layer, so not one of its numbers can be quoted and the quote check
+cannot confirm any of them — the same barrier that dropped the Microchip MCP23017 before round 2. Its gold therefore
+carries no `land_*` dimensions and the build reports `footprint.skipped`. The other six datasheets all have a quotable
+land pattern, and the only runs whose generated footprint differed from their gold's are the two TPS5430 runs, both on
+real dimension errors (below).
 
 | Case | runs | contested rows | gold | run | neither |
 |---|---|---|---|---|---|
@@ -205,9 +252,35 @@ orchestrating session, page by page.
 | tps5430_soic8 | 2 | 5 | 4 | 1 | 0 |
 | **total** | **14** | **64** | **24** | **37** | **3** |
 
-Scored as the rounds before it, 4 of the 14 runs came out usable without edit: both NE555 runs, PCA9306 run 2 and
-TCA9548A run 1. No run invented a pin or a pin number, every run found every pin, and every quote in every run was on
-the page it was cited to.
+Every run found every pin and no run invented a pin, a pin number or a name. Every quote in every run was on the page it
+was cited to. All 14 runs got the package family and pin count right.
+
+### What went wrong
+
+Grouped by kind, from `runs/round4_adjudication.md`. "Run" means the run was right and the gold had to change; those rows
+are the subject of the next section.
+
+- **Units.** All four runs of the two parts built from repeated blocks grouped them: ULN2003A's seven Darlington channels
+  keyed `1`…`7` and its common emitter and cathode `power`, TCA9548A's eight I²C channels keyed `CH0`…`CH7` with its
+  ground and supply `power`. Two golds omitted those groups entirely — 17 and 18 run-verdict rows.
+- **Pin types.** PCA9306 run 1 typed the four open-drain bus pins `open_collector` where the pin table's TYPE column
+  prints `I/O`; the phrase "Open-drain I2C I/O ports" describes the external bus, and the word appears nowhere in the
+  pin table. Both 24LC256 runs typed SDA `open_collector` where §2.2 calls the pin "**bidirectional**" and only the
+  terminal open-drain. Nothing else was mistyped: types are 8/8, 10/10, 24/24, 9/9 and 16/16 on the other five parts.
+- **Names.** TPS5430 run 2 named pin 9 `EP`, the generic word `reference.md` uses in its `alt_names` example; TI prints
+  `DAP` on both the pin table and the package drawing.
+- **Which page is in use.** One TPS5430 run took the exposed-pad size from the superseded `DDA0008J` package drawing
+  elsewhere in the same datasheet; the page in use prints `2.71` over `2.11`, far enough apart to move the generated
+  footprint.
+- **Stacked pairs.** On a TI sheet, `7.9 / 7.7`, `4.5 / 4.3` and `0.30 / 0.19` under one callout are max over min, read
+  top-down, not a nominal and a maximum. One TCA9548A run swapped `overall_width` with `body_length` over the same pair
+  shape; the other read `6.6` over `6.2 TYP` as `nom 6.6 / max 6.6`.
+- **The three DETAIL A callouts.** One NE555 run reused the lead thickness as the standoff; one TCA9548A run put the lead
+  length there; the other NE555 run kept only the upper limit of the standoff as a nominal. The same three names were read
+  three ways on one round, which is why the skill now says which two planes each span.
+- **A dropped limit.** One ULN2003A run recorded `lead_width` and `standoff` with their lower limits only.
+- **Left out that should be there.** NE555 run 1 dropped `lead_length`, a callout the sheet plainly gives (`.016-.050
+  [0.41-1.27]`); PCA9306 run 1 dropped `lead_thickness`, `(0.13) TYP` in the side view.
 
 ### What the round found in the golds
 
@@ -235,6 +308,12 @@ independent evidence about the runs, and `## Status of these cases` already says
 
 ### What the round found in the tool
 
+No defect in this repository's code: every fix this round went into a gold or into `skills/partspec/reference.md`. Round
+2's two tool fixes both held. The footprint pitch, land-span and lead-coverage checks, which round 2 had to repair because
+they decided which edge a pad sits on by comparing against the largest coordinate, handled this round's TSSOP-16 and
+TSSOP-24 — the 0.65 mm dual-row family that broke them — without complaint, and 12 of the 14 runs generated a footprint
+identical to their gold's.
+
 Two rules in `skills/partspec/reference.md` were wrong or missing, and both were fixed:
 
 - `group`. The ULN2003A and TCA9548A runs keyed their channels and the rule was ambiguous enough that the golds
@@ -247,26 +326,55 @@ Two rules in `skills/partspec/reference.md` were wrong or missing, and both were
   bend, and the cross-section across the lead — together with the rule that a parenthesised value is a reference value:
   usable for `land_*`, not for a package limit.
 
-### The recurring failure mode
+### What the round says about round 2's changes
 
-Two readings recur across the dimension rows, and the golds got them wrong too.
+Round 2 ended by tightening the skill in six places. This round is the first test of that edit, and the six split three
+ways.
 
-The first is **which page is in use**. One TPS5430 run took the exposed-pad size from the superseded `DDA0008J`
-package drawing elsewhere in the same datasheet; the page actually in use prints `2.71` over `2.11`, and the two
-differ enough to move the generated footprint. The same datasheet has two dimensions that look like the exposed pad —
-`(2.71)`/`(3.4)` on the solid green "solder mask defined pad" and `(2.95)`/`(4.9)` on the dashed "metal covered by
-solder mask" outline — and only the first is the pad.
+Two held outright. `package.family`: all 14 runs named the package family correctly, after round 2 lost a run to `SOP`
+for a SOT-23-6. The letter-coded outline table for Nexperia, NXP and ST was simply not exercised — all seven parts are
+TI or Microchip, every outline prints names rather than letters — and neither was the 3-state output rule, since no part
+here has a high-impedance state. Untested is not passed.
 
-The second is **stacked pairs**. On a TI sheet, `7.9 / 7.7`, `4.5 / 4.3` and `0.30 / 0.19` printed under one callout
-are max over min, read top-down — not a nominal and a maximum. Most of the dimension rows in the table above are of this
-kind, and two golds read `overall_width` the wrong way round the same way (`6.6` over `6.2 TYP`, `6.2` over `5.8`).
+One was right and was still got wrong. Round 2 said `overall_width` is the largest across-rows dimension on the outline
+and that a lead centre-to-centre span is not recorded; one NE555 run recorded the `2X .150 [3.81]` centreline span there
+anyway. The rule it needed was about the sheet, not the span, and the skill still has none — see below.
+
+One needed rewriting rather than defending. Round 2's `group` rule gave the examples `"A"`, `"B"` and the supply pins
+`"power"`, and all four runs of the multi-channel parts used it correctly, including the clause that a unit's two pins
+share one key (ULN2003A keyed `1B` and `1C` together) and the clause that two banks of a memory are not two units. The
+three golds that avoided grouping did so because nothing in the rule said a numbered channel is a channel. Rewritten, as
+described above.
+
+### Two readings the skill still does not cover
+
+Both recur across the dimension rows, on the runs and on the golds, and neither has a rule in `reference.md`.
+
+The first is **which page is in use**. One TPS5430 run took the exposed-pad size from the superseded `DDA0008J` package
+drawing elsewhere in the same datasheet; the page actually in use prints `2.71` over `2.11`, and the two differ enough to
+move the generated footprint. The same datasheet has two dimensions that look like the exposed pad — `(2.71)`/`(3.4)` on
+the solid green "solder mask defined pad" and `(2.95)`/`(4.9)` on the dashed "metal covered by solder mask" outline —
+and only the first is the pad.
+
+The second is **stacked pairs**. On a TI sheet, `7.9 / 7.7`, `4.5 / 4.3` and `0.30 / 0.19` printed under one callout are
+max over min, read top-down — not a nominal and a maximum. Most of the dimension rows in the contested-row table above are
+of this kind, and two golds read `overall_width` the wrong way round the same way (`6.6` over `6.2 TYP`, `6.2` over
+`5.8`). `SKILL.md` says to record a value the datasheet gives only as a range as `min`/`max`, which is the right rule,
+but it does not say how to recognise the pair once it is on the page, and nothing in the skill says to check that the
+revision note under the drawing does not supersede the drawing.
 
 ### Read these numbers with care
 
 - Seven parts, two runs each. It shows where extraction breaks, not an accuracy rate.
 - The gold was written by the same model that was graded, cross-checked against KiCad but not reviewed by a human,
-  and four of its seven cases were corrected after the runs were scored. The corrected gold is not independent of
-  the runs, and the 4-of-14 figure above is a property of that combination.
+  and four of its seven cases were corrected after the runs were scored. The corrected gold is not independent of the
+  runs, and both the 4-of-14 as scored and the 6-of-14 after adjudication are properties of that combination. The
+  second figure is not the better one: it counts a run as usable once the answer key has been rewritten to agree with
+  it.
+- Adjudication was done by a model reading the same PDFs, then spot-checked by eight verification workers who confirmed
+  the fixes rather than re-deriving every row. It is a model's judgement with a model's second opinion, not a human one.
+- Three of the seven cases are not in `cases/`, so `runs/round4_scores.json` covers 8 of the 14 runs. The other six are in
+  `runs/round4/` and were scored against golds that lived outside this repository.
 - The rounds are not comparable to each other: round 1 ran before the skill was tightened by round 1's own results,
   round 2 ran with a different model, and this round's results have since been folded into the skill as well.
 - "Quotes not on page" is measured with the validator in the loop, as in rounds 1 and 2.

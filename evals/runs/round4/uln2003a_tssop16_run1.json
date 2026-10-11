@@ -1,0 +1,114 @@
+{
+  "mpn": "ULN2003APW",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "ba83a908675b45c41e84fb06ea390efb10f4b7a358edfee656f87a968dd1d62f",
+    "revision": "SLRS027T (Rev. T), March 2025",
+    "url": "https://www.ti.com/lit/ds/symlink/uln2003a.pdf"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 16,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.65,
+        "source": {"page": 38, "quote": "14X 0.65"},
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 4.9,
+        "max": 5.1,
+        "source": {"page": 38, "quote": "5.1"},
+        "status": "inferred"
+      },
+      "body_width": {
+        "min": 4.3,
+        "max": 4.5,
+        "source": {"page": 38, "quote": "4.3"},
+        "status": "inferred"
+      },
+      "overall_width": {
+        "min": 6.2,
+        "max": 6.6,
+        "source": {"page": 38, "quote": "6.6"},
+        "status": "inferred"
+      },
+      "height": {
+        "max": 1.2,
+        "source": {"page": 38, "quote": "1.2 MAX"},
+        "status": "extracted"
+      },
+      "standoff": {
+        "nom": 0.05,
+        "source": {"page": 38, "quote": "0.05"},
+        "status": "extracted"
+      },
+      "lead_width": {
+        "nom": 0.17,
+        "source": {"page": 38, "quote": "0.17"},
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.5,
+        "max": 0.75,
+        "source": {"page": 38, "quote": "0.75"},
+        "status": "inferred"
+      },
+      "lead_thickness": {
+        "nom": 0.3,
+        "source": {"page": 38, "quote": "0.30"},
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 1.5,
+        "source": {"page": 39, "quote": "16X (1.5)"},
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.45,
+        "source": {"page": 39, "quote": "16X (0.45)"},
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 5.8,
+        "source": {"page": 39, "quote": "(5.8)"},
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "1B", "electrical_type": "input", "group": "1",
+     "source": {"page": 3, "quote": "1B 1 16 1C"}, "status": "extracted"},
+    {"number": "2", "name": "2B", "electrical_type": "input", "group": "2",
+     "source": {"page": 3, "quote": "2B 2 15 2C"}, "status": "extracted"},
+    {"number": "3", "name": "3B", "electrical_type": "input", "group": "3",
+     "source": {"page": 3, "quote": "3B 3 14 3C"}, "status": "extracted"},
+    {"number": "4", "name": "4B", "electrical_type": "input", "group": "4",
+     "source": {"page": 3, "quote": "4B 4 13 4C"}, "status": "extracted"},
+    {"number": "5", "name": "5B", "electrical_type": "input", "group": "5",
+     "source": {"page": 3, "quote": "5B 5 12 5C"}, "status": "extracted"},
+    {"number": "6", "name": "6B", "electrical_type": "input", "group": "6",
+     "source": {"page": 3, "quote": "6B 6 11 6C"}, "status": "extracted"},
+    {"number": "7", "name": "7B", "electrical_type": "input", "group": "7",
+     "source": {"page": 3, "quote": "7B 7 10 7C"}, "status": "extracted"},
+    {"number": "8", "name": "E", "electrical_type": "power_in", "group": "power",
+     "source": {"page": 3, "quote": "E 8 9 COM"}, "status": "inferred"},
+    {"number": "9", "name": "COM", "electrical_type": "passive", "group": "power",
+     "source": {"page": 3, "quote": "E 8 9 COM"}, "status": "inferred"},
+    {"number": "10", "name": "7C", "electrical_type": "open_collector", "group": "7",
+     "source": {"page": 3, "quote": "7B 7 10 7C"}, "status": "inferred"},
+    {"number": "11", "name": "6C", "electrical_type": "open_collector", "group": "6",
+     "source": {"page": 3, "quote": "6B 6 11 6C"}, "status": "inferred"},
+    {"number": "12", "name": "5C", "electrical_type": "open_collector", "group": "5",
+     "source": {"page": 3, "quote": "5B 5 12 5C"}, "status": "inferred"},
+    {"number": "13", "name": "4C", "electrical_type": "open_collector", "group": "4",
+     "source": {"page": 3, "quote": "4B 4 13 4C"}, "status": "inferred"},
+    {"number": "14", "name": "3C", "electrical_type": "open_collector", "group": "3",
+     "source": {"page": 3, "quote": "3B 3 14 3C"}, "status": "inferred"},
+    {"number": "15", "name": "2C", "electrical_type": "open_collector", "group": "2",
+     "source": {"page": 3, "quote": "2B 2 15 2C"}, "status": "inferred"},
+    {"number": "16", "name": "1C", "electrical_type": "open_collector", "group": "1",
+     "source": {"page": 3, "quote": "1B 1 16 1C"}, "status": "inferred"}
+  ]
+}
