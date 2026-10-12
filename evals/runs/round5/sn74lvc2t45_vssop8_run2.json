@@ -1,0 +1,174 @@
+{
+  "mpn": "SN74LVC2T45DCU",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "f0dc4a7a46a5b2020117e8bec614aec33f4f15784a82ab73dc3fa5f91d5c86bc",
+    "revision": "SCES516N (Rev. N, June 2024)",
+    "url": "https://www.ti.com/lit/ds/symlink/sn74lvc2t45.pdf"
+  },
+  "package": {
+    "family": "VSSOP",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 0.5,
+        "source": {
+          "page": 31,
+          "quote": "6X 0.5"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 3.0,
+        "max": 3.2,
+        "source": {
+          "page": 31,
+          "quote": "3.2 TYP C 3.0"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 1.9,
+        "max": 2.1,
+        "source": {
+          "page": 31,
+          "quote": "2.1 1.5 1.9 NOTE 3"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 2.2,
+        "max": 2.4,
+        "source": {
+          "page": 31,
+          "quote": "2.4 B 0.08 C A B 2.2 NOTE 3"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "min": 0.6,
+        "max": 0.9,
+        "source": {
+          "page": 31,
+          "quote": "0.12 0.9 GAGE PLANE 0.6"
+        },
+        "status": "inferred"
+      },
+      "standoff": {
+        "nom": 0.12,
+        "source": {
+          "page": 31,
+          "quote": "0.12 0.9 GAGE PLANE"
+        },
+        "status": "inferred"
+      },
+      "land_pad_length": {
+        "nom": 0.85,
+        "source": {
+          "page": 32,
+          "quote": "8X (0.85)"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.3,
+        "source": {
+          "page": 32,
+          "quote": "8X (0.3)"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 3.1,
+        "source": {
+          "page": 32,
+          "quote": "(3.1)"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "VCCA",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 2,
+        "quote": "VCCA 1 P A-port supply voltage."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "A1",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 2,
+        "quote": "A1 2 I/O Input/output A1. Referenced to VCCA"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "A2",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 2,
+        "quote": "A2 3 I/O Input/output A2. Referenced to VCCA"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 2,
+        "quote": "GND 4 G Ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "5",
+      "name": "DIR",
+      "electrical_type": "input",
+      "source": {
+        "page": 2,
+        "quote": "DIR 5 I Direction control signal"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "B2",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 2,
+        "quote": "B2 6 I/O Input/output B2. Referenced to VCCB"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "B1",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 2,
+        "quote": "B1 7 I/O Input/output B1. Referenced to VCCB"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "VCCB",
+      "electrical_type": "power_in",
+      "source": {
+        "page": 2,
+        "quote": "VCCB 8 P B-port supply voltage."
+      },
+      "status": "inferred"
+    }
+  ]
+}

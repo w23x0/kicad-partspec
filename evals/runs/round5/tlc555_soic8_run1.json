@@ -1,0 +1,194 @@
+{
+  "mpn": "TLC555",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "1e4a94a0d87fb9a02d2b2030c3bd63113c1b020db8c4a23b4696f920a686b6d9",
+    "revision": "SLFS043K - AUGUST 1983 - REVISED JANUARY 2026",
+    "url": "https://www.ti.com/lit/ds/symlink/tlc555.pdf"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "nom": 1.27,
+        "source": {
+          "page": 38,
+          "quote": "6X .050 [1.27]"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 4.81,
+        "max": 5.0,
+        "source": {
+          "page": 38,
+          "quote": "[4.81-5.00]"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 3.81,
+        "max": 3.98,
+        "source": {
+          "page": 38,
+          "quote": "[3.81-3.98]"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 5.8,
+        "max": 6.19,
+        "source": {
+          "page": 38,
+          "quote": ".228-.244 TYP [5.80-6.19]"
+        },
+        "status": "inferred"
+      },
+      "height": {
+        "max": 1.75,
+        "source": {
+          "page": 38,
+          "quote": "[1.75]"
+        },
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.11,
+        "max": 0.25,
+        "source": {
+          "page": 38,
+          "quote": "[0.11-0.25]"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.31,
+        "max": 0.51,
+        "source": {
+          "page": 38,
+          "quote": "[0.31-0.51]"
+        },
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "min": 0.13,
+        "max": 0.25,
+        "source": {
+          "page": 38,
+          "quote": ".005-.010 TYP [0.13-0.25]"
+        },
+        "status": "extracted"
+      },
+      "land_pad_length": {
+        "nom": 1.55,
+        "source": {
+          "page": 39,
+          "quote": "8X (.061 ) [1.55]"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.6,
+        "source": {
+          "page": 39,
+          "quote": "8X (.024) [0.6]"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 5.4,
+        "source": {
+          "page": 39,
+          "quote": "(.213) [5.4]"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "GND 1 — Ground."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "TRIG",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "TRIG 2 Input Start of timing input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "OUT",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT 3 Output High current timer output signal."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "RESET",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "RESET 4 Input Active low reset input forces output and discharge low."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "CONT",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "CONT 5 Input Controls comparator thresholds."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "THRES",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "THRES 6 Input End of timing input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "DISCH",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 3,
+        "quote": "DISCH 7 Output Open collector output to discharge timing capacitor."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "VDD",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "VDD 8 — Power-supply voltage."
+      },
+      "status": "inferred"
+    }
+  ]
+}

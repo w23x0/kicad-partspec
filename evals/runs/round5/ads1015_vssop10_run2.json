@@ -1,0 +1,50 @@
+{
+  "mpn": "ADS1015IDGSR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "4617aa3843b16d23264f5eff63b90b1afffefff7af97ae29f0eb8c5a153156d4",
+    "revision": "SBAS473F",
+    "url": "https://www.ti.com/lit/ds/symlink/ads1015.pdf"
+  },
+  "package": {
+    "family": "VSSOP",
+    "pin_count": 10,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {"nom": 0.5, "source": {"page": 47, "quote": "8X 0.5"}, "status": "extracted"},
+      "body_length": {"min": 2.9, "max": 3.1, "source": {"page": 47, "quote": "3.1 2.9"}, "status": "extracted"},
+      "body_width": {"min": 2.9, "max": 3.1, "source": {"page": 47, "quote": "3.1 2.9"}, "status": "extracted"},
+      "overall_width": {"min": 4.75, "max": 5.05, "source": {"page": 47, "quote": "5.05 TYP"}, "status": "extracted"},
+      "height": {"max": 1.1, "source": {"page": 47, "quote": "1.1 MAX"}, "status": "extracted"},
+      "lead_width": {"min": 0.17, "max": 0.27, "source": {"page": 47, "quote": "10X 0.17"}, "status": "extracted"},
+      "lead_length": {"min": 0.4, "max": 0.7, "source": {"page": 47, "quote": "0.7"}, "status": "extracted"},
+      "lead_thickness": {"min": 0.13, "max": 0.23, "source": {"page": 47, "quote": "0.23 TYP"}, "status": "extracted"},
+      "standoff": {"nom": 0.25, "source": {"page": 47, "quote": "0.25 GAGE PLANE"}, "status": "inferred"},
+      "land_pad_length": {"nom": 1.45, "source": {"page": 48, "quote": "10X (1.45)"}, "status": "extracted"},
+      "land_pad_width": {"nom": 0.3, "source": {"page": 48, "quote": "10X (0.3)"}, "status": "extracted"},
+      "land_span": {"nom": 4.4, "source": {"page": 48, "quote": "(4.4)"}, "status": "extracted"}
+    }
+  },
+  "pins": [
+    {"number": "1", "name": "ADDR", "electrical_type": "input",
+     "source": {"page": 3, "quote": "ADDR 1 1 1 Digital input I2C target address select"}, "status": "extracted"},
+    {"number": "2", "name": "ALERT/RDY", "electrical_type": "open_collector",
+     "source": {"page": 3, "quote": "ALERT/RDY — 2 2 Digital output"}, "status": "inferred"},
+    {"number": "3", "name": "GND", "electrical_type": "power_in",
+     "source": {"page": 3, "quote": "GND 3 3 3 Analog Ground"}, "status": "inferred"},
+    {"number": "4", "name": "AIN0", "electrical_type": "input",
+     "source": {"page": 3, "quote": "AIN0 4 4 4 Analog input Analog input 0"}, "status": "inferred"},
+    {"number": "5", "name": "AIN1", "electrical_type": "input",
+     "source": {"page": 3, "quote": "AIN1 5 5 5 Analog input Analog input 1"}, "status": "inferred"},
+    {"number": "6", "name": "AIN2", "electrical_type": "input",
+     "source": {"page": 3, "quote": "AIN2 — — 6 Analog input Analog input 2"}, "status": "inferred"},
+    {"number": "7", "name": "AIN3", "electrical_type": "input",
+     "source": {"page": 3, "quote": "AIN3 — — 7 Analog input Analog input 3"}, "status": "inferred"},
+    {"number": "8", "name": "VDD", "electrical_type": "power_in",
+     "source": {"page": 3, "quote": "VDD 8 8 8 Analog Power supply"}, "status": "inferred"},
+    {"number": "9", "name": "SDA", "electrical_type": "bidirectional",
+     "source": {"page": 3, "quote": "SDA 9 9 9 Digital I/O Serial data input and output"}, "status": "extracted"},
+    {"number": "10", "name": "SCL", "electrical_type": "input",
+     "source": {"page": 3, "quote": "SCL 10 10 10 Digital input Serial clock input"}, "status": "extracted"}
+  ]
+}

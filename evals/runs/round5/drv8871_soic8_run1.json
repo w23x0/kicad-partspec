@@ -1,0 +1,223 @@
+{
+  "mpn": "DRV8871DDA",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "09de551aa0c6d090fd14b000634cfd894d782a050eed13110fe2eb10f1b548bf",
+    "revision": "SLVSCY9B (August 2015 - Revised July 2016)"
+  },
+  "package": {
+    "family": "SOIC",
+    "pin_count": 8,
+    "exposed_pad": true,
+    "dimensions": {
+      "pitch": {
+        "nom": 1.27,
+        "source": {
+          "page": 24,
+          "quote": "6X 1.27"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.7,
+        "source": {
+          "page": 24,
+          "quote": "1.7 MAX"
+        },
+        "status": "extracted"
+      },
+      "body_length": {
+        "min": 4.8,
+        "max": 5.0,
+        "source": {
+          "page": 24,
+          "quote": "5.0 2X 4.8 3.81 NOTE 3"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 3.8,
+        "max": 4.0,
+        "source": {
+          "page": 24,
+          "quote": "4.0 0.31 B 1.7 MAX 3.8 0.25 C A B NOTE 4"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 5.8,
+        "max": 6.2,
+        "source": {
+          "page": 24,
+          "quote": "6.2 TYP SEATING PLANE 5.8"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.31,
+        "max": 0.51,
+        "source": {
+          "page": 24,
+          "quote": "0.51 8X 4.0 0.31"
+        },
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.4,
+        "max": 1.27,
+        "source": {
+          "page": 24,
+          "quote": "1.27 0.00 1 8 0.40"
+        },
+        "status": "extracted"
+      },
+      "standoff": {
+        "min": 0.1,
+        "max": 0.25,
+        "source": {
+          "page": 24,
+          "quote": "0.25 TYP 0.10"
+        },
+        "status": "inferred"
+      },
+      "ep_size": {
+        "min": 2.11,
+        "max": 2.71,
+        "source": {
+          "page": 24,
+          "quote": "2.71 TYPICAL 2.11"
+        },
+        "status": "inferred"
+      },
+      "land_pad_length": {
+        "nom": 1.55,
+        "source": {
+          "page": 25,
+          "quote": "8X (1.55)"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.6,
+        "source": {
+          "page": 25,
+          "quote": "8X (0.6)"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 5.4,
+        "source": {
+          "page": 25,
+          "quote": "(5.4)"
+        },
+        "status": "extracted"
+      },
+      "land_ep_size": {
+        "nom": 2.71,
+        "source": {
+          "page": 25,
+          "quote": "(2.71)"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "GND 1 PWR Logic ground"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "2",
+      "name": "IN2",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN2 2"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "IN1",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN1 3"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "ILIM",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "ILIM 4 I Current limit control"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "VM",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "VM 5 PWR"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "6",
+      "name": "OUT1",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT1 6"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "PGND",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "PGND 7 PWR High-current ground path"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "OUT2",
+      "electrical_type": "output",
+      "source": {
+        "page": 3,
+        "quote": "OUT2 8"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "PAD",
+      "exposed_pad": true,
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "PAD — — Thermal pad"
+      },
+      "status": "inferred"
+    }
+  ]
+}
