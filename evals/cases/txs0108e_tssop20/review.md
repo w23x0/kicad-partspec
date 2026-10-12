@@ -67,12 +67,12 @@ extension lines land on the outer faces of pin 1 and pin 20).
   `overall_width`, and there is **no** `overall_length` in the spec: the drawing never dimensions
   lead-tip-to-lead-tip along the rows as a separate quantity.
 * `6.2` is printed with an explicit `TYP`, which TI does *not* do for the lower value of the other
-  stacked pairs on this drawing (`6.4`, `4.3`, `0.19`, `0.50`, `0.05`). That argues `6.2` is a
-  *typical*, i.e. `nom`. It is recorded as `min: 6.2, max: 6.6` because `reference.md` states
-  without exception that "two numbers stacked on the drawing (1.0 over 0.8) gets min and max", and
-  because for an outline dimension the resulting nominal outline is identical either way.
-  **Flagged as a coin-flip for the human reviewer: `nom: 6.2` + `max: 6.6` is a defensible
-  alternative reading.**
+  stacked pairs on this drawing (`6.4`, `4.3`, `0.19`, `0.50`, `0.05`). The `TYP` was weighed and
+  rejected as a conversion of the pair into a nominal: the round-4/round-5 rule for stacked pairs
+  settles it — `6.6` over `6.2 TYP` is top-value over bottom-value, `max` over `min`, exactly as on
+  the other callouts of this sheet, and a nominal equal to the lower limit of its own range is not a
+  reading any convention supports. It is therefore recorded as `min: 6.2, max: 6.6`, and for an
+  outline dimension the resulting nominal outline is identical either way.
 
 ### 2.2 `body_length` = 6.4 … 6.6, and `body_width` = 4.3 … 4.5
 

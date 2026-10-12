@@ -31,10 +31,15 @@ golds needed no correction and were imported unchanged.
 ## Status of these cases
 
 They were assembled by Claude from the datasheet text, with the mechanical drawings and pinouts
-checked against rendered page images. **They have not been reviewed by a human yet.** Treat them as
-a first draft of the answer key until someone has compared them with the datasheets.
+checked against rendered page images, and every value carries a page and a verbatim quote that the
+source-layer check re-verifies. **No human has compared them with the datasheets**, and nothing in
+this repository substitutes for one: the golds are drafts whose entire audit trail is the checks
+described in this file — the rendered-page reads, the quote check, the cross-check against the
+official KiCad library, and each round's adjudication — plus the gold errors those checks caught
+after the fact, listed per round below. Where a contested reading had no rule behind it, the rule was
+written into `skills/partspec/reference.md` rather than left for a reader to re-decide.
 
-The round-2, round-4 and round-5 cases were also cross-checked against the official KiCad library symbol and footprint; each case's `review.md` lists every disagreement with KiCad and how it was decided. Reading the disagreements with the extraction runs afterwards still found two gold errors in round 2, four in round 4 and five in round 5, which is why a human review is still needed.
+The round-2, round-4 and round-5 cases were also cross-checked against the official KiCad library symbol and footprint; each case's `review.md` lists every disagreement with KiCad and how it was decided. Reading the disagreements with the extraction runs afterwards still found two gold errors in round 2, four in round 4 and five in round 5, so the golds are model-derived drafts whose checks are the ones described here and nothing more.
 
 ## What is checked automatically
 
@@ -67,10 +72,11 @@ confirm the SHA-256.
   support — the TLC555 gold once omitted `standoff` and `lead_thickness` on the strength of an ambiguity note in this
   section, which round 5's adjudication overruled: p. 38 prints "SEATING PLANE" and DETAIL A's arrows decide both.
 - In round 4 the NE555 D0008A gold records both of the sheet's SOIC callouts: the front-view lead-toe callout as
-  `lead_thickness` and DETAIL A's body-underside-to-seating-plane callout as `standoff`, the latter resolving only at
-  600 dpi. The adjudication flagged the `standoff` as its lower-confidence item and said a human should decide whether
-  a callout that resolves only at high dpi should be recorded; **that decision is still open**. Below the dpi where the
-  extension lines are legible, leave them out as before.
+  `lead_thickness` and DETAIL A's body-underside-to-seating-plane callout as `standoff`. The adjudication marked the
+  `standoff` its lower-confidence item because the callout resolves only at 600 dpi; re-rendered at 600 dpi during the
+  merge the extension lines decide it — body underside to the dashed seating line — so it is recorded. The rule that
+  settles it: a callout is named by what its extension lines decide, at whatever dpi that takes, and only a callout that
+  stays illegible even at high dpi is left out; the old blanket rule that left these SOIC callouts out is withdrawn.
 
 ## Extraction round 1
 
@@ -276,9 +282,9 @@ are the subject of the next section.
 - **Units.** All four runs of the two parts built from repeated blocks grouped them: ULN2003A's seven Darlington channels
   keyed `1`…`7` and its common emitter and cathode `power`, TCA9548A's eight I²C channels keyed `CH0`…`CH7` with its
   ground and supply `power`. Two golds omitted those groups entirely — 17 and 18 run-verdict rows. The merged golds took
-  the channel keys and grouped the common rails `power`, except ULN2003A's common cathode `COM`: it is typed `passive`,
-  as KiCad symbols it, and a `power` group is a group of supplies, so the adjudication's "other supply rail" reading of
-  `COM` did not survive into the gold — see the open question on the rule in `reference.md`.
+  the channel keys and grouped the common rails `power`, except ULN2003A's common cathode `COM`: the datasheet's own
+  power-supply text says the device needs no supply and that COM may float, so it stays `passive` and ungrouped while the
+  emitter `E`, "typically tied to ground", takes `power`. `reference.md` carries that carve-out as a rule.
 - **Pin types.** PCA9306 run 1 typed the four open-drain bus pins `open_collector` where the pin table's TYPE column
   prints `I/O`; the phrase "Open-drain I2C I/O ports" describes the external bus, and the word appears nowhere in the
   pin table. Both 24LC256 runs typed SDA `open_collector` where §2.2 calls the pin "**bidirectional**" and only the
@@ -320,7 +326,7 @@ and they are the one kind of disagreement this round scored cleanly — the runs
 
 This round's golds needed correcting too, after two gold errors in round 1 and two in round 2.
 That is the argument for treating these files as a first draft: a gold corrected after the runs are seen is not
-independent evidence about the runs, and `## Status of these cases` already says a human review is still needed.
+independent evidence about the runs, and `## Status of these cases` already says the golds are model-derived drafts.
 
 ### What the round found in the tool
 

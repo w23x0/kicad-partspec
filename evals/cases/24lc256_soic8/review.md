@@ -38,11 +38,11 @@ cited honestly.** This is the same barrier that made the MCP23017 case
 tool".
 
 Consequence for this gold: the package outline table and the land pattern are
-recorded below **for a human reviewer**, but only the one dimension the
-datasheet states in extractable text (`body_width`, from the product
-identification system on page 39) is in `spec.gold.json`. No dimension was
-taken from KiCad or from any other document. The build consequently skips the
-footprint, which is the honest outcome.
+recorded below so the audit trail shows what the drawing prints, but only the
+one dimension the datasheet states in extractable text (`body_width`, from the
+product identification system on page 39) is in `spec.gold.json`. No dimension
+was taken from KiCad or from any other document. The build consequently skips
+the footprint, which is the honest outcome.
 
 ### The values that are there (page 18, drawing C04-057C sheet 2 of 2, MILLIMETERS)
 

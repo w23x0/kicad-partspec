@@ -15,13 +15,20 @@ def _flat(text):
 
 
 def _group_rule(text):
-    """The `group` bullet of ## Pin fields and the supply-pins bullet that follows it, flattened."""
+    """The `group` bullet of ## Pin fields, the supply-pins bullet and the shared-node carve-out, flattened."""
     bullet = re.search(r"^- `group`:.*?(?=^- `|\Z)", text, re.MULTILINE | re.DOTALL)
     assert bullet, "no `group` bullet in ## Pin fields"
     supply = re.search(
-        r"^- The supply pins are the one exception.*?(?=^- `|\Z)", text, re.MULTILINE | re.DOTALL
+        r"^- The supply pins are the one exception.*?(?=^- \`|\Z)", text, re.MULTILINE | re.DOTALL
     )
-    return _flat(bullet.group(0) + "\n" + (supply.group(0) if supply else ""))
+    carve_out = re.search(r"^- A node shared by every unit.*?(?=^- \`|\Z)", text, re.MULTILINE | re.DOTALL)
+    return _flat(
+        bullet.group(0)
+        + "\n"
+        + (supply.group(0) if supply else "")
+        + "\n"
+        + (carve_out.group(0) if carve_out else "")
+    )
 
 
 RULE = _group_rule(REFERENCE.read_text(encoding="utf-8"))
@@ -48,11 +55,18 @@ def test_both_pins_of_one_unit_share_one_key():
 
 def test_power_is_in_addition_to_the_unit_groups():
     assert re.search(r"common to all units", RULE)
-    assert re.search(r"common emitter, a common cathode, a shared rail", RULE)
+    assert re.search(r"common emitter, a shared rail", RULE)
     assert re.search(r"in addition to a unit group", RULE)
     assert re.search(r"never instead of it", RULE)
     assert re.search(r"pwr` cell in a type column", RULE)
     assert re.search(r"grouping it `\"power\"` is optional", RULE)
+
+
+def test_a_node_shared_by_every_unit_is_not_thereby_a_supply():
+    """ULN2003A's COM: shared by all seven channels, yet passive — the datasheet says the part needs no supply."""
+    assert re.search(r"node shared by every unit is not thereby a supply", RULE)
+    assert re.search(r"this device does not need a power supply", RULE)
+    assert re.search(r"may float in resistive-load drive", RULE)
 
 
 def test_two_sides_of_a_function_stays_scoped_to_different_blocks():

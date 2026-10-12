@@ -50,9 +50,11 @@ but built from TI's land pattern (pad 1.55 × 0.6 at x = ±2.7) rather than IPC-
    `lead_thickness`: the drawing names no dimension, so which callout this is had to be read off the geometry.
    Both are recorded rather than left out: under the skill and `reference.md` a dimension that resolves from the
    drawing is recorded, and `inferred` is exactly the status for one whose meaning had to be interpreted.
-   **Open question for a human:** recording the `standoff` here overrides the standing `evals/README.md` convention
-   that the SOIC `.004-.010` callout is left out. The round-4 adjudication called this its lower-confidence item and
-   said a human should decide; until then this gold is the one entry to revisit if the convention is kept.
+   **Settled.** The round-4 adjudication called this its lower-confidence item and left it to the standing
+   `evals/README.md` convention that the SOIC `.004-.010` callout is omitted. During the `w/r4fix` merge the page
+   was re-rendered at 600 dpi and the convention was withdrawn: the `.004-.010 [0.11-0.25]` extension lines decide
+   their two planes — body underside to the dashed seating line — so it is recorded as `standoff`, and the rule now
+   is that a callout is named by what its extension lines decide, at whatever dpi that takes.
 4. **`2X .150 [3.81]` deliberately omitted.** This is the lead centreline-to-centreline span across the two rows
    in the outline drawing. The reference explicitly says a lead centre-to-centre span is not recorded (it would
    be neither `overall_width` nor `body_width`), and it is not a land-pattern value, so it is not `land_span`.

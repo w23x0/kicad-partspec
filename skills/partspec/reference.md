@@ -50,16 +50,15 @@ Pin `number` is a string (`"1"`, `"A1"`).
   not split the two pins of one unit.
 - The supply pins are the one exception to "identical": `"power"` marks them as supplies, not as repeated blocks. Take it
   in addition to a unit group — never instead of it — for a supply, ground or return the datasheet calls common to all
-  units (a common emitter, a common cathode, a shared rail). Supplies the datasheet prints as a block of their own — a
-  `PWR` cell in a TYPE column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) — are grouped `"power"` whether or not
-  anything else on the part is grouped. A lone supply or ground pin, or a bare printed VDD/VSS pair on a part with no
-  supply block of its own, is neither a unit nor a printed block: grouping it `"power"` is optional and leaving `group`
-  off it is equally correct.
-  > **Open question (rounds 4 and 5 disagree).** Round 4's adjudication read the ULN2003A common emitter `E` and common
-  > cathode `COM` as `"power"` in addition to its channel groups; round 5's rule made a common rail `"power"` the same
-  > way, but `COM` is typed `passive` (KiCad symbols it so) and a `power` group is a group of supplies, so the gold here
-  > groups `E` only. The text above states the reading both rounds argue for; if a human decides a common rail is not a
-  > supply, the "in addition to" clause is what changes.
+  units (a common emitter, a shared rail). Supplies the datasheet prints as a block of their own — a `PWR` cell in a TYPE
+  column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) — are grouped `"power"` whether or not anything else on the
+  part is grouped. A lone supply or ground pin, or a bare printed VDD/VSS pair on a part with no supply block of its own,
+  is neither a unit nor a printed block: grouping it `"power"` is optional and leaving `group` off it is equally correct.
+- A node shared by every unit is not thereby a supply. ULN2003A's `COM`, the common cathode of the seven flyback diodes
+  that the datasheet says is "typically tied to the system power supply", is `passive` and ungrouped, because §8.4 of that
+  same sheet says "This device does not need a power supply" and §7.4.2 that COM may float in resistive-load drive; the
+  rail of that part is `E`, the common emitter "typically tied to ground", which takes `power` alongside the channel
+  groups. The test is whether the datasheet's own supply text names the pin, not whether every unit touches it.
 - `electrical_type` is one of KiCad's:
 
 | Datasheet says | Use |

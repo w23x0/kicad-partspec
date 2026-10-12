@@ -6,6 +6,15 @@ indexes** (starting at 1). Values are millimetres. Rules applied: `skills/partsp
 
 One row per distinct item; the run1/run2 columns show what each run put there (`—` = field absent).
 
+This file is the round's verbatim record. Two items it leaves open were settled when the round's
+golds were imported (`w/r4fix`, merged into `next`), and the settlements are recorded where the
+reposability now lives: the ne555 `standoff` (item 7 below) is recorded in the gold — page 30
+re-rendered at 600 dpi shows the `.004-.010 [0.11-0.25]` extension lines span body underside to
+seating plane — see the Conventions section of `evals/README.md`; and the ULN2003A `COM` group
+(item 1 below) stays ungrouped while `E` takes `power`, on the datasheet's own power-supply text
+(§8.4 "This device does not need a power supply", §7.4.2 COM may float) — see the supply carve-out
+in `skills/partspec/reference.md`.
+
 ---
 
 ## ne555_soic8 — TI NE555, D0008A (SOIC-8)
