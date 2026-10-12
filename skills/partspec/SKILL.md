@@ -21,7 +21,7 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
    You need: the pin table or pinout, the package outline drawing (with its dimension table), and the example land pattern
    ("board layout" / "recommended footprint"). The drawings are usually near the end, far from the pin table: search for the
    package's drawing code (for example a name like `D0008A` or `RGT0016C`) or for "PACKAGE OUTLINE". If the PDF covers several
-   packages, use only the one you were asked for.
+   packages or several parts, use only the one you were asked for.
 2. **Look at the drawings.** Text extraction keeps numbers but loses which dimension they belong to, and pinout figures put
    pin numbers and names in different places. Render the page (`pdftoppm -f N -l N -r 110 -png FILE.pdf /tmp/page`) and view the
    image before you trust a number or a pin-to-number pairing.
@@ -50,6 +50,10 @@ The field layout, dimension names and pin-type rules are in [reference.md](refer
   pairing on the rendered image; that is the reason step 2 exists.
 - When the pinout figure and a pin table disagree on a name (RP2040: the figure says `SWDIO`, the table says `SWD`), use the
   figure's name — that is what board designers read — put nothing in `alt_names` for it, and list the disagreement in the
+  hand-over.
+- The same goes for a name that belongs to a sibling part. When one datasheet documents several parts (MCP23008 and
+  MCP23S08), a pin cell that prints two names (`SCL/SCK`, `A2/SO`, `NC/CS`) gives one name for each part, not two functions
+  of yours: take the one printed for the part you were asked for, leave `alt_names` empty, and list the pairing in the
   hand-over.
 
 ## Rules that prevent the usual mistakes
