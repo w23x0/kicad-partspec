@@ -15,6 +15,11 @@ Each `cases/<name>/spec.gold.json` is a hand-checked PartSpec for one real part.
 | `74hc595_so16` | Nexperia 74HC595 | SO16 (SOT109-1) | round 2; no land pattern in the datasheet, so no footprint; 3-state outputs |
 | `stm32g030_tssop20` | ST STM32G030F6 | TSSOP-20 | round 2; letter-coded outline table |
 | `cp2102n_qfn24` | Silicon Labs CP2102N | QFN-24, exposed pad | round 2; one datasheet for three packages |
+| `ads1015_vssop10` | TI ADS1015 | VSSOP-10 (DGS0010A) | round 5; open-drain output |
+| `drv8871_soic8` | TI DRV8871 | SOIC-8 (DDA0008B), exposed pad | round 5; `PWR` supply block |
+| `mcp23008_soic18` | Microchip MCP23008 | SOIC-18 wide (C04-051D) | round 5; one datasheet for two parts |
+| `sn74lvc2t45_vssop8` | TI SN74LVC2T45 | VSSOP-8 (DCU0008A) | round 5 |
+| `tlc555_soic8` | TI TLC555 | SOIC-8 (D0008A) | round 5; single timer |
 
 ## Status of these cases
 
@@ -52,8 +57,10 @@ confirm the SHA-256.
 - `status`: `extracted` means read directly from the datasheet. `inferred` means the model or the author
   derived it, for example supply and ground pins mapped to KiCad `power_in`, an open-drain output mapped to
   `open_collector`, or the exposed-pad number (the datasheet gives none).
-- Parts whose SOIC/TQFP drawing has ambiguous callouts (the SOIC `.004-.010` and `.005-.010` values) leave
-  those dimensions out instead of guessing.
+- Where a gold leaves a dimension out, its own `review.md` says why; nothing is dropped here as a blanket rule, and a
+  convention in this file is never a rule an extraction run is graded against. The golds carry the values the datasheets
+  support — the TLC555 gold once omitted `standoff` and `lead_thickness` on the strength of an ambiguity note in this
+  section, which round 5's adjudication overruled: p. 38 prints "SEATING PLANE" and DETAIL A's arrows decide both.
 
 ## Extraction round 1
 
