@@ -266,6 +266,9 @@ ORACLE = {
     "ne555_soic8": ("Timer.kicad_sym", "NE555D"),
     "tps5430_soic8": ("Regulator_Switching.kicad_sym", "TPS5430DDA"),
     "uln2003a_tssop16": ("Transistor_Array.kicad_sym", "ULN2003A"),
+    "24lc256_soic8": ("Memory_EEPROM.kicad_sym", "24LC256"),
+    "ina226_vssop10": ("Sensor_Energy.kicad_sym", "INA226"),
+    "pca9306_vssop8": ("Interface.kicad_sym", "PCA9306"),
 }
 
 
@@ -309,6 +312,9 @@ def _name_compatible(gold_name, official_name):
 
 # Parts whose datasheet and KiCad name pins by different vendors' conventions; see the case's review.md.
 RENAMED = {
+    "24lc256_soic8": {  # Microchip calls the ground pin VSS and never writes GND; KiCad normalises supply rails to GND
+        "4": "GND",
+    },
     "74hc595_so16": {  # Nexperia Q0-Q7/DS/SHCP/STCP/MR against TI's QA-QH/SER/SRCLK/RCLK/SRCLR
         "1": "QB",
         "2": "QC",
@@ -323,6 +329,11 @@ RENAMED = {
         "12": "RCLK",
         "14": "SER",
         "15": "QA",
+    },
+    "ina226_vssop10": {  # TI prints VBUS and IN-/IN+ on the pin table; KiCad writes Vbus and uses the shunt-terminal form Vin-/Vin+
+        "8": "Vbus",
+        "9": "Vin-",
+        "10": "Vin+",
     },
     "ne555_soic8": {  # TI prints RESET on pin 4; KiCad writes the active-low abbreviation
         "4": "~{RST}",
