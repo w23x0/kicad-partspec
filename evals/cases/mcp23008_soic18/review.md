@@ -25,10 +25,10 @@ Cross-check references:
 | 7 | Alt functions of pins 1, 2, 3, 7 | Page-4 Pin Name cells read `SCL/SCK`, `SDA/SI`, `A2/SO`, `NC/CS` | no alt names | Gold records **no `alt_names`**. The second half of each cell is the MCP23S08 (SPI) function of the same pad; this part is the I²C MCP23008, whose page-2 figure prints only `SCL`, `SDA`, `A2`, `NC`. Per the skill's figure-over-table rule the figure name is primary and no alt is recorded. Agrees with KiCad. | 2, 4 |
 
 Items that **agreed** with KiCad and needed no decision: pin count 18; every pin number; names
-`SCL SDA A2 A1 A0 RESET NC INT VSS GP0…GP7 VDD` (note the ground pin is printed `VSS` in the text
+`SCL SDA A2 A1 A0 RESET- NC INT VSS GP0…GP7 VDD` (note the ground pin is printed `VSS` in the text
 layer of both page 2 and page 4 — the page image renders it in small caps as `Vss`, but the
 underlying characters are `VSS`, so KiCad's `VSS` is correct); `GP0…GP7` and `SDA` bidirectional;
-`SCL A1 A0 RESET` input; `INT` output; `VSS`/`VDD` `power_in`; pitch 1.27 mm.
+`SCL A1 A0 RESET-` input; `INT` output; `VSS`/`VDD` `power_in`; pitch 1.27 mm.
 
 ## 2. Values that had to be interpreted
 
