@@ -217,9 +217,10 @@ How it was run:
   `dims` and `usable` columns of the first table below). Its gold corrections were then applied and independently
   spot-checked by eight verification workers, each confirming that the fix fails on the previous commit and passes here.
 - The three cases whose gold needed no correction (`24lc256_soic8`, `ina226_vssop10`, `pca9306_vssop8`) are imported
-  unchanged, so all seven cases are now in `cases/`. `runs/round4_scores.json` was taken before that import and covers
-  the four corrected cases' 8 runs, against the corrected gold; the other six runs are scorable from this repository now
-  but were not re-scored here.
+  unchanged, so all seven cases are in `cases/`. `runs/round4_scores.json` was taken after that import and scores all 14
+  runs against these golds, quotes included: the eight runs of the corrected cases score as the round's own output did —
+  the two ULN2003A runs excepted, which now differ from their gold on `COM`'s group (see "What went wrong") — and the six
+  runs of the imported cases were not scorable from this repository before the import.
 
 | Run | types | dims | quotes not on page | usable as scored | usable after adjudication |
 |---|---|---|---|---|---|
@@ -243,7 +244,8 @@ other way. 6 of 14 is not an accuracy rate either — see "Read these numbers wi
 The last column is the round's own history, and it does not survive into this repository unchanged: the golds here group
 ULN2003A's common emitter `E` as `power` but leave the common cathode `COM` ungrouped (see "What went wrong"), so the two
 ULN2003A runs differ from the gold on that one pin and scored against the golds as they now stand the runs are 4 of 14
-usable — the table's "usable" columns are properties of the round, not of the files in `cases/`.
+usable — `runs/round4_scores.json` is that scoring — so the table's "usable" columns are properties of the round, not of
+the files in `cases/`.
 
 One datasheet ends with no footprint: the **Microchip 24LC256**. It does print a recommended land pattern (page 19,
 drawing C04-2057A), but that drawing has no text layer, so not one of its numbers can be quoted and the quote check
@@ -387,9 +389,9 @@ revision note under the drawing does not supersede the drawing.
   it.
 - Adjudication was done by a model reading the same PDFs, then spot-checked by eight verification workers who confirmed
   the fixes rather than re-deriving every row. It is a model's judgement with a model's second opinion, not a human one.
-- `runs/round4_scores.json` covers the 8 runs of the four cases whose gold needed correction. The other six runs were
-  scored against golds that lived outside this repository when the round ran; those golds are now in `cases/`, but the
-  scores here were not regenerated for them.
+- `runs/round4_scores.json` covers all 14 runs against the golds in `cases/`, taken after the import with the datasheets
+  at hand for the quote check. Before the import the six runs of the three no-correction cases had no gold in this
+  repository to score against, and the round's own scoring of the other eight was taken when their golds lived outside.
 - The rounds are not comparable to each other: round 1 ran before the skill was tightened by round 1's own results,
   round 2 ran with a different model, and this round's results have since been folded into the skill as well.
 - "Quotes not on page" is measured with the validator in the loop, as in rounds 1 and 2.
