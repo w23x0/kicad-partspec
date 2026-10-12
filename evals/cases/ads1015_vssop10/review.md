@@ -142,6 +142,6 @@ None found. Three things that look like contradictions but are not:
 ## Build result
 
 `kicad-partspec validate` passes with no failures (5 `status.inferred` warnings, expected).
-`kicad-partspec build` produces `out/ADS1015IDGS.kicad_sym` and
+`kicad-partspec build` produces `out/ADS1015IDGSR.kicad_sym` and
 `out/partspec.pretty/VSSOP-10_3.0x3.0mm_P0.5mm.kicad_mod` — **a footprint is generated**, because the datasheet
 does give a land pattern (page 48).

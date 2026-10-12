@@ -262,6 +262,11 @@ ORACLE = {
     "74hc595_so16": ("74xx.kicad_sym", "74HC595"),
     "stm32g030_tssop20": ("MCU_ST_STM32G0.kicad_sym", "STM32G030F6Px"),
     "cp2102n_qfn24": ("Interface_USB.kicad_sym", "CP2102N-Axx-xQFN24"),
+    "ads1015_vssop10": ("Analog_ADC.kicad_sym", "ADS1015IDGS"),
+    "drv8871_soic8": ("Driver_Motor.kicad_sym", "DRV8871DDA"),
+    "mcp23008_soic18": ("Interface_Expansion.kicad_sym", "MCP23008-xSO"),
+    "sn74lvc2t45_vssop8": ("Logic_LevelTranslator.kicad_sym", "SN74LVC2T45DCUR"),
+    "tlc555_soic8": ("Timer.kicad_sym", "TLC555xD"),
 }
 
 
@@ -319,6 +324,14 @@ RENAMED = {
         "12": "RCLK",
         "14": "SER",
         "15": "QA",
+    },
+    "drv8871_soic8": {  # TI prints PGND (7) and PAD (9); the library calls both GND
+        "7": "GND",
+        "9": "GND",
+    },
+    "tlc555_soic8": {  # TI prints RESET (4) and VDD (8) against the NE555 family's ~{RST} and VCC
+        "4": "~{RST}",
+        "8": "VCC",
     },
 }
 
