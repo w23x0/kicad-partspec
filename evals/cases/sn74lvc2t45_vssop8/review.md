@@ -76,8 +76,9 @@ pad count or body size; only the pad-row spacing differs, decided for the datash
    sibling level-translator gold (`txs0108e_tssop20`, same Hi-Z behaviour) types all 20 pins `bidirectional`.
    The Hi-Z state here is a power condition, not the pin's normal function, so `bidirectional` was kept.
 8. **No `group` on any pin.** reference.md states that the A and B ports of a level translator are not units
-   and stay ungrouped, and the supply pins get no `power` group here (matching `txs0108e_tssop20` and
-   `ads1115_vssop10`).
+   and stay ungrouped. The supply pins get no `power` group here (matching `txs0108e_tssop20` and
+   `ads1115_vssop10`): this datasheet prints no supply block of its own, and grouping a lone supply or ground
+   pin is optional.
 9. **`mpn` = `SN74LVC2T45DCUR`**, the orderable suffix that names this VSSOP-8 package (the bare
    `SN74LVC2T45` is offered in three packages), following the `ADS1115IDGS` precedent.
 10. **No `alt_names`.** VCCA, VCCB, GND and DIR each have a single printed function; the two-sided function

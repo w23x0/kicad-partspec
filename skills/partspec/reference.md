@@ -43,9 +43,11 @@ Pin `number` is a string (`"1"`, `"A1"`).
   `"A"`, `"B"`, `"C"`. The two sides of one function are not units, so the A port and B port of a level translator, the two
   banks of a memory, or an input port and its matching output port stay ungrouped.
 - The supply pins are the one exception to "identical": `"power"` marks them as supplies, not as repeated blocks, so the
-  rule above does not gate it. Group `"power"` any pin the datasheet calls a supply or a ground — a `PWR` cell in a TYPE
-  column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) or a printed VDD/VSS pair — whether or not anything else on the
-  part is grouped. Omit `group` on a pin that is neither a unit nor a supply.
+  rule above does not gate it. When the datasheet prints the supplies as a block of their own — a `PWR` cell in a TYPE
+  column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) — group that block `"power"`, whether or not anything else on
+  the part is grouped. A lone supply or ground pin, or a bare printed VDD/VSS pair on a part that prints no supply block of
+  its own, is neither a unit nor a printed block: grouping it `"power"` is optional, and leaving `group` off it is equally
+  correct. Omit `group` on a pin that is neither a unit nor a supply.
 - `electrical_type` is one of KiCad's:
 
 | Datasheet says | Use |
