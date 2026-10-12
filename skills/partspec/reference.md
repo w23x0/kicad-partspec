@@ -39,15 +39,27 @@ Pin `number` is a string (`"1"`, `"A1"`).
   several parts, a cell that pairs your pin with a sibling part's name (`SCL/SCK`, `A2/SO`, `NC/CS` on the MCP23008 pages) is
   two parts, not two functions: take the name printed for your part, leave `alt_names` empty, and list the pairing in the
   hand-over. The same goes for a name from another package's pinout column or table.
-- `group`: only when the datasheet shows repeated, identical functional blocks — two identical amplifiers, a quad gate:
-  `"A"`, `"B"`, `"C"`. The two sides of one function are not units, so the A port and B port of a level translator, the two
-  banks of a memory, or an input port and its matching output port stay ungrouped.
-- The supply pins are the one exception to "identical": `"power"` marks them as supplies, not as repeated blocks, so the
-  rule above does not gate it. When the datasheet prints the supplies as a block of their own — a `PWR` cell in a TYPE
-  column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) — group that block `"power"`, whether or not anything else on
-  the part is grouped. A lone supply or ground pin, or a bare printed VDD/VSS pair on a part that prints no supply block of
-  its own, is neither a unit nor a printed block: grouping it `"power"` is optional, and leaving `group` off it is equally
-  correct. Omit `group` on a pin that is neither a unit nor a supply.
+- `group`: required whenever the datasheet shows repeated, identical functional blocks — two identical amplifiers, a
+  quad gate, N numbered channels. Every pin of every unit is grouped; leaving them ungrouped is a defect, not a safe
+  default. The key is whatever the datasheet calls the unit — its letters `"A"`, `"B"`, its channel numbers `"1"`–`"7"`,
+  its channel names `"CH0"`–`"CH7"` — never a key the datasheet does not use, and a numbered or named channel is a channel
+  even without a letter. Both pins of one unit share that one key: a unit's control pin and its output pin, the base and
+  the collector of one channel. Pins with no unit of their own — an address pin, a reset, a chip select — stay
+  ungrouped. The two sides of one part's function are different blocks, not units, so the A port and B port of a level
+  translator, the two banks of a memory, or an input port and its matching output port stay ungrouped; that clause does
+  not split the two pins of one unit.
+- The supply pins are the one exception to "identical": `"power"` marks them as supplies, not as repeated blocks. Take it
+  in addition to a unit group — never instead of it — for a supply, ground or return the datasheet calls common to all
+  units (a common emitter, a common cathode, a shared rail). Supplies the datasheet prints as a block of their own — a
+  `PWR` cell in a TYPE column (DRV8871's `GND 1 PWR`, `VM 5 PWR`, `PGND 7 PWR`) — are grouped `"power"` whether or not
+  anything else on the part is grouped. A lone supply or ground pin, or a bare printed VDD/VSS pair on a part with no
+  supply block of its own, is neither a unit nor a printed block: grouping it `"power"` is optional and leaving `group`
+  off it is equally correct.
+  > **Open question (rounds 4 and 5 disagree).** Round 4's adjudication read the ULN2003A common emitter `E` and common
+  > cathode `COM` as `"power"` in addition to its channel groups; round 5's rule made a common rail `"power"` the same
+  > way, but `COM` is typed `passive` (KiCad symbols it so) and a `power` group is a group of supplies, so the gold here
+  > groups `E` only. The text above states the reading both rounds argue for; if a human decides a common rail is not a
+  > supply, the "in addition to" clause is what changes.
 - `electrical_type` is one of KiCad's:
 
 | Datasheet says | Use |
@@ -118,8 +130,27 @@ metal: the pad outline, the plain pad callouts, or the rectangle a note calls "M
 rectangle labelled "SOLDER MASK OPENING" is the mask, not the pad (DRV8871 records `(2.95)`, not the `(2.71)`), and it is
 not recorded. When the drawing prints only the mask opening, say so in the hand-over instead of substituting it.
 
-Values in parentheses on a drawing are reference values; they are fine to use for `land_*`. If you have to interpret what a
-number is (for example which side of the drawing it measures), mark that dimension `inferred`.
+Values in parentheses on a drawing are reference dimensions — the drawing's own notes say so. They may be used for a `land_*`
+value and must not become a package dimension: a parenthesised `(0.15) TYP` across a lead in a package outline is not a
+`lead_thickness`, and if that is the only thickness callout on the sheet, leave `lead_thickness` out rather than record it. A
+boxed `BASIC` value, such as a boxed gage-plane offset, is likewise not a package dimension: it is a basic dimension for the
+land pattern. If you have to interpret what a number is (for example which side of the drawing it measures), mark that
+dimension `inferred`.
+
+Three lead callouts are near-identical on the page and are the easiest to misread. Name each one by the two features its
+extension lines run between, not by its size, its place on the sheet or the label the drawing gives it:
+
+| The dimension spans | Name |
+|---|---|
+| the body underside and the seating (gage) plane | `standoff` |
+| the two edges of one lead's cross-section, in the front or side view | `lead_thickness` |
+| the lead tip and where the lead leaves the body — the start of the bend, the foot that rests on the board | `lead_length` |
+
+This holds for any vendor's outline sheet, named or lettered, and inside the DETAIL A style detail view as much as on the
+outline: the foot row is the same span the letter table below gives as Nexperia `Lp` / ST `L`.
+
+When two readings of the same callout disagree about which of these three it is, the drawing is being misread, not the name:
+re-render the page and say which two planes the dimension spans before naming it.
 
 Nexperia, NXP and ST print outline tables in letters where TI drawings print the names. The same letter can mean
 different things per vendor, so read each one off the drawing:

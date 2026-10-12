@@ -1,0 +1,221 @@
+{
+  "mpn": "INA226AIDGSR",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "c9b67f886d4a5241a5e070723f7b61867409eeb27eed768b9cdd9cb17e03ca2d",
+    "revision": "C (SBOS547C, June 2011 - Revised August 2026)"
+  },
+  "package": {
+    "family": "VSSOP",
+    "pin_count": 10,
+    "exposed_pad": false,
+    "dimensions": {
+      "body_length": {
+        "min": 2.9,
+        "max": 3.1,
+        "source": {
+          "page": 38,
+          "quote": "3.1 2.9 2X NOTE 3"
+        },
+        "status": "extracted"
+      },
+      "body_width": {
+        "min": 2.9,
+        "max": 3.1,
+        "source": {
+          "page": 38,
+          "quote": "2.9 NOTE 4"
+        },
+        "status": "extracted"
+      },
+      "overall_width": {
+        "min": 4.75,
+        "max": 5.05,
+        "source": {
+          "page": 38,
+          "quote": "5.05 TYP SEATING PLANE 4.75"
+        },
+        "status": "extracted"
+      },
+      "height": {
+        "max": 1.1,
+        "source": {
+          "page": 38,
+          "quote": "1.1 MAX"
+        },
+        "status": "extracted"
+      },
+      "pitch": {
+        "nom": 0.5,
+        "source": {
+          "page": 38,
+          "quote": "8X 0.5"
+        },
+        "status": "extracted"
+      },
+      "lead_width": {
+        "min": 0.17,
+        "max": 0.27,
+        "source": {
+          "page": 38,
+          "quote": "0.27 10X 0.17"
+        },
+        "status": "extracted"
+      },
+      "lead_thickness": {
+        "min": 0.13,
+        "max": 0.23,
+        "source": {
+          "page": 38,
+          "quote": "0.23 TYP SEE DETAIL A 0.13"
+        },
+        "status": "extracted"
+      },
+      "lead_length": {
+        "min": 0.4,
+        "max": 0.7,
+        "source": {
+          "page": 38,
+          "quote": "0.7 0.15 0 -8 0.05 0.4"
+        },
+        "status": "extracted"
+      },
+      "standoff": {
+        "nom": 0.25,
+        "source": {
+          "page": 38,
+          "quote": "0.25"
+        },
+        "status": "inferred"
+      },
+      "land_pad_length": {
+        "nom": 1.45,
+        "source": {
+          "page": 39,
+          "quote": "10X (1.45)"
+        },
+        "status": "extracted"
+      },
+      "land_pad_width": {
+        "nom": 0.3,
+        "source": {
+          "page": 39,
+          "quote": "10X (0.3)"
+        },
+        "status": "extracted"
+      },
+      "land_span": {
+        "nom": 4.4,
+        "source": {
+          "page": 39,
+          "quote": "(4.4)"
+        },
+        "status": "extracted"
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "A1",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "A1 1 Digital input Address pin. Connect to GND, SCL, SDA, or VS."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "A0",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "A0 2 Digital input Address pin. Connect to GND, SCL, SDA, or VS."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "Alert",
+      "electrical_type": "open_collector",
+      "source": {
+        "page": 3,
+        "quote": "Alert 3 Digital output Multi-functional alert, open-drain output."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "4",
+      "name": "SDA",
+      "electrical_type": "bidirectional",
+      "source": {
+        "page": 3,
+        "quote": "SDA 4 Digital I/O Serial bus data line, open-drain input/output."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "SCL",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "SCL 5 Digital input Serial bus clock line, open-drain input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "VS",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "VS 6 Analog Power supply, 2.7V to 5.5V."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "7",
+      "name": "GND",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "GND 7 Analog Ground."
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "8",
+      "name": "VBUS",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "VBUS 8 Analog input Bus voltage input."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "9",
+      "name": "IN-",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN– 9 Analog input Connect to load side of shunt resistor."
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "10",
+      "name": "IN+",
+      "electrical_type": "input",
+      "source": {
+        "page": 3,
+        "quote": "IN+ 10 Analog input Connect to supply side of shunt resistor."
+      },
+      "status": "extracted"
+    }
+  ]
+}

@@ -267,6 +267,13 @@ ORACLE = {
     "mcp23008_soic18": ("Interface_Expansion.kicad_sym", "MCP23008-xSO"),
     "sn74lvc2t45_vssop8": ("Logic_LevelTranslator.kicad_sym", "SN74LVC2T45DCUR"),
     "tlc555_soic8": ("Timer.kicad_sym", "TLC555xD"),
+    "tca9548a_tssop24": ("Interface_Expansion.kicad_sym", "TCA9548APWR"),
+    "ne555_soic8": ("Timer.kicad_sym", "NE555D"),
+    "tps5430_soic8": ("Regulator_Switching.kicad_sym", "TPS5430DDA"),
+    "uln2003a_tssop16": ("Transistor_Array.kicad_sym", "ULN2003A"),
+    "24lc256_soic8": ("Memory_EEPROM.kicad_sym", "24LC256"),
+    "ina226_vssop10": ("Sensor_Energy.kicad_sym", "INA226"),
+    "pca9306_vssop8": ("Interface.kicad_sym", "PCA9306"),
 }
 
 
@@ -310,6 +317,9 @@ def _name_compatible(gold_name, official_name):
 
 # Parts whose datasheet and KiCad name pins by different vendors' conventions; see the case's review.md.
 RENAMED = {
+    "24lc256_soic8": {  # Microchip calls the ground pin VSS and never writes GND; KiCad normalises supply rails to GND
+        "4": "GND",
+    },
     "74hc595_so16": {  # Nexperia Q0-Q7/DS/SHCP/STCP/MR against TI's QA-QH/SER/SRCLK/RCLK/SRCLR
         "1": "QB",
         "2": "QC",
@@ -333,12 +343,43 @@ RENAMED = {
         "4": "~{RST}",
         "8": "VCC",
     },
+    "ina226_vssop10": {  # TI prints VBUS and IN-/IN+ on the pin table; KiCad writes Vbus and uses the shunt-terminal form Vin-/Vin+
+        "8": "Vbus",
+        "9": "Vin-",
+        "10": "Vin+",
+    },
+    "ne555_soic8": {  # TI prints RESET on pin 4; KiCad writes the active-low abbreviation
+        "4": "~{RST}",
+    },
+    "tps5430_soic8": {  # TI prints ENA and DAP; KiCad abbreviates to EN and calls the thermal pad GNDPAD
+        "5": "EN",
+        "9": "GNDPAD",
+    },
+    "uln2003a_tssop16": {  # TI labels channels 1B-7B/1C-7C and the common emitter E; KiCad uses I1-I7/O1-O7 and GND
+        "1": "I1",
+        "2": "I2",
+        "3": "I3",
+        "4": "I4",
+        "5": "I5",
+        "6": "I6",
+        "7": "I7",
+        "8": "GND",
+        "10": "O7",
+        "11": "O6",
+        "12": "O5",
+        "13": "O4",
+        "14": "O3",
+        "15": "O2",
+        "16": "O1",
+    },
 }
 
 
 @pytest.mark.skipif(not OFFICIAL.is_dir(), reason="KiCad symbol libraries not installed")
 @pytest.mark.parametrize("case", NAMES)
 def test_pin_numbers_and_names_agree_with_the_official_kicad_symbol(case):
+    if case not in ORACLE:
+        pytest.skip(f"no official KiCad symbol recorded for {case}")
     lib, name = ORACLE[case]
     official = _official_pins(lib, name)
     spec = _spec(case)

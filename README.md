@@ -6,7 +6,7 @@ A model reads the datasheet and fills a PartSpec, a JSON file in which every val
 verbatim quote. Deterministic code generates the KiCad files and checks them independently: against the spec, against
 the PDF, and by loading them in `kicad-cli`.
 
-The accuracy of model extraction has been measured on sixteen parts in three small rounds, against answer keys written
+The accuracy of model extraction has been measured on twenty-three parts in four small rounds, against answer keys written
 and checked by models and not yet reviewed by a human. See
 [evals/README.md](https://github.com/w23x0/kicad-partspec/blob/main/evals/README.md) before relying on it.
 
@@ -22,7 +22,7 @@ and checked by models and not yet reviewed by a human. See
 | Footprint generation (dual-row and quad packages, exposed pad) from the datasheet land pattern | done |
 | Footprint checks (pads vs datasheet, pads reach leads, silkscreen, courtyard) + `kicad-cli` load | done |
 | MCP server (3 tools), skill, plugin manifests | done; loads with `claude --plugin-dir` (marketplace install not tested) |
-| Extraction evaluation (`evals/score.py`, rounds 1, 2 and 5 in `evals/runs/`) | done, 16 parts, 2 runs each |
+| Extraction evaluation (`evals/score.py`, rounds 1 to 5 in `evals/runs/`) | done, 23 parts, 2 runs each |
 
 ## Install
 

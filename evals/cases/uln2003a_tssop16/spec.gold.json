@@ -1,0 +1,287 @@
+{
+  "mpn": "ULN2003A",
+  "manufacturer": "Texas Instruments",
+  "datasheet": {
+    "sha256": "ba83a908675b45c41e84fb06ea390efb10f4b7a358edfee656f87a968dd1d62f",
+    "revision": "SLRS027T (Rev. T, March 2025)",
+    "url": "https://www.ti.com/lit/ds/symlink/uln2003a.pdf"
+  },
+  "package": {
+    "family": "TSSOP",
+    "pin_count": 16,
+    "exposed_pad": false,
+    "dimensions": {
+      "pitch": {
+        "source": {
+          "page": 38,
+          "quote": "14X 0.65"
+        },
+        "status": "extracted",
+        "nom": 0.65
+      },
+      "overall_width": {
+        "source": {
+          "page": 38,
+          "quote": "6.6 C TYP A 6.2"
+        },
+        "status": "inferred",
+        "min": 6.2,
+        "max": 6.6
+      },
+      "body_length": {
+        "source": {
+          "page": 38,
+          "quote": "5.1 4.55 4.9 NOTE 3"
+        },
+        "status": "extracted",
+        "min": 4.9,
+        "max": 5.1
+      },
+      "body_width": {
+        "source": {
+          "page": 38,
+          "quote": "4.5 16X 1.2 MAX B 0.17 4.3"
+        },
+        "status": "extracted",
+        "min": 4.3,
+        "max": 4.5
+      },
+      "height": {
+        "source": {
+          "page": 38,
+          "quote": "1.2 MAX"
+        },
+        "status": "extracted",
+        "max": 1.2
+      },
+      "standoff": {
+        "source": {
+          "page": 38,
+          "quote": "0.15 0.05"
+        },
+        "status": "inferred",
+        "min": 0.05,
+        "max": 0.15
+      },
+      "lead_width": {
+        "source": {
+          "page": 38,
+          "quote": "0.30 4.5 16X 1.2 MAX B 0.17"
+        },
+        "status": "extracted",
+        "min": 0.17,
+        "max": 0.3
+      },
+      "lead_length": {
+        "source": {
+          "page": 38,
+          "quote": "0.75 0.50"
+        },
+        "status": "inferred",
+        "min": 0.5,
+        "max": 0.75
+      },
+      "land_pad_length": {
+        "source": {
+          "page": 39,
+          "quote": "16X (1.5)"
+        },
+        "status": "extracted",
+        "nom": 1.5
+      },
+      "land_pad_width": {
+        "source": {
+          "page": 39,
+          "quote": "16X (0.45)"
+        },
+        "status": "extracted",
+        "nom": 0.45
+      },
+      "land_span": {
+        "source": {
+          "page": 39,
+          "quote": "(5.8)"
+        },
+        "status": "inferred",
+        "nom": 5.8
+      }
+    }
+  },
+  "pins": [
+    {
+      "number": "1",
+      "name": "1B",
+      "electrical_type": "input",
+      "group": "1",
+      "source": {
+        "page": 3,
+        "quote": "1B 1"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "2",
+      "name": "2B",
+      "electrical_type": "input",
+      "group": "2",
+      "source": {
+        "page": 3,
+        "quote": "2B 2"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "3",
+      "name": "3B",
+      "electrical_type": "input",
+      "group": "3",
+      "source": {
+        "page": 3,
+        "quote": "3B 3"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "4",
+      "name": "4B",
+      "electrical_type": "input",
+      "group": "4",
+      "source": {
+        "page": 3,
+        "quote": "4B 4 I Channel 1 through 7 Darlington base input"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "5",
+      "name": "5B",
+      "electrical_type": "input",
+      "group": "5",
+      "source": {
+        "page": 3,
+        "quote": "5B 5"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "6",
+      "name": "6B",
+      "electrical_type": "input",
+      "group": "6",
+      "source": {
+        "page": 3,
+        "quote": "6B 6"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "7",
+      "name": "7B",
+      "electrical_type": "input",
+      "group": "7",
+      "source": {
+        "page": 3,
+        "quote": "7B 7"
+      },
+      "status": "extracted"
+    },
+    {
+      "number": "8",
+      "name": "E",
+      "electrical_type": "power_in",
+      "group": "power",
+      "source": {
+        "page": 3,
+        "quote": "E 8 — Common emitter shared by all channels (typically tied to ground)"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "9",
+      "name": "COM",
+      "electrical_type": "passive",
+      "source": {
+        "page": 3,
+        "quote": "COM 9 — Common cathode node for flyback diodes (required for inductive loads)"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "10",
+      "name": "7C",
+      "electrical_type": "open_collector",
+      "group": "7",
+      "source": {
+        "page": 3,
+        "quote": "7C 10"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "11",
+      "name": "6C",
+      "electrical_type": "open_collector",
+      "group": "6",
+      "source": {
+        "page": 3,
+        "quote": "6C 11"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "12",
+      "name": "5C",
+      "electrical_type": "open_collector",
+      "group": "5",
+      "source": {
+        "page": 3,
+        "quote": "5C 12"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "13",
+      "name": "4C",
+      "electrical_type": "open_collector",
+      "group": "4",
+      "source": {
+        "page": 3,
+        "quote": "4C 13 O Channel 1 through 7 Darlington collector output"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "14",
+      "name": "3C",
+      "electrical_type": "open_collector",
+      "group": "3",
+      "source": {
+        "page": 3,
+        "quote": "3C 14"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "15",
+      "name": "2C",
+      "electrical_type": "open_collector",
+      "group": "2",
+      "source": {
+        "page": 3,
+        "quote": "2C 15"
+      },
+      "status": "inferred"
+    },
+    {
+      "number": "16",
+      "name": "1C",
+      "electrical_type": "open_collector",
+      "group": "1",
+      "source": {
+        "page": 3,
+        "quote": "1C 16"
+      },
+      "status": "inferred"
+    }
+  ]
+}
