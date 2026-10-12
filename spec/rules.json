@@ -1,0 +1,167 @@
+{
+  "rules": [
+    {
+      "id": "MPN-001",
+      "level": "MUST",
+      "statement": "`mpn` is the orderable the datasheet prints, copied exactly with its suffix, not a package-only form that appears on no page.",
+      "spec": "skills/partspec/reference.md · mpn paragraph"
+    },
+    {
+      "id": "PIN-001",
+      "level": "MUST",
+      "statement": "`name` is the primary function as printed with the ASCII hyphen; extra functions of the same pad go in `alt_names`; a description is not an alternate function, so an exposed pad gets no `alt_names`.",
+      "spec": "skills/partspec/reference.md · ## Pin fields · name bullet"
+    },
+    {
+      "id": "PIN-002",
+      "level": "MUST",
+      "statement": "An `alt_names` entry is another function of the same pad on the requested part; a sibling part's name in a shared cell, or a name from another package's pinout, is not an `alt_names` entry.",
+      "spec": "skills/partspec/reference.md · ## Pin fields · alt_names bullet"
+    },
+    {
+      "id": "PIN-003",
+      "level": "MUST",
+      "statement": "`group` is required for every pin of every repeated identical functional block, keyed by the datasheet's own label for the unit; both pins of one unit share one key; single-instance pins stay ungrouped.",
+      "spec": "skills/partspec/reference.md · ## Pin fields · group bullet"
+    },
+    {
+      "id": "PIN-004",
+      "level": "MUST",
+      "statement": "`\"power\"` marks supplies in addition to a unit group, never instead of it; a supply block the datasheet prints on its own is grouped `power`; a lone supply may stay ungrouped; a node merely shared by every unit is not thereby a supply.",
+      "spec": "skills/partspec/reference.md · ## Pin fields · supply-pins bullet and shared-node carve-out"
+    },
+    {
+      "id": "PIN-005",
+      "level": "MUST",
+      "statement": "`electrical_type` follows the datasheet-says table: a supply or ground pin is `power_in` even when the I/O column says I, an open-drain output is `open_collector`, a three-state output is `tri_state`, an ADC input channel is `input`, and a pin with no signal direction is `passive`.",
+      "spec": "skills/partspec/reference.md · ## Pin fields · electrical_type table"
+    },
+    {
+      "id": "STAT-001",
+      "level": "MUST",
+      "statement": "`extracted` means read from the datasheet; `inferred` covers every derived type, an interpreted dimension and an exposed-pad number the datasheet does not print; when unsure choose `inferred`.",
+      "spec": "skills/partspec/reference.md · ## Status"
+    },
+    {
+      "id": "STAT-002",
+      "level": "MUST",
+      "statement": "`confirmed` is reserved for humans.",
+      "spec": "skills/partspec/reference.md · ## Status"
+    },
+    {
+      "id": "SCH-001",
+      "level": "MUST",
+      "statement": "Every pin and every dimension cites a datasheet page >= 1 and a non-empty verbatim quote.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_provenance"
+    },
+    {
+      "id": "SCH-002",
+      "level": "MUST",
+      "statement": "`pin_count` counts leads and pads but not the exposed pad; `pins` holds pin_count entries, plus one when `exposed_pad` is true.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_pin_count"
+    },
+    {
+      "id": "SCH-003",
+      "level": "MUST",
+      "statement": "Pin numbers are unique.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_pin_numbers_unique"
+    },
+    {
+      "id": "SCH-004",
+      "level": "MUST",
+      "statement": "`electrical_type` is one of KiCad's pin types.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_electrical_types"
+    },
+    {
+      "id": "SCH-005",
+      "level": "MUST",
+      "statement": "Each dimension carries at least one of min/nom/max, satisfies min <= nom <= max, and is positive except a min of 0.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_dimension_order"
+    },
+    {
+      "id": "SCH-006",
+      "level": "MUST",
+      "statement": "`status` is extracted, inferred or confirmed; an inferred value is a warning for a human, not a failure.",
+      "spec": "src/kicad_partspec/verify/spec_checks.py · check_statuses"
+    },
+    {
+      "id": "SCH-007",
+      "level": "MUST",
+      "statement": "A pin `number` is a string (`\"1\"`, `\"A1\"`).",
+      "spec": "skills/partspec/reference.md · pin number paragraph"
+    },
+    {
+      "id": "SRC-001",
+      "level": "MUST",
+      "statement": "A quote matches when it appears on the cited page with whitespace and line breaks collapsed.",
+      "spec": "src/kicad_partspec/verify/quotes.py · normalize"
+    },
+    {
+      "id": "SRC-002",
+      "level": "MUST",
+      "statement": "A quote that appears only on another page is reported, not accepted.",
+      "spec": "src/kicad_partspec/verify/quotes.py · check_quotes"
+    },
+    {
+      "id": "SRC-003",
+      "level": "MUST",
+      "statement": "An altered quote is reported, not silently accepted.",
+      "spec": "src/kicad_partspec/verify/quotes.py · check_quotes"
+    },
+    {
+      "id": "SRC-004",
+      "level": "MUST",
+      "statement": "A cited page outside the PDF is reported.",
+      "spec": "src/kicad_partspec/verify/quotes.py · check_quotes"
+    },
+    {
+      "id": "SRC-005",
+      "level": "MUST",
+      "statement": "Dimension sources are quote-checked exactly like pins.",
+      "spec": "src/kicad_partspec/verify/quotes.py · check_quotes"
+    },
+    {
+      "id": "DIM-001",
+      "level": "SHOULD",
+      "statement": "A dimension gets min and max for a printed range, nom for TYP/BSC/one land-pattern number, max only for a MAX value, and all three for X +/- t.",
+      "spec": "skills/partspec/reference.md · dimension values bullet"
+    },
+    {
+      "id": "DIM-002",
+      "level": "MUST",
+      "statement": "Dimension names come from the defined name table; the ones the datasheet does not give are skipped.",
+      "spec": "skills/partspec/reference.md · ## Dimension names"
+    },
+    {
+      "id": "DIM-003",
+      "level": "MUST",
+      "statement": "standoff, lead_thickness and lead_length are named by the planes their extension lines span; a boxed BASIC or GAGE PLANE value is never one of them.",
+      "spec": "skills/partspec/reference.md · callout spans table"
+    },
+    {
+      "id": "DIM-004",
+      "level": "MUST",
+      "statement": "A parenthesised reference value never becomes a package dimension; it may be used for a land_* value, and a boxed BASIC value belongs to the land pattern.",
+      "spec": "skills/partspec/reference.md · parenthesised-values paragraph"
+    },
+    {
+      "id": "DIM-005",
+      "level": "MUST",
+      "statement": "Vendor letter tables map to the canonical names (A=height, A1=standoff, A2=body_thickness, b=lead_width, c=lead_thickness, D=body_length, e=pitch, body E=body_width, HE/E=overall_width, Lp/L=lead_length); the body-face-to-tip length (L, L1) is not lead_length.",
+      "spec": "skills/partspec/reference.md · letter table"
+    },
+    {
+      "id": "LAND-001",
+      "level": "MUST",
+      "statement": "land_* dimensions are the metal (the pad outline, the plain pad callouts, or the rectangle the note calls METAL COVERED BY SOLDER MASK), never the SOLDER MASK OPENING; land_pad_length, land_pad_width and land_span are recorded together or not at all.",
+      "spec": "skills/partspec/reference.md · land dimensions paragraph"
+    },
+    {
+      "id": "GEN-001",
+      "level": "MUST",
+      "statement": "A gold spec builds a symbol and, when the land pattern is complete, a footprint, and both load in kicad-cli; an incomplete land pattern skips the footprint with a warning naming the missing dimensions.",
+      "spec": "src/kicad_partspec/api.py · build",
+      "suite": "gold-build"
+    }
+  ]
+}

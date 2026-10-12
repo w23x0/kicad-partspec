@@ -63,6 +63,21 @@ dimensions. Dual-row packages (SOIC, SOP, SSOP, TSSOP, MSOP, VSSOP, SOT-23 and T
 quad packages (QFN, VQFN, WQFN, UQFN, QFP, TQFP, LQFP) a pin count divisible by 4; an odd-pin SOT-23 such as SOT-23-5
 has unequal rows and is skipped with that reason.
 
+## Repository workflow
+
+`AGENTS.md` is the constitution every new agent session reads: the work loop, the red lines, and the gold-file arbitration
+protocol. The only progress signal is the audit board:
+
+```
+./scripts/audit.sh [--datasheets DIR_WITH_PDFS]
+```
+
+It prints the rule counts (total, covered, passing, failing, regressed, uncovered) from `spec/rules.json` plus three gold
+suites (`gold-spec`, `gold-quotes`, `gold-build`), and exits non-zero when a rule fails, a rule regresses, or a suite is
+not green. The datasheet PDFs are not stored here; without them the quote layer reports `skipped` and does not decide the
+exit status. An unattended loop drives one work cycle per round against that board (`scripts/loop.sh`); the round and
+independent-audit prompts are in `scripts/prompts/`.
+
 ## History
 
 This repository replaces `codex-kicad-mcp`, a read-first MCP server for KiCad projects. Its code is kept in the history
