@@ -44,7 +44,10 @@ while [ "$round" -le "$MAX_ROUNDS" ]; do
 
   "${AGENT[@]}" "$(cat scripts/prompts/round.md)"
 
-  ./scripts/audit.sh | tee "$BOARD"
+  # A failing board exits 1; that is the round's outcome, not a script error.
+  if ! ./scripts/audit.sh | tee "$BOARD"; then
+    echo "board is not green after round $round"
+  fi
 
   failing=$(board_field 未通过)
   regressed=$(board_field 退步)
