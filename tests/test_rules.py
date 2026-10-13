@@ -13,12 +13,11 @@ a rule-id:
 Wording guards for the same prose live in ``tests/test_skill_*.py`` on purpose:
 they pin the instruction text, not a behaviour, and are not audit-visible.
 
-A rule with no test here shows up in the audit board as uncovered (DIM-001 and
-DIM-004 today). That is deliberate: writing a fake test for them would hide the
-gap the board exists to show.
+A rule with no test here shows up in the audit board as uncovered (DIM-004 today). That is deliberate: writing a fake test for it would hide the gap the board exists to show.
 """
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -51,6 +50,12 @@ def pin(case, number):
 
 def dim(case, name):
     return gold(case)["package"]["dimensions"][name]
+
+
+# A range as the drawing prints it: `4.81-5.00`, `0.31 - 0.51`, `.005-.010`. Note numbers glued to a
+# letter (`D(1)`) and degrees (`0 -8`) are excluded by the decimal endpoints.
+RANGE_QUOTE = re.compile(r"(?<![0-9.])(?:\d+\.\d+|\.\d+)\s*[-\u2013]\s*(?:\d+\.\d+|\.\d+)(?![0-9.])")
+BRACKET_QUOTE = re.compile(r"\[\s*(?:\d+\.\d+|\.\d+)\s*[-\u2013]\s*(?:\d+\.\d+|\.\d+)\s*\]")
 
 
 # --- SCH-001..006: the spec-layer checkers, one planted error per case ---------------------------------
@@ -350,6 +355,35 @@ def test_DIM_002_every_dimension_name_is_defined(path):
     data = json.loads(path.read_text(encoding="utf-8"))
     unknown = set(data["package"]["dimensions"]) - NAMES
     assert not unknown, f"{path.parent.name}: undefined dimension names {sorted(unknown)}"
+
+
+@pytest.mark.parametrize("path", GOLD, ids=[p.parent.name for p in GOLD])
+def test_DIM_001_a_printed_range_becomes_min_and_max(path):
+    """DIM-001: a range the sheet prints (`4.81-5.00`, `0.31 - 0.51`, `.005-.010`) is `min` plus
+    `max` -- both endpoints, never one of them, and never a `nom` added on top. When the quote
+    carries both units (`.005-.010 TYP [0.13-0.25]`) the spec records the metric pair.
+
+    The other forms DIM-001 lists (a lone `MAX`, a `TYP`/`BSC` value, `X ± t`) cannot be read off a
+    `pdftotext` quote: the quotes mix several callouts of one drawing on a line, so no quote-level
+    test can attribute a marker to the dimension it belongs to. They have no checker and no other
+    test here.
+    """
+    data = json.loads(path.read_text(encoding="utf-8"))
+    for name, value in data["package"]["dimensions"].items():
+        quote = value["source"]["quote"]
+        if not RANGE_QUOTE.search(quote):
+            continue
+        assert value.get("nom") is None, f"{path.parent.name}: {name} has a nom {value['nom']} on a range {quote!r}"
+        assert value.get("min") is not None and value.get("max") is not None, (
+            f"{path.parent.name}: {name} records only part of range {quote!r}"
+        )
+        assert value["min"] < value["max"], f"{path.parent.name}: {name} min>=max on {quote!r}"
+        metric = BRACKET_QUOTE.search(quote)
+        if metric:
+            low, high = (float(x) for x in metric.group(0).strip("[]").replace(" ", "").split("-"))
+            assert (value["min"], value["max"]) == (low, high), (
+                f"{path.parent.name}: {name} ignores the printed {metric.group(0)}"
+            )
 
 
 def test_DIM_003_ne555_standoff_spans_body_underside_to_seating_plane():
