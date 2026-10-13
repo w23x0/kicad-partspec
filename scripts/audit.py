@@ -152,13 +152,49 @@ def _previous() -> dict:
         return {}
 
 
+def _board(rules, statuses, suite_results, previous):
+    """The counts behind the printed board, as a dict.
+
+    A rule whose only test was SKIPPED is neither failing nor uncovered, but it did not run:
+    it must not be counted as passing (AGENTS.md allows skipif only for a missing
+    environment, and the three gold suites already degrade to warnings, not successes, when
+    tools are absent). `previous` is the state file's contents, for 退步.
+    """
+    covered = [rule["id"] for rule in rules if rule["id"] in statuses or rule.get("suite")]
+    failing = [rule["id"] for rule in rules if statuses.get(rule["id"]) == "FAILED"]
+    skipped = [rule["id"] for rule in rules if statuses.get(rule["id"]) == "SKIPPED"]
+    uncovered = [rule["id"] for rule in rules if rule["id"] not in covered]
+    passing = [
+        rule["id"]
+        for rule in rules
+        if rule["id"] in covered and rule["id"] not in failing and rule["id"] not in skipped
+    ]
+
+    regressed = [
+        rule["id"]
+        for rule in rules
+        if previous.get("rules", {}).get(rule["id"]) == "pass" and statuses.get(rule["id"]) == "FAILED"
+    ]
+    for name, (ok, _, _) in suite_results.items():
+        if previous.get("suites", {}).get(name) is True and not ok:
+            regressed.append(name)
+
+    return {
+        "covered": covered,
+        "passing": passing,
+        "failing": failing,
+        "skipped": skipped,
+        "uncovered": uncovered,
+        "regressed": sorted(set(regressed)),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--datasheets", type=Path, default=os.environ.get("PARTSPEC_DATASHEETS"))
     args = parser.parse_args()
 
     rules = _rules()
-    suite_of = {rule["id"]: rule.get("suite") for rule in rules}
     statuses, unruled, _ = _rule_tests()
 
     api, failed, verify_spec, check_quotes, find_datasheet, page_texts = _import_partspec()
@@ -174,20 +210,13 @@ def main() -> int:
         "gold-build": (build_bad == [], build_line, None),
     }
 
-    covered = [rule["id"] for rule in rules if rule["id"] in statuses or suite_of.get(rule["id"])]
-    failing = [rule["id"] for rule in rules if statuses.get(rule["id"]) == "FAILED"]
-    skipped = [rule["id"] for rule in rules if statuses.get(rule["id"]) == "SKIPPED"]
-    uncovered = [rule["id"] for rule in rules if rule["id"] not in covered]
-    passing = [rule["id"] for rule in rules if rule["id"] in covered and rule["id"] not in failing]
-
-    regressed = [
-        rule["id"]
-        for rule in rules
-        if previous.get("rules", {}).get(rule["id"]) == "pass" and (statuses.get(rule["id"]) == "FAILED")
-    ]
-    for name, (ok, _, _) in suite_results.items():
-        if previous.get("suites", {}).get(name) is True and not ok:
-            regressed.append(name)
+    board = _board(rules, statuses, suite_results, previous)
+    covered = board["covered"]
+    failing = board["failing"]
+    skipped = board["skipped"]
+    uncovered = board["uncovered"]
+    passing = board["passing"]
+    regressed = board["regressed"]
 
     print(f"规则总数: {len(rules)}")
     print(f"有测试:   {len(covered)}")
